@@ -12,9 +12,21 @@
   "app": {
     "windows": [
       {
+        "label": "main",
         "title": "gamecompass",
         "width": 800,
-        "height": 600
+        "height": 600,
+        "center": true,
+        "visible": false
+      },
+      {
+        "label": "splashscreen",
+        "url": "./src/splash-screen/splash-screen.html",
+        "width": 350,
+        "height": 500,
+        "center": true,
+        "resizable": false,
+        "decorations": false
       }
     ],
     "security": {
