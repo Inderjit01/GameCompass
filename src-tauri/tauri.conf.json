@@ -26,7 +26,8 @@
         "height": 500,
         "center": true,
         "resizable": false,
-        "decorations": false
+        "decorations": false,
+        "devtools": true
       }
     ],
     "security": {

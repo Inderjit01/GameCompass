@@ -1,4 +1,3 @@
-import {useEffect} from "react";
 import loadingVideo from "../assets/videos/loading-screen.mp4";
 import "./splash-screen.css";
 
