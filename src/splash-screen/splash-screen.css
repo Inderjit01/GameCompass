@@ -1,16 +1,16 @@
 html, body, :root {
-    margin: 0;
-    padding: 0;
+    margin: 0;          /* margin pushes other elements away from the border */
+    padding: 0;         /* padding pushes the content away from the border */
 }
 
 .splash-screen {
-    width: 100vw;
+    width: 100vw;       /* percentage of the browser windows's width */
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden;   /* overflow decides what happend to content bigger than the element*/
 }
 
 .splash-screen video {
-    width: 100%;
+    width: 100%;        /* percentage of the parent element's size */
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* how the object will fit into the element */
 }

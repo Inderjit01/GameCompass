@@ -8,11 +8,6 @@ struct SetupState {
 }
 
 #[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}!", name)
-}
-
-#[tauri::command]
 fn set_complete(
     app: tauri::AppHandle,
     state: State<'_, Mutex<SetupState>>,
@@ -86,7 +81,6 @@ pub fn run() {
         })
         .plugin(tauri_plugin_opener::init())
         .invoke_handler(tauri::generate_handler![
-            greet,
             set_complete
         ])
         .run(tauri::generate_context!())

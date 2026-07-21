@@ -15,4 +15,5 @@ function SplashScreen() {
     )
 }
 
+// export default: lets another file import something from this file
 export default SplashScreen;
