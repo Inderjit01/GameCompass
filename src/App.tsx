@@ -1,11 +1,20 @@
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import "./styles/App.css";
+
+import Layout from "./layouts/Layout";
+
+import Home from "./pages/Home";
 
 function App() {
 
   return (
-    <main className="home_page">
-      <h1>Welcome to GameCompass</h1>
-    </main>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
