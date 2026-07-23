@@ -8,7 +8,7 @@ function Layout () {
             <NavBar />
 
             <main className = "content">
-                < Outlet />
+                <Outlet />
             </main>
         </div>
     );

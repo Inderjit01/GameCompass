@@ -1,0 +1,13 @@
+.title-bar {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+.content {
+    margin-left: 200px;
+    margin-top: 0px;
+    flex: 1;
+}
+
+
