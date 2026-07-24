@@ -1,4 +1,5 @@
 use std::sync::Mutex;
+use std::process::Command;
 use tauri::{Manager, State};
 use tokio::time::{sleep, Duration};
 
@@ -43,6 +44,12 @@ fn set_complete(
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+    // runs FastAPI server
+    Command::new("python")
+        .arg("../backend/server.py")
+        .spawn()
+        .expect("Failed to start Python backend");
+
     tauri::Builder::default()
         .manage(Mutex::new(SetupState {
             frontend_complete: false,
