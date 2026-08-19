@@ -1,3 +1,11 @@
+# API keys
+**/.env
+
+__pycache__/
+*.py[cod]
+
+*.txt
+
 # Logs
 logs
 *.log

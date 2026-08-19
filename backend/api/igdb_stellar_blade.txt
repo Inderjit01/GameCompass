@@ -1,0 +1,31 @@
+{
+    "igdb_id": 117170,
+    "game_title": "Stellar Blade",
+    "cover_image": "https://images.igdb.com/igdb/image/upload/t_1080p/co9s0t.jpg",
+    "platforms": "Nintendo Switch 2, PC, Playstation 5",
+    "short_description": "Stellar Blade is a third-person action-adventure game set on a post-apocalyptic Earth. Players control Eve, an elite soldier deployed from an orbital colony to reclaim the planet from hostile creatures called Naytibas. The combat system emphasizes timing-based parrying and evasion, with skill gauges that unlock powerful attacks and buffs. The game features exploration across ruined environments, side quests from NPC survivors in the last human city of Xion, and a narrative with multiple endings based on player choices.",
+    "released": "2024-04-25",
+    "developers": "SHIFT UP",
+    "publishers": "Sony Interactive Entertainment",
+    "rating": 81,
+    "movies": [
+        {
+            "id": 54550,
+            "name": "Trailer",
+            "thumbnail": "https://img.youtube.com/vi/3X3JR3pG0I8/maxresdefault.jpg",
+            "youtube": "https://www.youtube.com/embed/3X3JR3pG0I8"
+        },
+        {
+            "id": 74670,
+            "name": "Trailer",
+            "thumbnail": "https://img.youtube.com/vi/ayek3ZzWb1E/maxresdefault.jpg",
+            "youtube": "https://www.youtube.com/embed/ayek3ZzWb1E"
+        },
+        {
+            "id": 110537,
+            "name": "Trailer",
+            "thumbnail": "https://img.youtube.com/vi/U8V--DUxheg/maxresdefault.jpg",
+            "youtube": "https://www.youtube.com/embed/U8V--DUxheg"
+        }
+    ]
+}

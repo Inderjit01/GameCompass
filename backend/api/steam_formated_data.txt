@@ -1,0 +1,554 @@
+{
+    "basic_info": {
+        "type": "game",
+        "name": "Stellar Blade\u2122",
+        "steam_appid": 3489700,
+        "is_free": false,
+        "detailed_description": "<h1>Special Edition</h1><p><p class=\"bb_paragraph\" ><span class=\"bb_img_ctn\"><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/cabcf0364719d0391473e1577064d44f.avif?t=1776466244\" data-big-src=https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras_big/cabcf0364719d0391473e1577064d44f.avif?t=1776466244 width=1560 height=1560 /></span></p><p class=\"bb_paragraph\" ></p>Edition includes:<br><ul class=\"bb_ul\"><li>Stellar Blade\u2122<br></li><li>Planet Diving Suit (Captain) for EVE<br></li><li>Fluffy Bear Pack for the Drone<br></li><li>Bonus content:<br>     </li><li>Stargazer Suit for EVE<br>     </li><li>Half-rim Glasses for EVE<br>     </li><li>Quadruple Rectangle Earrings for EVE<br>     </li><li>Stargazer Coat for Lily<br>     </li><li>Stargazer Wear for Adam<br>     </li><li>Stargazer Pack for the Drone<br>     </li><li>2,000 SP EXP<br>     </li><li>5,000 Gold in-game currency<br></li><li>Stellar Blade\u2122: Twin Expansion Pack:<br>     </li><li>Stellar Blade\u2122 x NieR:Automata\u2122<br>     </li><li>Stellar Blade\u2122 x GODDESS OF VICTORY: NIKKE<h2 class=\"bb_tag\" >Reclaim Earth for humankind</h2>Experience the acclaimed PlayStation\u00ae5 hit Stellar Blade\u2122 from Korean developers SHIFT UP, now optimized for PC.<br><br><strong>Explore an awe-inspiring post-apocalyptic world</strong><br>The future of humanity is balanced on the edge of a blade. Ravaged by strange, powerful creatures, Earth has been abandoned, and what is left of the decimated human race has fled to a Colony in outer space.<br><br>After travelling from the Colony, EVE arrives on the desolate remains of our planet with a clear-cut mission: to save humankind by reclaiming Earth from the Naytiba \u2013 the malevolent force that has devastated it.<br><br>But as EVE tackles the Naytiba one-by-one, piecing together the mysteries of the past in the ruins of human civilization, she realizes that her mission is far from straightforward. In fact, almost nothing is as it seems\u2026<br><br><strong>A thrilling slice of razor-sharp action</strong><br>Engage in blisteringly fast combat as you slash a path through the remnants of Earth. Unleash graceful yet brutal attacking combos, unlock new moves and weapon upgrades, and face epic boss encounters that will challenge both brain and brawn in equal measure.<br><br><strong>An incredible visual experience</strong><br>Become immersed in a highly detailed post-apocalyptic world that blends beauty and horror to spectacular effect. <br><br><strong>A deep, unforgettable adventure</strong><br>Unravel a gripping human fate story, with mature themes, a thought-provoking narrative and emotionally-charged revelations from beginning to end.<br><br><strong>New content</strong><br><ul class=\"bb_ul\"><li>Test your skill and strength against the fearsome warrior Mann, the leader of the Sentinels in Boss Challenge Mode.<br></li><li>Chinese and Japanese voice over and lip-sync support.<br></li><li>25 costumes, three pairs of glasses and six pairs of earrings.</li></ul><h2 class=\"bb_tag\" >PC features</h2><strong>Ultrawide monitor support</strong><br>Journey across breathtaking science fiction-inspired environments through support for ultrawide screen setups, including 21:9 and 32:9 aspect ratios.<br><br><strong>PC optimized graphics</strong><br>Bring this stunningly vibrant world to life with support for performance-enhancing technologies including NVIDIA DLSS 4 AI-powered graphics, NVIDIA DLAA image quality enhancement, NVIDIA Reflex system latency reduction, as well as AMD FSR 3.<br><br><strong>Unlocked framerates</strong><br>Unleash the full power of your hardware to unleash the full fury of EVE\u2019s electrifying fighting style with support for high framerates and enhanced visual fluidity.<br><br><strong>Texture pack support</strong><br>Enrich the Stellar Blade universe through a 4K option for the environment texture quality.<br><br><strong>Controller and keyboard support</strong><br>Leap into the adventure with a PlayStation DualSense\u00ae controller on a wired USB connection, or with full mouse and keyboard support.<br><u>Haptic feedback</u><br>Feel the thrill of combat as your blade slashes its way to victory, with sensations enriched by the DualSense controller\u2019s responsive vibrations.<br><u>Adaptive triggers</u><br>Unleash devastating yet graceful acrobatic moves, and interact with the technological remnants of an abandoned Earth using the DualSense controller\u2019s adaptive triggers.</p><br><h1>Special Offer</h1><p><p class=\"bb_paragraph\" ><span class=\"bb_img_ctn\"><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/56498f548956caa3c38edcfbcc6887a7.avif?t=1776466244\" data-big-src=https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras_big/56498f548956caa3c38edcfbcc6887a7.avif?t=1776466244 width=800 height=450 /></span></p><p class=\"bb_paragraph\" >Game progression required to unlock the Planet Diving Suit (2nd) costume for EVE, or you can unlock it immediately when your PSN account is connected (in countries that support PSN).</p></p><br><h1>About the Game</h1><h2 class=\"bb_tag\" style=\"text-align: center\"><span class=\"bb_img_ctn\"><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/3a67cae43d202cd157bbd33b90dd3219.webp?t=1776466244\" width=616 height=53 /></span></h2><p class=\"bb_paragraph\" >Experience the acclaimed PlayStation\u00ae5 hit Stellar Blade\u2122 from Korean developers SHIFT UP, now optimized for PC.</p><p class=\"bb_paragraph\" ></p><h2 class=\"bb_tag\" style=\"text-align: center\"><span class=\"bb_img_ctn\"><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/c6e2df3772c2f40364ef8f09e7fdae2d.webp?t=1776466244\" width=616 height=53 /></span></h2><p class=\"bb_paragraph\" style=\"text-align: center\"><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline crossorigin=\"anonymous\" poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/6eb438ae996a475a048ab832123f7a8c.poster.avif?t=1776466244\" width=616 height=348 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/6eb438ae996a475a048ab832123f7a8c.webm?t=1776466244\" type=\"video/webm; codecs=vp9\"></video></span></p><p class=\"bb_paragraph\" >The future of humanity is balanced on the edge of a blade. Ravaged by strange, powerful creatures, Earth has been abandoned, and what is left of the decimated human race has fled to a Colony in outer space.</p><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" >After travelling from the Colony, EVE arrives on the desolate remains of our planet with a clear-cut mission: to save humankind by reclaiming Earth from the Naytiba \u2013 the malevolent force that has devastated it.</p><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" >But as EVE tackles the Naytiba one-by-one, piecing together the mysteries of the past in the ruins of human civilization, she realizes that her mission is far from straightforward. In fact, almost nothing is as it seems\u2026</p><p class=\"bb_paragraph\" ></p><h2 class=\"bb_tag\" style=\"text-align: center\"><span class=\"bb_img_ctn\"><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/2917d99c87c674cfe94183bf374ae514.webp?t=1776466244\" width=616 height=53 /></span></h2><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" style=\"text-align: center\"><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline crossorigin=\"anonymous\" poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/8097adf35cdfbe7b7c3b746f2693840e.poster.avif?t=1776466244\" width=616 height=348 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/8097adf35cdfbe7b7c3b746f2693840e.webm?t=1776466244\" type=\"video/webm; codecs=vp9\"></video></span></p><p class=\"bb_paragraph\" >Engage in blisteringly fast combat as you slash a path through the remnants of Earth. Unleash graceful yet brutal attacking combos, unlock new moves and weapon upgrades, and face epic boss encounters that will challenge both brain and brawn in equal measure.</p><p class=\"bb_paragraph\" ></p><h2 class=\"bb_tag\" style=\"text-align: center\"><span class=\"bb_img_ctn\"><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/0a7baf1010e0bd3c064a87018e801ff1.webp?t=1776466244\" width=616 height=53 /></span></h2><p class=\"bb_paragraph\" style=\"text-align: center\"><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline crossorigin=\"anonymous\" poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/1d8bf487cb63cd517950a9044ab897bf.poster.avif?t=1776466244\" width=616 height=348 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/1d8bf487cb63cd517950a9044ab897bf.webm?t=1776466244\" type=\"video/webm; codecs=vp9\"></video></span></p><p class=\"bb_paragraph\" >Become immersed in a highly detailed post-apocalyptic world that blends beauty and horror to spectacular effect. </p><p class=\"bb_paragraph\" ></p><h2 class=\"bb_tag\" style=\"text-align: center\"><span class=\"bb_img_ctn\"><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/e89962cb109329d142f497875ddf4f2c.webp?t=1776466244\" width=616 height=53 /></span></h2><p class=\"bb_paragraph\" style=\"text-align: center\"><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline crossorigin=\"anonymous\" poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/9a881bdac27f5f957e2b9604b67c4ede.poster.avif?t=1776466244\" width=616 height=348 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/9a881bdac27f5f957e2b9604b67c4ede.webm?t=1776466244\" type=\"video/webm; codecs=vp9\"></video></span></p><p class=\"bb_paragraph\" >Unravel a gripping human fate story, with mature themes, a thought-provoking narrative and emotionally-charged revelations from beginning to end.</p><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ></p><h2 class=\"bb_tag\" ><strong>New content</strong></h2><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" >Test your skill and strength against the fearsome warrior Mann, the leader of the Sentinels in Boss Challenge Mode.</p></li><li><p class=\"bb_paragraph\" >Chinese and Japanese voice over and lip-sync support.</p></li><li><p class=\"bb_paragraph\" >25 costumes, three pairs of glasses and six pairs of earrings.</p></li></ul><p class=\"bb_paragraph\" ></p><h2 class=\"bb_tag\" ><strong>PC features</strong></h2><p class=\"bb_paragraph\" ><strong>Ultrawide monitor support</strong></p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" >Journey across breathtaking science fiction-inspired environments through support for ultrawide screen setups, including 21:9 and 32:9 aspect ratios.</p></li></ul><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ><strong>PC optimized graphics</strong></p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" >Bring this stunningly vibrant world to life with support for performance-enhancing technologies including NVIDIA DLSS 4 AI-powered graphics, NVIDIA DLAA image quality enhancement, NVIDIA Reflex system latency reduction, as well as AMD FSR 3. </p></li></ul><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ><strong>Unlocked framerates</strong></p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" >Unleash the full power of your hardware to unleash the full fury of EVE\u2019s electrifying fighting style with support for high framerates and enhanced visual fluidity.</p></li></ul><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ><strong>Texture pack support</strong></p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" >Enrich the stellar Blade universe through a 4K option for the environment texture quality.</p></li></ul><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ><strong>Controller and keyboard support</strong></p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" >Leap into the adventure with a PlayStation DualSense\u00ae controller on a wired USB connection, or with full mouse and keyboard support.</p></li></ul><p class=\"bb_paragraph\" ><u>Haptic feedback</u></p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" >Feel the thrill of combat as your blade slashes its way to victory, with sensations enriched by the DualSense controller\u2019s responsive vibrations.<br><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/8b4ba378c0230fb041df10d63c90cbd8.poster.avif?t=1776466244\" width=1170 height=658 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/8b4ba378c0230fb041df10d63c90cbd8.webm?t=1776466244\" type=\"video/webm; codecs=vp9\"><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/8b4ba378c0230fb041df10d63c90cbd8.mp4?t=1776466244\" type=\"video/mp4\"></video></span></p></li></ul><p class=\"bb_paragraph\" ><u>Adaptive triggers</u></p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" >Unleash devastating yet graceful acrobatic moves, and interact with the technological remnants of an abandoned Earth using the DualSense controller\u2019s adaptive triggers.<br><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/b79262f5428e3d854fafe0de77a1ea2a.poster.avif?t=1776466244\" width=1170 height=658 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/b79262f5428e3d854fafe0de77a1ea2a.webm?t=1776466244\" type=\"video/webm; codecs=vp9\"><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/b79262f5428e3d854fafe0de77a1ea2a.mp4?t=1776466244\" type=\"video/mp4\"></video></span></p></li></ul></li></ul>",
+        "about_the_game": "<h2 class=\"bb_tag\" style=\"text-align: center\"><span class=\"bb_img_ctn\"><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/3a67cae43d202cd157bbd33b90dd3219.webp?t=1776466244\" width=616 height=53 /></span></h2><p class=\"bb_paragraph\" >Experience the acclaimed PlayStation\u00ae5 hit Stellar Blade\u2122 from Korean developers SHIFT UP, now optimized for PC.</p><p class=\"bb_paragraph\" ></p><h2 class=\"bb_tag\" style=\"text-align: center\"><span class=\"bb_img_ctn\"><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/c6e2df3772c2f40364ef8f09e7fdae2d.webp?t=1776466244\" width=616 height=53 /></span></h2><p class=\"bb_paragraph\" style=\"text-align: center\"><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline crossorigin=\"anonymous\" poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/6eb438ae996a475a048ab832123f7a8c.poster.avif?t=1776466244\" width=616 height=348 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/6eb438ae996a475a048ab832123f7a8c.webm?t=1776466244\" type=\"video/webm; codecs=vp9\"></video></span></p><p class=\"bb_paragraph\" >The future of humanity is balanced on the edge of a blade. Ravaged by strange, powerful creatures, Earth has been abandoned, and what is left of the decimated human race has fled to a Colony in outer space.</p><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" >After travelling from the Colony, EVE arrives on the desolate remains of our planet with a clear-cut mission: to save humankind by reclaiming Earth from the Naytiba \u2013 the malevolent force that has devastated it.</p><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" >But as EVE tackles the Naytiba one-by-one, piecing together the mysteries of the past in the ruins of human civilization, she realizes that her mission is far from straightforward. In fact, almost nothing is as it seems\u2026</p><p class=\"bb_paragraph\" ></p><h2 class=\"bb_tag\" style=\"text-align: center\"><span class=\"bb_img_ctn\"><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/2917d99c87c674cfe94183bf374ae514.webp?t=1776466244\" width=616 height=53 /></span></h2><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" style=\"text-align: center\"><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline crossorigin=\"anonymous\" poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/8097adf35cdfbe7b7c3b746f2693840e.poster.avif?t=1776466244\" width=616 height=348 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/8097adf35cdfbe7b7c3b746f2693840e.webm?t=1776466244\" type=\"video/webm; codecs=vp9\"></video></span></p><p class=\"bb_paragraph\" >Engage in blisteringly fast combat as you slash a path through the remnants of Earth. Unleash graceful yet brutal attacking combos, unlock new moves and weapon upgrades, and face epic boss encounters that will challenge both brain and brawn in equal measure.</p><p class=\"bb_paragraph\" ></p><h2 class=\"bb_tag\" style=\"text-align: center\"><span class=\"bb_img_ctn\"><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/0a7baf1010e0bd3c064a87018e801ff1.webp?t=1776466244\" width=616 height=53 /></span></h2><p class=\"bb_paragraph\" style=\"text-align: center\"><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline crossorigin=\"anonymous\" poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/1d8bf487cb63cd517950a9044ab897bf.poster.avif?t=1776466244\" width=616 height=348 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/1d8bf487cb63cd517950a9044ab897bf.webm?t=1776466244\" type=\"video/webm; codecs=vp9\"></video></span></p><p class=\"bb_paragraph\" >Become immersed in a highly detailed post-apocalyptic world that blends beauty and horror to spectacular effect. </p><p class=\"bb_paragraph\" ></p><h2 class=\"bb_tag\" style=\"text-align: center\"><span class=\"bb_img_ctn\"><img class=\"bb_img\" src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/e89962cb109329d142f497875ddf4f2c.webp?t=1776466244\" width=616 height=53 /></span></h2><p class=\"bb_paragraph\" style=\"text-align: center\"><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline crossorigin=\"anonymous\" poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/9a881bdac27f5f957e2b9604b67c4ede.poster.avif?t=1776466244\" width=616 height=348 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/9a881bdac27f5f957e2b9604b67c4ede.webm?t=1776466244\" type=\"video/webm; codecs=vp9\"></video></span></p><p class=\"bb_paragraph\" >Unravel a gripping human fate story, with mature themes, a thought-provoking narrative and emotionally-charged revelations from beginning to end.</p><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ></p><h2 class=\"bb_tag\" ><strong>New content</strong></h2><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" >Test your skill and strength against the fearsome warrior Mann, the leader of the Sentinels in Boss Challenge Mode.</p></li><li><p class=\"bb_paragraph\" >Chinese and Japanese voice over and lip-sync support.</p></li><li><p class=\"bb_paragraph\" >25 costumes, three pairs of glasses and six pairs of earrings.</p></li></ul><p class=\"bb_paragraph\" ></p><h2 class=\"bb_tag\" ><strong>PC features</strong></h2><p class=\"bb_paragraph\" ><strong>Ultrawide monitor support</strong></p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" >Journey across breathtaking science fiction-inspired environments through support for ultrawide screen setups, including 21:9 and 32:9 aspect ratios.</p></li></ul><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ><strong>PC optimized graphics</strong></p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" >Bring this stunningly vibrant world to life with support for performance-enhancing technologies including NVIDIA DLSS 4 AI-powered graphics, NVIDIA DLAA image quality enhancement, NVIDIA Reflex system latency reduction, as well as AMD FSR 3. </p></li></ul><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ><strong>Unlocked framerates</strong></p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" >Unleash the full power of your hardware to unleash the full fury of EVE\u2019s electrifying fighting style with support for high framerates and enhanced visual fluidity.</p></li></ul><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ><strong>Texture pack support</strong></p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" >Enrich the stellar Blade universe through a 4K option for the environment texture quality.</p></li></ul><p class=\"bb_paragraph\" ></p><p class=\"bb_paragraph\" ><strong>Controller and keyboard support</strong></p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" >Leap into the adventure with a PlayStation DualSense\u00ae controller on a wired USB connection, or with full mouse and keyboard support.</p></li></ul><p class=\"bb_paragraph\" ><u>Haptic feedback</u></p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" >Feel the thrill of combat as your blade slashes its way to victory, with sensations enriched by the DualSense controller\u2019s responsive vibrations.<br><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/8b4ba378c0230fb041df10d63c90cbd8.poster.avif?t=1776466244\" width=1170 height=658 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/8b4ba378c0230fb041df10d63c90cbd8.webm?t=1776466244\" type=\"video/webm; codecs=vp9\"><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/8b4ba378c0230fb041df10d63c90cbd8.mp4?t=1776466244\" type=\"video/mp4\"></video></span></p></li></ul><p class=\"bb_paragraph\" ><u>Adaptive triggers</u></p><ul class=\"bb_ul\"><li><p class=\"bb_paragraph\" >Unleash devastating yet graceful acrobatic moves, and interact with the technological remnants of an abandoned Earth using the DualSense controller\u2019s adaptive triggers.<br><span class=\"bb_img_ctn\"><video class=\"bb_img\" autoplay muted loop playsinline poster=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/b79262f5428e3d854fafe0de77a1ea2a.poster.avif?t=1776466244\" width=1170 height=658 ><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/b79262f5428e3d854fafe0de77a1ea2a.webm?t=1776466244\" type=\"video/webm; codecs=vp9\"><source src=\"https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/b79262f5428e3d854fafe0de77a1ea2a.mp4?t=1776466244\" type=\"video/mp4\"></video></span></p></li></ul>",
+        "short_description": "Save humanity from extinction in post-apocalyptic action-adventure Stellar Blade\u2122. Experience blistering combat and a twisting storyline as you unravel the mysteries of Earth\u2019s downfall.",
+        "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/header.jpg?t=1776466244",
+        "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/75914656cad450124a18fef914c5a5f4866ffb67/capsule_231x87.jpg?t=1776466244",
+        "capsule_imagev5": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/75914656cad450124a18fef914c5a5f4866ffb67/capsule_184x69.jpg?t=1776466244",
+        "developers": [
+            "SHIFT UP Corporation"
+        ],
+        "publishers": [
+            "PlayStation Publishing LLC (excluding China)"
+        ],
+        "price_overview": {
+            "currency": "USD",
+            "initial": 5999,
+            "final": 5999,
+            "discount_percent": 0,
+            "initial_formatted": "",
+            "final_formatted": "$59.99"
+        },
+        "screenshots": [
+            {
+                "id": 0,
+                "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_4291827e357008499d4d5a17bc50d3e93869dd43.600x338.jpg?t=1776466244",
+                "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_4291827e357008499d4d5a17bc50d3e93869dd43.1920x1080.jpg?t=1776466244"
+            },
+            {
+                "id": 1,
+                "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_9d4d62e118a167333d53db94354671e10416b25d.600x338.jpg?t=1776466244",
+                "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_9d4d62e118a167333d53db94354671e10416b25d.1920x1080.jpg?t=1776466244"
+            },
+            {
+                "id": 2,
+                "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_bcb3946482dc5a1221c024098d2ac09e80255f3e.600x338.jpg?t=1776466244",
+                "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_bcb3946482dc5a1221c024098d2ac09e80255f3e.1920x1080.jpg?t=1776466244"
+            },
+            {
+                "id": 3,
+                "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_1ae903bf4153fa2c2b3ee4381eb355532ba79eab.600x338.jpg?t=1776466244",
+                "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_1ae903bf4153fa2c2b3ee4381eb355532ba79eab.1920x1080.jpg?t=1776466244"
+            },
+            {
+                "id": 4,
+                "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_0a156afe90170ba75773a6fe901153c4dd318980.600x338.jpg?t=1776466244",
+                "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_0a156afe90170ba75773a6fe901153c4dd318980.1920x1080.jpg?t=1776466244"
+            },
+            {
+                "id": 5,
+                "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_590074c0cfa8c7098358a128f656b0198af8f0be.600x338.jpg?t=1776466244",
+                "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_590074c0cfa8c7098358a128f656b0198af8f0be.1920x1080.jpg?t=1776466244"
+            },
+            {
+                "id": 6,
+                "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_02282b4eb4c8b13129a13908b85840dbf2168644.600x338.jpg?t=1776466244",
+                "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_02282b4eb4c8b13129a13908b85840dbf2168644.1920x1080.jpg?t=1776466244"
+            },
+            {
+                "id": 7,
+                "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_2d4ad1a81618920416e7b68d02dc266ac898f144.600x338.jpg?t=1776466244",
+                "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_2d4ad1a81618920416e7b68d02dc266ac898f144.1920x1080.jpg?t=1776466244"
+            },
+            {
+                "id": 8,
+                "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_2896b91d5498aa028b84b411875171e2a7ec11c8.600x338.jpg?t=1776466244",
+                "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_2896b91d5498aa028b84b411875171e2a7ec11c8.1920x1080.jpg?t=1776466244"
+            },
+            {
+                "id": 9,
+                "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_0d99694a69de6474cd7e0d6f59bfc7658c08450b.600x338.jpg?t=1776466244",
+                "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/ss_0d99694a69de6474cd7e0d6f59bfc7658c08450b.1920x1080.jpg?t=1776466244"
+            }
+        ],
+        "movies": [
+            {
+                "id": 257154206,
+                "name": "Full Launch trailer",
+                "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257154206/1075aa34dc2b29a057a697fe443d752c3e80418e/movie_600x337.jpg?t=1749678668",
+                "dash_av1": "https://video.akamai.steamstatic.com/store_trailers/3489700/2090056095/b477a4d790ad0e1220c483843f85ce518cf9b2df/1750826285/dash_av1.mpd?t=1749678668",
+                "dash_h264": "https://video.akamai.steamstatic.com/store_trailers/3489700/2090056095/b477a4d790ad0e1220c483843f85ce518cf9b2df/1750826285/dash_h264.mpd?t=1749678668",
+                "hls_h264": "https://video.akamai.steamstatic.com/store_trailers/3489700/2090056095/b477a4d790ad0e1220c483843f85ce518cf9b2df/1750826285/hls_264_master.m3u8?t=1749678668",
+                "highlight": true
+            }
+        ],
+        "release_date": {
+            "coming_soon": false,
+            "date": "Jun 11, 2025"
+        },
+        "background": "https://store.akamai.steamstatic.com/images/storepagebackground/app/3489700?t=1776466244",
+        "background_raw": "https://store.akamai.steamstatic.com/images/storepagebackground/app/3489700?t=1776466244"
+    },
+    "reviews": {
+        "success": 1,
+        "query_summary": {
+            "num_reviews": 10,
+            "review_score": 9,
+            "review_score_desc": "Overwhelmingly Positive",
+            "total_positive": 21906,
+            "total_negative": 1101,
+            "total_reviews": 23007
+        },
+        "reviews": [
+            {
+                "recommendationid": "230883898",
+                "author": {
+                    "steamid": "76561198156537867",
+                    "personaname": "Z\u00f8rxy \ud83d\udd1e",
+                    "persona_status": "offline",
+                    "profile_url": "https://steamcommunity.com/profiles/76561198156537867/",
+                    "num_games_owned": 208,
+                    "num_reviews": 9,
+                    "playtime_forever": 3187,
+                    "playtime_last_two_weeks": 345,
+                    "playtime_at_review": 1735,
+                    "last_played": 1786294049,
+                    "avatar": "dde86b101cbc54a4908720fe4eba3cff5da21761"
+                },
+                "language": "english",
+                "review": "\n---{ Graphics }---\n\u2610 You forget what reality is\n\u2611 Beautiful\n\u2610 Good\n\u2610 Decent\n\u2610 Bad\n\u2610 Don\u2018t look too long at it\n\u2610 MS-DOS\n\n---{ Gameplay }---\n\u2611 Very good\n\u2610 Good\n\u2610 It's just gameplay\n\u2610 Mehh\n\u2610 Watch paint dry instead\n\u2610 Just don't\n\n---{ Audio }---\n\u2610 Eargasm\n\u2611 Very good\n\u2610 Good\n\u2610 Not too bad\n\u2610 Bad\n\u2610 I'm now deaf\n\n---{ PC Requirements }---\n\u2610 Check if you can run paint\n\u2610 Potato\n\u2611 Decent\n\u2610 Fast\n\u2610 Rich boi\n\u2610 Ask NASA if they have a spare computer\n\n---{ Game Size }---\n\u2610 Floppy Disk\n\u2610 Old Fashioned\n\u2611 Workable\n\u2610 Big\n\u2610 Will eat 15% of your 1TB hard drive\n\u2610 You will want an entire hard drive to hold it\n\u2610 You will need to invest in a black hole to hold all the data\n\n---{ Difficulty }---\n\u2610 Just press 'W'\n\u2610 Easy\n\u2610 Easy to learn / Hard to master\n\u2611 Significant brain usage\n\u2610 Difficult\n\u2610 Dark Souls\n\n---{ Grind }---\n\u2610 Nothing to grind\n\u2610 Only if u care about leaderboards/ranks\n\u2610 Isn't necessary to progress\n\u2611 Average grind level\n\u2610 Too much grind\n\u2610 You'll need a second life for grinding\n\n---{ Story }---\n\u2610 No Story\n\u2610 Some lore\n\u2610 Average\n\u2610 Good\n\u2611 Lovely\n\u2610 It'll replace your life\n\n---{ Game Time }---\n\u2610 Long enough for a cup of coffee\n\u2610 Short\n\u2610 Average\n\u2611 Long\n\u2610 To infinity and beyond\n\n---{ Price }---\n\u2610 It's free!\n\u2611 Worth the price\n\u2610 If it's on sale\n\u2610 If u have some spare money left\n\u2610 Not recommended\n\u2610 You could also just burn your money\n\n---{ Bugs }---\n\u2611 Never heard of\n\u2610 Minor bugs\n\u2610 Can get annoying\n\u2610 ARK: Survival Evolved\n\u2610 The game itself is a big terrarium for bugs\n\n---{ ? / 10 }---\n\u2610 1\n\u2610 2\n\u2610 3\n\u2610 4\n\u2610 5\n\u2610 6\n\u2610 7\n\u2610 8\n\u2610 9\n\u2611 10\n\nAmazing Game fun and Challenging 10/10",
+                "timestamp_created": 1784520911,
+                "timestamp_updated": 1784520911,
+                "voted_up": true,
+                "votes_up": 145,
+                "votes_funny": 15,
+                "weighted_vote_score": "0.839292228221893311",
+                "comment_count": 0,
+                "steam_purchase": true,
+                "received_for_free": false,
+                "refunded": false,
+                "written_during_early_access": false,
+                "primarily_steam_deck": false,
+                "app_release_date": "1749678927",
+                "reactions": [
+                    {
+                        "reaction_type": 26,
+                        "count": 6
+                    },
+                    {
+                        "reaction_type": 31,
+                        "count": 5
+                    },
+                    {
+                        "reaction_type": 27,
+                        "count": 4
+                    },
+                    {
+                        "reaction_type": 34,
+                        "count": 3
+                    },
+                    {
+                        "reaction_type": 29,
+                        "count": 2
+                    },
+                    {
+                        "reaction_type": 24,
+                        "count": 1
+                    },
+                    {
+                        "reaction_type": 28,
+                        "count": 1
+                    }
+                ]
+            },
+            {
+                "recommendationid": "231579267",
+                "author": {
+                    "steamid": "76561199009558164",
+                    "personaname": "HandBrick",
+                    "persona_status": "offline",
+                    "profile_url": "https://steamcommunity.com/id/handbrick/",
+                    "num_games_owned": 411,
+                    "num_reviews": 33,
+                    "playtime_forever": 5277,
+                    "playtime_last_two_weeks": 1164,
+                    "playtime_at_review": 5277,
+                    "last_played": 1785319433,
+                    "avatar": "b24803987e0527d6a851b41672ab741108d91cc7"
+                },
+                "language": "english",
+                "review": "I don't know if souls-like veterans would actually call this game a souls-like or not, but I feel like it's a mix of an action RPG and a souls-like. Yeah, even though I've never touched a souls game or anything similar before. But anyway, I wanna talk about Stellar Blade.\r\n\r\nStory-wise, the game follows a woman named Eve who's tasked with taking back Earth from mysterious creatures called Naytibas. Along the way, she meets survivors and teams up with them while hunting down enemy boss cores to defeat the final boss and find a new energy source for the survivor city. The game has 3 endings in total, and one of them actually requires you to 100% the game.\r\n\r\nThe main story itself is actually pretty short if you don't really care about side quests or exploration. But honestly, I think the real selling point of this game is the exploration. I mean, running around the world just to find sexy outfits for Eve? Why not, right?\r\n\r\nTalking about the world, I think it's pretty varied. There are some linear maps and others that give you total freedom to explore its post-apocalyptic themes. Even though it's post-apocalyptic, there are still plenty of photogenic spots. Oh, and don't forget about the massive amount of collectibles. There's even an achievement that forces you to collect 200 of them. With so many collectibles, I found myself intensely running back and forth. To 100% it, I literally had to look up a guide and check them off one by one to see what I missed. It's super safe and easy to backtrack though, because there are tons of camps or teleport points you can use to jump to specific spots.\r\n\r\nNext, let's talk about the gameplay and combat. Like I said earlier, it mixes two different genres: Action RPG and souls combat mechanics.\r\nYou can feel the RPG elements through the skill tree, where you can level up your attack, defense, and skills like Beta and Burst. You also get RPG vibes from equipping Gear and Exoskeletons that give you special effects during fights. As for the souls elements, you can see it in things like the camps\u2014when you rest at one, the enemies you just killed will respawn. The combat also relies on precise timing so you can pull off perfect dodges and perfect parries (btw, there are separate achievements for both of these).\r\n\r\nAs for customization, yeah, it's not super complex, but it's enough to make you happy. You can swap out outfits for Eve and her two companions. Besides outfits, there are also different kinds of earrings, glasses, and hairstyles specifically for Eve. Honestly, what kept me playing for hours was trying on all the clothes one by one and opening up photo mode so Eve could strike some cute poses. And like I said, the real selling point of this game is exploring to collect these outfits. Even in every New Game+ run, there are always new outfits to unlock. Shift Up definitely knew the story alone wouldn't keep people playing for long, so I think they purposely added new outfits in every NG+ just for us to collect. For Eve's outfits specifically, some can be worn right away, but most of them need to be crafted first\u2014especially the ones you get from merchants or exploring. To craft them, you need specific materials that you can buy from shops or find by opening chests scattered all over the map.\r\n\r\nOne thing that I think kinda missed the mark is the voice acting. Especially the English VO\u2014I don't know why, but it feels super stiff and has zero emotion. Even when they say something like \"ahh damn,\" it sounds completely flat. Thank God I used the Japanese VO for my first playthrough, which I think actually did a pretty good job showing the emotion in every conversation.\r\n\r\nWell, overall I think this game is really solid, especially for a noob like me when it comes to souls-like gameplay, so you don't have to tryhard too much to beat it. The exploration is also made super fun with unique world and enemy designs, so I highly recommend this game!",
+                "timestamp_created": 1785320469,
+                "timestamp_updated": 1785320469,
+                "voted_up": true,
+                "votes_up": 12,
+                "votes_funny": 2,
+                "weighted_vote_score": "0.645362317562103271",
+                "comment_count": 3,
+                "steam_purchase": true,
+                "received_for_free": false,
+                "refunded": false,
+                "written_during_early_access": false,
+                "primarily_steam_deck": false,
+                "app_release_date": "1749678927",
+                "hardware": {
+                    "system_ram": "32471",
+                    "os": "Windows 11",
+                    "cpu_name": "13th Gen Intel(R) Core(TM) i7-13620H",
+                    "adapter_description": "NVIDIA GeForce RTX 4060 Laptop GPU",
+                    "vram_size": 7956
+                },
+                "reactions": [
+                    {
+                        "reaction_type": 32,
+                        "count": 1
+                    }
+                ]
+            },
+            {
+                "recommendationid": "231474112",
+                "author": {
+                    "steamid": "76561198169085974",
+                    "personaname": "Attisyr",
+                    "persona_status": "offline",
+                    "profile_url": "https://steamcommunity.com/id/Attisyr/",
+                    "num_games_owned": 2243,
+                    "num_reviews": 14,
+                    "playtime_forever": 13229,
+                    "playtime_last_two_weeks": 12328,
+                    "playtime_at_review": 9663,
+                    "last_played": 1786301915,
+                    "avatar": "c45239766f8353f60c6eb21ba241c4db3014b38e"
+                },
+                "language": "english",
+                "review": "[i]Stellar Blade[/i] is a [b]10.[/b]\n\nI had never [i]100 percented[/i] a sprawling [b]AAA[/b] game before [i]this one.[/i] Only something truly exceptional could change that. I scoured [i]every[/i] corner of its world out of pure enjoyment. Full completion... albeit several New Game Plus prestiges later... was never what I was intentionally pursuing or going out of my way to accomplish. I ended up with it merely by cause and effect, as a little cherry on top.\n\nFor ten years the same title has held the favorite game showcase on my Steam profile. [b]Until now.[/b] The music, the story, the world, the combat, the visuals, the lore and the ending (the best one) slowly combined until [b]Stellar Blade[/b] rose and claimed that place with a concluded performance befitting thunderous applause and a standing ovation.\n\nI bought the base game at launch on PS5 and every DLC as it released. I then went out of my way to purchase the complete edition at full price a second time, on PC. I finished every objective on console, including New Game Plus. I repeated the entire game all over again with a fresh save, on hard, on PC.\n\n[i]Even after all of that,[/i] my heart returns to [b]Xion.[/b] I am playing it again, NG+ round five, as we [i]patiently[/i] await [b]Blood Rain.[/b]\n\nI have given you, [b]reader[/b], the full measure of what this game has meant to me and continues to mean. There is nothing further to add. \n\nI [b]recommend[/b], you [i]buy the game.[/i]\n\nThis game is a [b]masterpiece.[/b] My time with it lives fondly in my memories.\n\n[i]\u201cMay your memories live on forever.\u201d[/i] [b]\u2014 Mother Sphere[/b]",
+                "timestamp_created": 1785192294,
+                "timestamp_updated": 1785883243,
+                "voted_up": true,
+                "votes_up": 19,
+                "votes_funny": 0,
+                "weighted_vote_score": "0.640926182270050049",
+                "comment_count": 1,
+                "steam_purchase": true,
+                "received_for_free": false,
+                "refunded": false,
+                "written_during_early_access": false,
+                "primarily_steam_deck": false,
+                "app_release_date": "1749678927",
+                "reactions": [
+                    {
+                        "reaction_type": 24,
+                        "count": 3
+                    },
+                    {
+                        "reaction_type": 34,
+                        "count": 3
+                    },
+                    {
+                        "reaction_type": 28,
+                        "count": 2
+                    },
+                    {
+                        "reaction_type": 31,
+                        "count": 2
+                    },
+                    {
+                        "reaction_type": 35,
+                        "count": 2
+                    },
+                    {
+                        "reaction_type": 25,
+                        "count": 1
+                    },
+                    {
+                        "reaction_type": 26,
+                        "count": 1
+                    },
+                    {
+                        "reaction_type": 27,
+                        "count": 1
+                    },
+                    {
+                        "reaction_type": 29,
+                        "count": 1
+                    },
+                    {
+                        "reaction_type": 30,
+                        "count": 1
+                    },
+                    {
+                        "reaction_type": 32,
+                        "count": 1
+                    },
+                    {
+                        "reaction_type": 33,
+                        "count": 1
+                    }
+                ]
+            },
+            {
+                "recommendationid": "230277818",
+                "author": {
+                    "steamid": "76561198090734506",
+                    "personaname": "Zatur De Ordeniers",
+                    "persona_status": "offline",
+                    "profile_url": "https://steamcommunity.com/id/PrinceZatur/",
+                    "num_games_owned": 667,
+                    "num_reviews": 85,
+                    "playtime_forever": 2056,
+                    "playtime_last_two_weeks": 0,
+                    "playtime_at_review": 2051,
+                    "last_played": 1783848098,
+                    "avatar": "2b8ec76fa811f17d83fc4b665d3843906b3f7cb2"
+                },
+                "language": "english",
+                "review": "8/10!\r\n\r\n[h2] Story [/h2]\r\n\r\nPretty good. As a Nier Automata fan, this game gave me that nostalgic feeling. I really cant talk much about the story without spoiling it, but overall its a solid post-apocalyptic story. compared to Nier Automata.....its a bit weaker.\r\n\r\nAs for the main character, Eve, she is decent and pretty relatable. But personally, I think she is way too much of a poker face. Because of that, I never felt fully immersed, and there were quite a few scenes where I just couldnt connect with her emotionally.\r\n\r\nThe side missions are..... kinda repetitive. You can usually tell how they are gonna end before you even finish them, which to be honest, gets a bit boring. That said, they are where you will find a lot of the lore that expands the world's overall story, so they are still worth doing if you are into that.\r\n\r\n\r\n[h2] Storytelling [/h2]\r\n\r\nIts decent. You get both proper cutscenes and static dialogue scenes. But most of the storytelling is done through notes and documents you find around the world. Personally, I think thats where the game is a bit weak. The storytelling just isnt as engaging as it could've been.\r\n\r\n\r\n[h2] Gameplay [/h2]\r\n\r\nIts basically Devil May Cry-style hack and slash mixed with a few Soulslike elements. There are difficulty options, but compared to Nier Automata, Stellar Blade expects you to actually git gud, even on the easiest difficulty. Its pretty similar to DMC, just without the Style Score.\r\n\r\nThere are puzzles too, but not that many. And honestly, the gameplay loop kinda really felt repetitive. The game clearly focuses on combat and boss fights to keep things fresh, and I think it does that pretty well.\r\n\r\n\r\n[h2] Audio - Soundtrack [/h2]\r\n\r\nIts really good. Personally though, it didnt stick with me as much. I still listen to the Nier series soundtrack to this day. The formula is definitely there, but the style is different. Stellar Blade leans more into upbeat tracks with a noticeable K-pop influence, while Nier goes for a more haunting and tragic vibe.\r\n\r\n\r\n[h2] Audio - Voice Over [/h2]\r\n\r\nBig respect to the voice actors. The voice acting is good overall, but it never really pulled me into the game. Eve especially feels a bit flat. When she is angry or shocked, her voice just doesnt sell those emotions very well. Some characters also have noticeably weaker performances than others.\r\n\r\n\r\n[h2] Performance [/h2]\r\n\r\nA little stuttery here and there, but overall its well optimized and pretty lightweight. I was getting around 80 to over 100 FPS at 1440p Max Settings with DLAA, so no major complaints.\r\n\r\n\r\n[h2] Controls [/h2]\r\n\r\nThey are fine overall. Sometimes it feels like the controls are fighting me, but honestly.....thats probably just a skill issue. I probably need to git gud.\r\n\r\n\r\n[h2] Final Thoughts [/h2]\r\n\r\nGreat game overall. Its biggest weakness is the storytelling, which never felt immersive enough for me. The side missions also get a bit too repetitive. But if you're looking for a stylish action game with satisfying combat and awesome boss fights, it's definitely worth playing.\r\n\r\n[spoiler] Oh ya I like playing as Eve. She is Interesting. Mod her to the max with bunch clothes and dress. 9/10! [/spoiler]",
+                "timestamp_created": 1783841714,
+                "timestamp_updated": 1783841714,
+                "voted_up": true,
+                "votes_up": 16,
+                "votes_funny": 1,
+                "weighted_vote_score": "0.616592884063720703",
+                "comment_count": 0,
+                "steam_purchase": true,
+                "received_for_free": false,
+                "refunded": false,
+                "written_during_early_access": false,
+                "primarily_steam_deck": false,
+                "app_release_date": "1749678927",
+                "hardware": {
+                    "system_ram": "31831",
+                    "os": "Windows 11",
+                    "cpu_name": "AMD Ryzen 7 9700X 8-Core Processor             ",
+                    "adapter_description": "NVIDIA GeForce RTX 5070 Ti",
+                    "vram_size": 15995
+                },
+                "reactions": [
+                    {
+                        "reaction_type": 26,
+                        "count": 1
+                    }
+                ]
+            },
+            {
+                "recommendationid": "232142593",
+                "author": {
+                    "steamid": "76561199246207619",
+                    "personaname": "Nero",
+                    "persona_status": "offline",
+                    "profile_url": "https://steamcommunity.com/id/FXTHSAM/",
+                    "num_games_owned": 157,
+                    "num_reviews": 24,
+                    "playtime_forever": 1559,
+                    "playtime_last_two_weeks": 756,
+                    "playtime_at_review": 1398,
+                    "last_played": 1786259379,
+                    "avatar": "834354591c0166c3c838fd9a94f7a8a2906ebda1"
+                },
+                "language": "english",
+                "review": "I honestly had way more fun with this game than I expected.\n\nThe combat is awesome. It feels smooth, satisfying, and every boss fight had me locked in. Once you get the timing down, pulling off parries and combos feels so good.\n\nThe graphics are beautiful, and the soundtrack is amazing\n\nGreat character customisation and jiggle physics as well\n\nThe only thing i didnt like was the voice acting felt \"off\" during certain conversations and the story was painfully predictable. hopefully the second game improves on it \n\nOverall, *Stellar Blade* is one of the best action games I've played in a long time. It's polished, fun from start to finish, and definitely worth playing if you like games with great combat.\n\nEasy recommendation from me.",
+                "timestamp_created": 1785960727,
+                "timestamp_updated": 1785961619,
+                "voted_up": true,
+                "votes_up": 6,
+                "votes_funny": 0,
+                "weighted_vote_score": "0.595109403133392334",
+                "comment_count": 0,
+                "steam_purchase": true,
+                "received_for_free": false,
+                "refunded": false,
+                "written_during_early_access": false,
+                "primarily_steam_deck": false,
+                "app_release_date": "1749678927",
+                "reactions": []
+            },
+            {
+                "recommendationid": "230972927",
+                "author": {
+                    "steamid": "76561198170842413",
+                    "personaname": "And\u00fani\u00eb\u2078\u2077",
+                    "persona_status": "offline",
+                    "profile_url": "https://steamcommunity.com/profiles/76561198170842413/",
+                    "num_games_owned": 2951,
+                    "num_reviews": 267,
+                    "playtime_forever": 3374,
+                    "playtime_last_two_weeks": 840,
+                    "playtime_at_review": 836,
+                    "last_played": 1785449419,
+                    "avatar": "a7493b68d5eb9a3f6ce7bf3215d021d3942b3a8f"
+                },
+                "language": "english",
+                "review": "Stellar Blade a unique game.\n+Graphics(In terms of graphics, the game looks very good and everything is detailed.)\n+Gameplay(The game mechanics are easy to learn but hard to master.)\n+Story(The story is quite good.)\n+Atmosphere(The post-apocalyptic atmosphere combined with cyberpunk is a very good mix and fits perfectly.)\n+Excellent sound and music\n\nStellar Blade is a unique game that offers a unique experience with a pretty good story that will keep you in suspense plus fluid gameplay full of action.\n\n10/10 Must Play! I recommend buying it at a discount or full price, it's well worth the money.\n",
+                "timestamp_created": 1784635193,
+                "timestamp_updated": 1784635193,
+                "voted_up": true,
+                "votes_up": 7,
+                "votes_funny": 1,
+                "weighted_vote_score": "0.568749427795410156",
+                "comment_count": 1,
+                "steam_purchase": false,
+                "received_for_free": false,
+                "refunded": false,
+                "written_during_early_access": false,
+                "primarily_steam_deck": false,
+                "app_release_date": "1749678927",
+                "hardware": {
+                    "system_ram": "15771",
+                    "os": "Windows 11",
+                    "cpu_name": "AMD Ryzen 7 5800H with Radeon Graphics         ",
+                    "adapter_description": "NVIDIA GeForce RTX 3060 Laptop GPU",
+                    "vram_size": 5994
+                },
+                "reactions": []
+            },
+            {
+                "recommendationid": "231892603",
+                "author": {
+                    "steamid": "76561198072413819",
+                    "personaname": "Shine",
+                    "persona_status": "in-game",
+                    "profile_url": "https://steamcommunity.com/id/shine-berserk/",
+                    "num_games_owned": 318,
+                    "num_reviews": 49,
+                    "playtime_forever": 1422,
+                    "playtime_last_two_weeks": 317,
+                    "playtime_at_review": 1422,
+                    "last_played": 1785674950,
+                    "avatar": "a4e9b9814ed7103a411cd3ec2ade6960ed8cbfb0"
+                },
+                "language": "english",
+                "review": "A good action light-rpg, looks fabulous but lacks in story and dialogue. Overall its a thumbs-up",
+                "timestamp_created": 1785675190,
+                "timestamp_updated": 1785675190,
+                "voted_up": true,
+                "votes_up": 4,
+                "votes_funny": 0,
+                "weighted_vote_score": "0.563492059707641602",
+                "comment_count": 0,
+                "steam_purchase": true,
+                "received_for_free": false,
+                "refunded": false,
+                "written_during_early_access": false,
+                "primarily_steam_deck": false,
+                "app_release_date": "1749678927",
+                "hardware": {
+                    "system_ram": "64389",
+                    "os": "Windows 11",
+                    "cpu_name": "AMD Ryzen 7 7800X3D 8-Core Processor           ",
+                    "adapter_description": "NVIDIA GeForce RTX 4080",
+                    "vram_size": 16048
+                },
+                "reactions": []
+            },
+            {
+                "recommendationid": "230725338",
+                "author": {
+                    "steamid": "76561198025535600",
+                    "personaname": "M\u262fNK",
+                    "persona_status": "offline",
+                    "profile_url": "https://steamcommunity.com/profiles/76561198025535600/",
+                    "num_games_owned": 0,
+                    "num_reviews": 21,
+                    "playtime_forever": 634,
+                    "playtime_last_two_weeks": 0,
+                    "playtime_at_review": 634,
+                    "last_played": 1784338451,
+                    "avatar": "f3d05db4d8557efbcdbfb337f4176abe9fcb5c1b"
+                },
+                "language": "english",
+                "review": "Nier: Automata from Temu\n\nThere's potential for a good game somewhere in there, but it's drowned in tedium, artifacts of 20 year old JRPGs, and baffling art/design choices. \n\nThe combat can't decide if it wants to be hack-and-slash or souls-like, and does both with mediocrity.\n\nPrepare to slog through every single possible one-off minigame and JRPG mechanic you've ever experienced and hated. Crane Games, Arrow input puzzles, find-the-hidden-password, find-the-hidden-passcode, shoot the target, platforming, raise the water levels, farm materials, fetch quests, and more. I would bet my 401K that some manager who hasn't played video games since the Gamecube insisted very enthusiastically that gamers LOVE mini-games and that this game needed to be CHOCK full of every single one possible. \n\nOn the plus side, I laughed out loud multiple times in this game. \n\nArt direction is so absolutely baffling that it's accidentally funny. Why is there fresh food and giant piles of brand new shiny plastic trash bags all over the city that's been abandoned for thirty years? Why are there vending machines everywhere? Why am I using a coin-operated pay phone to fast travel? Why is Eve wearing a tie? Why is this human city full of giant creepy statues? Why did they devote their entire art and design  department to jiggle physics and lingerie instead of scenery and level design?\n\nMy first two bulletin board quests went as follows:\nAccept bulletin to find lost cat. Go on my merry way to look for a lost cat. Find a dead cat. Quest ends abruptly with no further follow-up.\n\nAccept bulletin to find a lost husband. Go on my merry way to look for lost Husband. Find dead husband. Quest ends abruptly. \n\nThere's a very average plot/story that's dragged down to boring by terrible execution. Dialogue feels like it was machine translated by a mid-tier open source LLM. It's grammatically correct, but has zero nuance and conversations are almost hilariously abrupt.\n\nTL;DR: This would have been a decent game without the tedious minigames, pointless side quests, and uncomfortably pervy character designs.",
+                "timestamp_created": 1784340912,
+                "timestamp_updated": 1784340912,
+                "voted_up": false,
+                "votes_up": 6,
+                "votes_funny": 0,
+                "weighted_vote_score": "0.559135675430297852",
+                "comment_count": 0,
+                "steam_purchase": true,
+                "received_for_free": false,
+                "refunded": false,
+                "written_during_early_access": false,
+                "primarily_steam_deck": false,
+                "app_release_date": "1749678927",
+                "reactions": []
+            },
+            {
+                "recommendationid": "232209040",
+                "author": {
+                    "steamid": "76561197996759355",
+                    "personaname": "Bobby Kenobi",
+                    "persona_status": "online",
+                    "profile_url": "https://steamcommunity.com/id/bobbykenobii/",
+                    "num_games_owned": 0,
+                    "num_reviews": 143,
+                    "playtime_forever": 1580,
+                    "playtime_last_two_weeks": 1580,
+                    "playtime_at_review": 1580,
+                    "last_played": 1786039326,
+                    "avatar": "aff4550a725dbfbf13ebe6f68558a8ed2533925b"
+                },
+                "language": "english",
+                "review": "Its decent, not really my cup of tea, but they put lots of effort in the game, they put more effort in some parts of the game like characters models and the absolute amount of suits that barely make sense with the story lol, im probably not the target audience for those suits lmao. Story is ok, kinda predictable, voice acting is passable and the side content feels like MMO type of sidequests with lots of backtracking in the empty boring open world maps.\r\n\r\nCombat was pretty decent, kinda sucks when you are locked into the animations and cant cancel to block, and some animations like ledge climbing can feel a bit stiff,  didn't have any noticeable bugs, it ran pretty good, has plenty of settings to improve performance if you need and even difficulty settings for those of us who suck at the genre.\r\n\r\nIf you arent a fan of the skin tight suits and souls like combat, maybe wait for big sale.",
+                "timestamp_created": 1786039798,
+                "timestamp_updated": 1786039798,
+                "voted_up": true,
+                "votes_up": 2,
+                "votes_funny": 0,
+                "weighted_vote_score": "0.552238762378692627",
+                "comment_count": 0,
+                "steam_purchase": false,
+                "received_for_free": false,
+                "refunded": false,
+                "written_during_early_access": false,
+                "primarily_steam_deck": false,
+                "app_release_date": "1749678927",
+                "hardware": {
+                    "system_ram": "31830",
+                    "os": "Windows 11",
+                    "cpu_name": "AMD Ryzen 5 7600X 6-Core Processor             ",
+                    "adapter_description": "NVIDIA GeForce RTX 5070 Ti",
+                    "vram_size": 15995
+                },
+                "reactions": []
+            },
+            {
+                "recommendationid": "230594498",
+                "author": {
+                    "steamid": "76561197967363630",
+                    "personaname": "Rainbow Teeth",
+                    "persona_status": "offline",
+                    "profile_url": "https://steamcommunity.com/id/RainbowTeeth/",
+                    "num_games_owned": 0,
+                    "num_reviews": 26,
+                    "playtime_forever": 793,
+                    "playtime_last_two_weeks": 0,
+                    "playtime_at_review": 341,
+                    "last_played": 1784400104,
+                    "avatar": "d2f2b17c94421f9922c72b30c7173ad29956e72d"
+                },
+                "language": "english",
+                "review": "I'd never heard anything about the soundtrack before playing, but what an incredible soundtrack it is. I stop for long periods of time to listen to the music at  rest points. It's really beautiful. \n\nI'm shocked that this game was maligned. It's objectively good, reminding me of titles from the xbox golden-age with modernized fighting mechanics. It's a very videogame-y videogame in all the best ways. Stellar Blade reminds me that quality single player action games are still very much alive and well. And this one has fantastic butts in it.",
+                "timestamp_created": 1784195445,
+                "timestamp_updated": 1784195445,
+                "voted_up": true,
+                "votes_up": 4,
+                "votes_funny": 0,
+                "weighted_vote_score": "0.54828113317489624",
+                "comment_count": 0,
+                "steam_purchase": false,
+                "received_for_free": false,
+                "refunded": false,
+                "written_during_early_access": false,
+                "primarily_steam_deck": false,
+                "app_release_date": "1749678927",
+                "reactions": []
+            }
+        ],
+        "cursor": "AoIFQFZCM0AAAABy/NLvBg=="
+    }
+}

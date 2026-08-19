@@ -1,0 +1,62 @@
+{
+    "igdb_id": 68353,
+    "game_title": "Unicorn Overlord",
+    "cover_image": "https://images.igdb.com/igdb/image/upload/t_1080p/co7310.jpg",
+    "platforms": "Xbox Series X|S, Playstation (4, 5), Nintendo Switch",
+    "short_description": "From the masterminds that brought 13 Sentinels: Aegis Rim and Odin Sphere, ATLUS x Vanillaware presents the rebirth of tactical fantasy RPG. Fight against fate and embark on a royal adventure to regain your reign alongside trustworthy allies.\n\nUnicorn Overlord combines the timeless tactical RPG genre with overworld exploration and innovative battle system for a unique epic fantasy experience in the iconic Vanillaware style.\n\nTraverse a vibrant world, assemble units and direct them into exquisitely animated battles. Perform heroic deeds and grow renown throughout the five nations. Cultivate a grand army with over 60 unique characters, from humans and elves to massive beasts and heavenly angels",
+    "released": "Mar 7, 2024",
+    "developers": "Vanillaware",
+    "publishers": "Atlus, Sega",
+    "rating": 83,
+    "movies": [
+        {
+            "id": 97868,
+            "name": "Announcement Trailer",
+            "thumbnail": "https://img.youtube.com/vi/I-enIFmoDrc/maxresdefault.jpg",
+            "youtube": "https://www.youtube.com/embed/I-enIFmoDrc"
+        }
+    ],
+    "screenshots": [
+        {
+            "id": 1144844,
+            "path_thumbnail": "https://images.igdb.com/igdb/image/upload/t_screenshot_med/scojd8.jpg",
+            "path_full": "https://images.igdb.com/igdb/image/upload/t_screenshot_big/scojd8.jpg"
+        },
+        {
+            "id": 1144847,
+            "path_thumbnail": "https://images.igdb.com/igdb/image/upload/t_screenshot_med/scojdb.jpg",
+            "path_full": "https://images.igdb.com/igdb/image/upload/t_screenshot_big/scojdb.jpg"
+        },
+        {
+            "id": 1144841,
+            "path_thumbnail": "https://images.igdb.com/igdb/image/upload/t_screenshot_med/scojd5.jpg",
+            "path_full": "https://images.igdb.com/igdb/image/upload/t_screenshot_big/scojd5.jpg"
+        },
+        {
+            "id": 1144842,
+            "path_thumbnail": "https://images.igdb.com/igdb/image/upload/t_screenshot_med/scojd6.jpg",
+            "path_full": "https://images.igdb.com/igdb/image/upload/t_screenshot_big/scojd6.jpg"
+        },
+        {
+            "id": 1144843,
+            "path_thumbnail": "https://images.igdb.com/igdb/image/upload/t_screenshot_med/scojd7.jpg",
+            "path_full": "https://images.igdb.com/igdb/image/upload/t_screenshot_big/scojd7.jpg"
+        },
+        {
+            "id": 1144845,
+            "path_thumbnail": "https://images.igdb.com/igdb/image/upload/t_screenshot_med/scojd9.jpg",
+            "path_full": "https://images.igdb.com/igdb/image/upload/t_screenshot_big/scojd9.jpg"
+        },
+        {
+            "id": 1144846,
+            "path_thumbnail": "https://images.igdb.com/igdb/image/upload/t_screenshot_med/scojda.jpg",
+            "path_full": "https://images.igdb.com/igdb/image/upload/t_screenshot_big/scojda.jpg"
+        },
+        {
+            "id": 1144848,
+            "path_thumbnail": "https://images.igdb.com/igdb/image/upload/t_screenshot_med/scojdc.jpg",
+            "path_full": "https://images.igdb.com/igdb/image/upload/t_screenshot_big/scojdc.jpg"
+        }
+    ],
+    "artwork": "https://images.igdb.com/igdb/image/upload/t_1080p/ar2iyr.jpg"
+}

@@ -2,15 +2,20 @@
     position: fixed;
     left: 0;
     top: 0;
+
     height: 100vh;
     width: 200px;
 
     display: flex;
     flex-direction: column;
-    background: url("../assets/images/main-background.png"),
-        linear-gradient( #1b1b1b 100%);
 
-    box-shadow: 8px 0 15px rgba(0, 0, 0, 0.5)
+    background: url("../assets/images/main-background.png"),
+        linear-gradient( #222222 100%);
+
+    box-shadow: 8px 0 15px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+
+    z-index: 1000;
 }
 
 .navbar a {
@@ -21,6 +26,14 @@
 
 .navbar a:hover {
     background: url("../assets/images/main-background.png"),
-        linear-gradient( #111111 100%);
+        linear-gradient( #181818 100%);
     
+}
+
+.content {
+    margin-left: 200px;
+    width: calc(100% - 200px);
+    min-width: 0;
+
+    box-sizing: border-box;
 }

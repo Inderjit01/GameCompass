@@ -1,0 +1,61 @@
+.page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.game-card {
+    padding-left: 20px;
+}
+
+.game-card ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    border-top: 1px solid #2a2d33;
+}
+.game-card li {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding: 14px 18px;
+
+    border-bottom: 2px solid #2a2d33
+}
+.game-card li:hover {
+    background: url("../assets/images/main-background.png"),
+        linear-gradient(#3a3a3a 100%);
+}
+.game-card img {
+    width: 90px;
+    height: 120px;
+    object-fit: cover;
+    box-shadow: 8px 0 15px rgba(0, 0, 0, 0.8);
+}
+
+.title-platforms {
+    display: flex;
+    flex-direction: column;
+}
+.title-platforms p {
+    margin: 0;
+    padding: 0;
+    
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #e6e6e6;
+    line-height: 1.1;
+}
+.title-platforms span {
+    font-size: 0.7rem;
+    color: #909090;
+    line-height: 1.1;
+}

@@ -1,3 +1,55 @@
+:root {
+    --color-blue-1: #0d1520;
+    --color-blue-2: #111927;
+    --color-blue-3: #1b2b41;
+    --color-blue-4: #002130;
+    --color-blue-5: #002035;
+    --color-blue-6: #67c1f5;
+    --color-blue-7: #538dc8;
+    --color-blue-8: #1A9FFF;
+    --color-blue-9: #3b9eff;
+    --color-blue-10: #56abff;
+    --color-blue-11: #70b8ff;
+    --color-blue-12: #c2e6ff;
+
+    --color-accent-1: var(--color-blue-1);
+    --color-accent-2: var(--color-blue-2);
+    --color-accent-3: var(--color-blue-3);
+    --color-accent-4: var(--color-blue-4);
+    --color-accent-5: var(--color-blue-5);
+    --color-accent-6: var(--color-blue-6);
+    --color-accent-7: var(--color-blue-7);
+    --color-accent-8: var(--color-blue-8);
+    --color-accent-9: var(--color-blue-9);
+    --color-accent-10: var(--color-blue-10);
+    --color-accent-11: var(--color-blue-11);
+    --color-accent-12: var(--color-blue-12);
+
+    --color-greyneutral-1: #060a0e;
+    --color-greyneutral-2: #0e141b;
+    --color-greyneutral-4: #171d25;
+    --color-greyneutral-5: #3d4450;
+    --color-greyneutral-6: #23262e;
+    --color-greyneutral-7: #2d323d;
+    --color-greyneutral-8: #3d4450;
+    --color-greyneutral-9: #48505E;
+    --color-greyneutral-10: #67707b;
+    --color-greyneutral-11: #67707b;
+    --color-greyneutral-12: #b8bcbf;
+
+    --color-dull-1: var(--color-greyneutral-1);
+    --color-dull-2: var(--color-greyneutral-2);
+    --color-dull-4: var(--color-greyneutral-4);
+    --color-dull-5: var(--color-greyneutral-5);
+    --color-dull-6: var(--color-greyneutral-6);
+    --color-dull-7: var(--color-greyneutral-7);
+    --color-dull-8: var(--color-greyneutral-8);
+    --color-dull-9: var(--color-greyneutral-9);
+    --color-dull-10: var(--color-greyneutral-10);
+    --color-dull-11: var(--color-greyneutral-11);
+    --color-dull-12: var(--color-greyneutral-12);
+}
+
 html,
 body,
 #root {
@@ -5,8 +57,7 @@ body,
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: url("../assets/images/main-background.png"),
-        linear-gradient( #141414 100%);
-    color: #e0e0e0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--color-blue-3);
+    color: white;
 }

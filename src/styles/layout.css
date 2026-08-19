@@ -1,11 +1,11 @@
 .title-bar {
     display: flex;
     min-height: 100vh;
+    width: 100%;
 }
 
 
 .content {
-    margin-left: 200px;
     margin-top: 0px;
     flex: 1;
 }

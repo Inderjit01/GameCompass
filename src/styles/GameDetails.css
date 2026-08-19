@@ -1,0 +1,720 @@
+.page > video {    
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+}
+.body {
+    overflow-y: auto;
+}
+/* ------------------
+    Start of top widgets
+-------------------*/
+.body_top {
+    padding: 20px 60px 0px 60px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #1b2838;
+}
+
+.body_content {
+    position: relative;
+    z-index: 2;
+}
+
+.gameColor {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+    
+    object-fit: cover;
+
+    filter: blur(60px);
+
+    opacity: 0.5;
+
+    mask-image: linear-gradient(180deg, black 200px, transparent 700px);
+    mix-blend-mode: color;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+.gameTexture {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: auto;
+
+    filter: saturate(0.1) opacity(0.2);
+    mask-image: linear-gradient(180deg, black 38%, rgba(0, 0, 0, 0.5) 96%);
+    mix-blend-mode: lighten;
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+.basic_info {
+    display: flex;
+    flex-direction: row;
+
+    gap: 15px;
+
+    background: rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(4px);
+
+    width: 100%;
+    height: auto;
+
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.basic_left {
+    width: 70%;
+}
+.basic_left ul {
+    list-style: none;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 7px;
+
+    width: 100%;
+    max-width: 100%;
+
+    padding: 5px 0px 0px 0px;
+    margin: 0px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-color: #4b5563 var(--color-blue-1);
+}
+.basic_left li {
+    padding: 0px;
+    margin: 0px;
+
+    flex: 0 0 auto;
+
+    width: 110px;
+    height: 65px;
+}
+.basic_left li img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    display: block;
+}
+.basic_left li img.selected {
+    outline: 3px solid white; 
+    outline-offset: -3px;
+}
+.main_media img,
+.main_media video,
+.main_media iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+
+    object-fit: contain;
+    display: block;
+}
+
+.basic_right {
+    width: 30%; 
+    min-width: 0;
+    
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.basic_right img{
+    width: 100%;
+    aspect-ratio: 2.14 / 1;;
+}
+.game_short_description{
+    color: #c6d4df;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 19px;
+    padding-right: 16px;
+    display: -webkit-box;
+    line-clamp: 6;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+}
+.game_details_table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+.game_detail_name {
+    font-size: 11px;
+    padding: 0px 10px 0px 0px;
+    color: #798A95;
+}
+.game_detail_result {
+    font-size: 13px;
+    color: #66c0f4;
+}
+/* ------------------
+    End of body_top widgets
+-------------------*/
+
+.body_middle {
+    padding: 0px 60px 0px 60px;
+}
+.db_row {
+    padding: 16px;
+
+    width: 100%;
+
+    background-color: var(--color-blue-5);
+    backdrop-filter: blur(7px);
+
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+button {
+    padding: 0px 15px;
+    line-height: 30px;
+
+    font-size: 15px;
+    font-family: "Motiva Sans", Arial, Helvetica, sans-serif;
+
+    border-radius: 2px;
+    border: none;
+
+    cursor: pointer;
+
+    color: var(--color-blue-6);
+    background: rgba(103, 193, 245, 0.2);
+}
+button:hover {
+    color: white;
+    background-color: var(--color-blue-7);
+}
+/* -----------------
+    End of DB row
+------------------*/
+
+.price_hltb_overlay {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+.prices {
+    width: 70%
+}
+.price_row {
+    position: relative;
+    width: 100%;
+
+    background: linear-gradient(-60deg, rgba(226, 244, 255, 0.3) 5%, rgba(84, 107, 115, 0.3) 97%);
+    border-radius: 4px;
+
+    font-weight: normal;
+    font-size: 13px;
+
+    padding: 16px 0px 26px 0px;
+    margin-top: 20px;
+}
+.price_row > p {
+    font-family: "Motiva Sans", sans-serif;
+    font-size: 21px;
+    font-weight: normal;
+    color: white;
+
+    line-height: 23px;
+
+    margin: 0px;
+    padding: 0px 16px 0px 16px;
+}
+.no_price {
+    position: absolute;
+
+    background: black;
+    color: rgb(167, 167, 167);
+
+    font-size: 12px;
+    font-weight: bold;
+
+    line-height: 10px;
+    right: 15px;
+    bottom: -15px;
+
+    padding: 0px 12px 0px 12px;
+
+    border-radius: 2px;
+
+    z-index: 2;
+}
+.price_discount {
+    position: absolute;
+
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+
+    border: 2px solid black;
+    border-radius: 2px;
+
+    right: 15px;
+    bottom: -15px;
+
+    padding: 0;
+    border-radius: 2px;
+
+    z-index: 2;
+}
+.price_discount > p {
+    margin: 0;
+    padding: 0px 4px 0px 6px;
+
+    font-size: 25px;
+    font-family: "Motiva Sans", Sans-serif;
+    font-weight: bold;
+
+    display:flex;
+    align-items: center;
+
+    color: #BEEE11;
+    background: #4c6b22;
+}
+.full_to_discount {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0px 6px 0px 12px;
+    margin: 0px;
+
+    background: #344654;
+}
+.full_to_discount p {
+    padding: 0px;
+    margin: 0px;
+}
+.full_to_discount p:nth-child(1) {
+    position: relative;
+    display: inline-block;
+
+    align-self: flex-end;
+
+    font-size: 11px;
+
+    color: #738895;
+}
+.full_to_discount p:nth-child(1)::after {
+    content: "";
+    position: absolute;
+
+    left: -1px;
+    right: -1px;
+    top: 50%;
+
+    height: 1px;
+
+    background: #738895;
+
+    transform: rotate(-10deg);
+}
+.full_to_discount p:nth-child(2) {
+    font-size: 14px;
+    
+    color: #BEEE11;
+}
+.full_price {
+    position: absolute;
+
+    background: black;
+    color: rgb(167, 167, 167);
+
+    font-size: 14px;
+    font-weight: bold;
+
+    line-height: 10px;
+    right: 15px;
+    bottom: -15px;
+
+    padding: 0px 12px 0px 12px;
+
+    border-radius: 2px;
+
+    z-index: 2;
+}
+/* -----------------
+    End of price row
+------------------*/
+.hltb {
+    background: rgba(0, 0, 0, 0.2);
+
+    width: 30%;
+    max-height: 150px;
+
+    margin-top: 20px;
+    padding: 10px;
+
+    box-sizing: border-box;
+}
+.hltb > p {
+    margin: 0 0 10px 0;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+.hltb_table {
+    flex: 1;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 5px;
+}
+.hltb_square {
+    min-width: 0;
+
+    padding: 8px 4px;
+
+    text-align: center;
+    color: white;
+
+    background: rgba(103, 193, 245, 0.2);
+    border-radius: 4px;
+
+    box-sizing: border-box;
+}
+.hltb_square p {
+    margin: 0px;
+}
+.hltb_category {
+    color: #798a95;
+    font-size: 11px;
+}
+.hltb_hours {
+    color: #66c0f4;
+    font-size: 16px;
+    font-weight: bold;
+}
+/* -----------------
+    End of hltb box
+------------------*/
+
+/* ------------------
+    End of body_middle widgets
+-------------------*/
+
+.body_end {
+    padding: 20px 60px 20px 60px;
+}
+.body_end hr {
+    width: 100%;
+
+    border: 0;
+    border-top: 2px solid rgba(0, 0, 0, 0.4);
+}
+
+.reviews_layout {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.reviews_layout > p {
+    padding: 20px 0px 0px 0px;
+    margin: 0px;
+}
+.reviews {
+    width: 70%;
+}
+.reviews > p {
+    font-size: 10px;
+
+    margin: 20px 0px 0px 0px;
+}
+.reviews_table {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+.review {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+
+    padding: 8px 8px 8px 8px;
+
+    background: rgba(0, 0, 0, 0.2);
+
+    box-sizing: border-box; 
+}
+.review_author_profile {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+
+    overflow: hidden;
+}
+.review_author_profile img {
+    border: 2px solid #383c43;
+    height: 35px;
+    width: 35px;
+}
+.review_author_profile_info {
+    display:flex;
+    flex-direction: column;
+
+    padding: 0px 0px 0px 10px;
+}
+.author_name {
+    font-size: 13px;
+    line-height: 18px;
+
+    color: #c1dbf4;
+    font-weight: bold;
+
+    padding: 0px;
+    margin: 0px;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.review_author_count_variable {
+    margin-top: 5px;
+}
+.review_author_count_variable p {
+    padding: 0px;
+    margin: 5px 0px 0px 0px;
+
+    font-size: 9px;
+    color: #c6dbf4;
+}
+.review_author_game_data {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%
+}
+.review_author_game_data_top {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    max-height: 40px;
+
+    background: var(--color-blue-2);
+
+    overflow: hidden;
+}
+.review_author_game_data_right {
+    align-self: center;
+}
+.thumbs_up {
+    width: 40px;
+    height: 40px;
+
+    background: #009cf76c;
+}
+.thumbs_down {
+    width: 40px;
+    height: 40px;
+    background: #9e1a03;
+}
+.recommended_or_not {
+    padding: 0px 0px 0px 5px;
+    margin: 0px;
+
+    color: #d6d7d8;
+
+    font-size: 16px;
+    font-weight: 400;
+
+    overflow: hidden;
+}
+.review_author_game_hours {
+    padding: 0px 0px 0px 5px;
+    margin: 0px;
+
+    color: #8091a2;
+
+    font-size: 11px;
+    font-weight: 300;
+
+    overflow: hidden;
+}
+.review_author_game_data_bottom {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 13px;
+    line-height: 17px;
+}
+.date_of_review {
+    color: #8091a2;
+    opacity: .6;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+.review_text {
+    white-space: pre-wrap;
+
+    width: 100%;
+    max-height: 225px;
+
+    overflow: hidden;
+    overflow-wrap: break-word;
+    position: relative;
+
+    font-size: 13px;
+    line-height: 17px;
+
+    color: #acb2b8;
+}
+.review_text.expanded {
+    max-height: none;
+}
+.read_more_button {
+    align-self: flex-end;
+}
+
+
+.recent_reviews {
+    width: 30%;
+}
+.recent_reviews > p {
+    font-size: 10px;
+}
+.recent_reviews_table {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+.recent_review {
+    background: linear-gradient(90deg, rgba(62, 69, 81, 0.3), var(--color-blue-3));
+}
+.recent_reviews_top {
+    width: 100%;
+
+    max-height: 20px;
+    padding: 0px;
+    margin: 0px;
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    background-color: rgba(0, 0, 0, .2);
+}
+.thumbs_up_small {
+    width: 20px;
+    height: 20px;
+
+    background: #009cf76c;
+}
+.thumbs_down_small {
+    width: 20px;
+    height: 20px;
+    background: #9e1a03;
+}
+.recent_author_name {
+    font-size: 13px;
+
+    color: #c1dbf4;
+    font-weight: bold;
+
+    padding: 0px 0px 0px 5px;
+    margin: 0px;
+
+    overflow: hidden;
+    white-space: nowrap;
+}
+.recent_author_game_hours {
+    padding: 0px 0px 0px 20px;
+    margin: 0px;
+
+    color: #8091a2;
+
+    font-size: 11px;
+    font-weight: 300;
+
+    overflow: hidden;
+}
+/* ------------------
+    End of body_end widgets
+-------------------*/
+
+/* ------------------
+    Move right box to the top and left box to bottom if the screen is small
+-------------------*/
+@media (max-width: 1200px) {
+    .body_top {
+        padding: 20px 20px 0 20px;
+    }
+    .basic_info {
+        flex-direction: column;
+    }
+    .basic_right {
+        order: -1;
+        width: 100%
+    }
+    .basic_left {
+        width: 100%;
+    }
+    .body_middle {
+        padding: 0px 20px 0 20px;
+    }
+    .price_hltb_overlay {
+        flex-direction: column;
+        gap: 0px;
+    }
+    .prices {
+        width: 100%;
+        order: 2;
+    }
+    .hltb {
+        order: 1;
+        width: 100%;
+    }
+    .hltb_table {
+        grid-template-rows: repeat(1, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .body_end {
+        padding: 20px 20px 0 20px;
+    }
+    .reviews_layout{
+        flex-direction: column;
+    }
+    .reviews {
+        width: 100%;
+    }
+    .review {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .recent_reviews {
+        width: 100%;
+    }
+}
