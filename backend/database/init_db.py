@@ -1,7 +1,8 @@
 import sqlite3
 from pathlib import Path
+from utilities.pathing import grab_db_path
 
-DB_FILE = Path("games.db")
+DB_FILE = grab_db_path()
 
 def initialize_database():
     conn = sqlite3.connect(DB_FILE)
@@ -10,6 +11,7 @@ def initialize_database():
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS games (
             game_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            igdb_id INTEGER NOT NULL,
             name TEXT NOT NULL,
             description TEXT,
             developer TEXT,

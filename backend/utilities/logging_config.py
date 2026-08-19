@@ -1,5 +1,6 @@
 import os, logging, requests
 from logging.handlers import RotatingFileHandler
+from .pathing import grab_log_path
 
 def create_log(name, level=logging.INFO):
     log = logging.getLogger(name)
@@ -9,13 +10,7 @@ def create_log(name, level=logging.INFO):
     
     log.setLevel(level)
 
-    base_dir = os.path.dirname(
-        os.path.dirname(os.path.abspath(__file__))
-    )
-
-    log_dir = os.path.join(base_dir, "logs")
-
-    os.makedirs(log_dir, exist_ok=True)
+    log_dir = grab_log_path()
 
     log_file = os.path.join(log_dir, f"{name}.log")
     

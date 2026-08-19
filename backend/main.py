@@ -5,6 +5,7 @@ from pydantic import BaseModel
 from typing import Any
 
 from database.init_db import initialize_database
+from database.database_controller import add_to_db, update_db
 from api.rawg import rawg_find_similar_titles, rawg_individual_game_info
 from api.igdb import igdb_find_similar_titles, igdb_individual_game_info
 from api.steam import get_steam_info
@@ -114,7 +115,8 @@ async def get_game(igdb_id: int):
 
 @app.post("/library")
 async def edit_database(data: LibraryRequest):
-    print("This is the data: ", data)
+    add_to_db(data)
+
     return {
         "success": True
     }

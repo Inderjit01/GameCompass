@@ -2,7 +2,6 @@ import requests, sys, os
 from howlongtobeatpy import HowLongToBeat
 import asyncio
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utilities.logging_config import create_log, api_errors
 
 log = create_log("hltb")

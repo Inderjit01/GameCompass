@@ -2,7 +2,6 @@ import os, requests, json, sys, asyncio
 from dotenv import load_dotenv
 from rapidfuzz import process, fuzz
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utilities.logging_config import create_log, api_errors
 
 log = create_log("steam")
