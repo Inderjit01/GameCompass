@@ -2,9 +2,13 @@ import os, requests, json, sys, asyncio
 from dotenv import load_dotenv
 from rapidfuzz import process, fuzz
 
+# Need sys.path.append if running file independently
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utilities.logging_config import create_log, api_errors
 
 log = create_log("steam")
+
+load_dotenv()
 
 STEAM_KEY = os.getenv("STEAM_API_KEY")
 STEAM_ID_URL = "https://store.steampowered.com/api/storesearch/"
@@ -91,7 +95,6 @@ def _get_steam_basic_info(steam_id):
             "package_groups",
             "platforms",
             "categories",
-            "genres",
             "recommendations",
             "achievements",
             "support_info",
@@ -161,7 +164,7 @@ async def get_steam_info(game_title):
 
     return game_info, game_price
 
-# data = asyncio.run(get_steam_info("stellar blade"))
+#data = asyncio.run(get_steam_info("Tides of Annihilation"))
 
-#with open("C:/Users/inder/Documents/Python Projects/GameCompassProject/GameCompass/backend/api/HellLetLoose.txt", "w") as f:
+#with open("C:/Users/inder/Documents/Python Projects/GameCompassProject/GameCompass/backend/api/TidesOfAnnihilation.txt", "w") as f:
 #    json.dump(data, f, indent=4)

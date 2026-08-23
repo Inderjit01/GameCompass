@@ -191,6 +191,12 @@
     gap: 6px;
 }
 button {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+
+    align-items: center;
+
     padding: 0px 15px;
     line-height: 30px;
 
@@ -208,6 +214,10 @@ button {
 button:hover {
     color: white;
     background-color: var(--color-blue-7);
+}
+.checkbox {
+    width: 16px;
+    height: 16px;
 }
 /* -----------------
     End of DB row

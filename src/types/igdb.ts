@@ -3,6 +3,7 @@ export interface IGDBSingle {
     game_title: string;
     cover_image: string | null;
     platforms: string | null;
+    genres: IGDBGenres | null;
     short_description: string | null;
     released: string | null;
     developers: string | null;
@@ -11,6 +12,11 @@ export interface IGDBSingle {
     movies: IGDBMovies[] | null;
     screenshots: IGDBScreenshots[] |null;
     artwork: string | null;
+};
+
+export interface IGDBGenres {
+    id: number;
+    name: string;
 };
 
 export interface IGDBMultiple {

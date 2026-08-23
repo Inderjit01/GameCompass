@@ -7,6 +7,7 @@ import TopRow from "./TopRow.tsx";
 import thumbsUp from "../assets/images/thumbs-up.svg";
 import thumbsDown from "../assets/images/thumbs-down.svg";
 import loadingScreen from "../assets/videos/page-loading-screen.mp4"
+import checkbox from "../assets/images/checkbox.png"
 
 import type { GameDetails } from "../types/GameDetails.ts"
 import type { SelectedMedia } from "../types/SelectedMedia.ts";
@@ -15,6 +16,8 @@ function GameDetailsPage (){
     const {query, setQuery, results} = useGameSearchBar();
 
     const { igdb_id } = useParams();
+
+    const [libraryLocation, setLibraryLocation] = useState<"backlog" | "wishlist" | "completed" | null>(null);
 
     const [APIResults, setAPIResults] = useState<GameDetails | null>(null);
 
@@ -50,7 +53,7 @@ function GameDetailsPage (){
 
     const reviews = APIResults?.steam?.reviews?.reviews ?? null;
     const recentReviews = APIResults?.steam?.recent_reviews?.reviews ?? null;
-    
+
     /* -----------------------------
        Get game information
     ----------------------------- */
@@ -63,7 +66,6 @@ function GameDetailsPage (){
             setAPIResults(data);
         }
         search();
-        console.log(APIResults)
     }, [igdb_id]);
 
     /* -----------------------------
@@ -106,21 +108,62 @@ function GameDetailsPage (){
     ) => {
         if (!igdb_id || !APIResults) return;
 
-        const response = await fetch("http://127.0.0.1:8000/library", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                status,
-                game: APIResults,
+        else if (libraryLocation && libraryLocation === status) {
+            const response = await fetch(`http://127.0.0.1:8000/library/remove/${igdb_id}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    status,
+                })
             })
-        })
 
-        if (!response.ok) {
-        throw new Error("Failed to add game");
+            if (!response.ok) {
+            throw new Error("Failed to remove game");
+            }
+
+            setLibraryLocation(null);
+        }
+
+        else {
+            const response = await fetch(`http://127.0.0.1:8000/library/add/${igdb_id}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    status,
+                    game_data: APIResults,
+                })
+            })
+
+            if (!response.ok) {
+            throw new Error("Failed to add game");
+            }
+            
+            setLibraryLocation(status)
         }
     };
+
+    /* -----------------------------
+       Get variable from DB to see if the game is in the user's library
+    ----------------------------- */
+        useEffect (() => {
+            if (!igdb_id) return;
+
+            const search = async () => {
+                const response = await fetch(`http://127.0.0.1:8000/library/location/${igdb_id}`);
+                if (!response.ok) {
+                    throw new Error("Failed to get library location");
+                }
+
+                const data = await response.json();
+
+                setLibraryLocation(data);
+            }
+            search();
+        }, [igdb_id])
 
     return (
         <div className="page">
@@ -260,9 +303,30 @@ function GameDetailsPage (){
                     <div className="body_middle">
                         {/* Adds or removes data from the DB*/}
                         <div className="db_row">
-                            <button onClick={() => addToLibrary("backlog")}>Backlog</button>
-                            <button onClick={() => addToLibrary("wishlist")}>Wishlist</button>
-                            <button onClick={() => addToLibrary("completed")}>Completed</button>
+                            <button onClick={() => addToLibrary("backlog")}>
+                                {libraryLocation && libraryLocation === "backlog" ? (
+                                    <>
+                                        <img className="checkbox" src={checkbox}/>
+                                        On Backlog
+                                    </>
+                                ): "Add to Backlog"}
+                            </button>
+                            <button onClick={() => addToLibrary("wishlist")}>
+                                {libraryLocation && libraryLocation === "wishlist" ? (
+                                    <>
+                                        <img className="checkbox" src={checkbox}/>
+                                        On Wishlist
+                                    </>
+                                ): "Add to Wishlist"}
+                            </button>
+                            <button onClick={() => addToLibrary("completed")}>
+                                {libraryLocation && libraryLocation === "completed" ? (
+                                    <>
+                                        <img className="checkbox" src={checkbox}/>
+                                        On Completed
+                                    </>
+                                ): "Add to Completed"}
+                            </button>
                         </div> {/* End of db_row */}
                         
                         <div className="price_hltb_overlay">

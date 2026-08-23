@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 from rapidfuzz import process, fuzz
 from datetime import datetime
 
+# Need sys.path.append if running file independently
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utilities.logging_config import create_log, api_errors
 
 log = create_log("igdb")
@@ -82,6 +84,16 @@ def _grab_publisher_developer(companies):
     publishers = ", ".join(publishers)
 
     return developers, publishers
+
+def _grab_genres(genres):
+    if not genres:
+        return None
+
+    for genre in genres:
+        genre_name = genre.pop("name", None)
+        genre["description"] = genre_name
+
+    return genres
 
 # Organizes the platforms into a nice string
 def _grab_platforms(platforms):
@@ -203,6 +215,7 @@ def _search_one_game(igdb_id):
             first_release_date,
             cover.image_id,
             platforms.name,
+            genres.name,
             involved_companies.company.name,
             involved_companies.developer,
             involved_companies.publisher,
@@ -286,6 +299,9 @@ def igdb_individual_game_info(igdb_id):
         cover_image = f"https://images.igdb.com/igdb/image/upload/t_1080p/{image_id}.jpg"
 
     platforms = _grab_platforms(game.get("platforms", None))
+
+    genres = _grab_genres(game.get("genres"))
+
     short_description = game.get("summary", None)
 
     timestamp = game.get("first_release_date", None)
@@ -317,6 +333,7 @@ def igdb_individual_game_info(igdb_id):
         "game_title": game_title,
         "cover_image": cover_image,
         "platforms": platforms,
+        "genres": genres,
         "short_description": short_description,
         "released": released,
         "developers": developers,
@@ -332,4 +349,8 @@ def igdb_individual_game_info(igdb_id):
 #    json.dump(data, f, indent=4)
 #data = igdb_individual_game_info(117170)
 #with open ("C:/Users/inder/Documents/Python Projects/GameCompassProject/GameCompass/backend/api/igdb_stellar_blade.txt", "w") as f:
+#    json.dump(data, f, indent=4)
+
+#data = igdb_individual_game_info(331212)
+#with open ("C:/Users/inder/Documents/Python Projects/GameCompassProject/GameCompass/backend/api/igdb_tides_of_annihilation.txt", "w") as f:
 #    json.dump(data, f, indent=4)

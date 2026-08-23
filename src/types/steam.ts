@@ -22,11 +22,18 @@ export interface SteamBasicInfo {
     developers: string[] | null;
     publishers: string[] | null;
 
+    genres: SteamGenres[] | null;
+
     screenshots: SteamScreenshot[] | null;
 
     movies: SteamMovie[] | null;
 
     release_date: SteamReleaseDate | null;
+}
+
+export interface SteamGenres {
+    id: string,
+    description: string | null;
 }
 
 export interface SteamScreenshot {

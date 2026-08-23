@@ -11,36 +11,36 @@ def initialize_database():
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS games (
             game_id INTEGER PRIMARY KEY AUTOINCREMENT,
-            igdb_id INTEGER NOT NULL,
-            name TEXT NOT NULL,
+            igdb_id INTEGER UNIQUE NOT NULL,
+            game_title TEXT NOT NULL,
             description TEXT,
-            developer TEXT,
-            publisher TEXT,
+            developers TEXT,
+            publishers TEXT,
             release_date TEXT,
-            genre TEXT,
-            platform TEXT,
+            genres TEXT,
+            platforms TEXT,
             image_url TEXT,
-            main_hours REAL DEFAULT 0,
-            main_extra_hours REAL DEFAULT 0,
-            completionist_hours REAL DEFAULT 0,
-            average_hours REAL DEFAULT 0,
-            review_score REAL
+            review_score REAL,
+            main_story REAL,
+            main_extra REAL,
+            completionist REAL,
+            all_styles REAL
         )
     """)
 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS user_games (
-            game_id INTEGER PRIMARY KEY,
+            user_game_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            igdb_id INTEGER UNIQUE NOT NULL,
             library_status TEXT NOT NULL,
             favorite INTEGER DEFAULT 0,
-            enjoyed TEXT DEFAULT "NO",
-            personal_rating REAL,
+            user_score TEXT,
             hours_played REAL,
-            added_date TEXT CURRENT_TIMESTAMP,
+            added_date TEXT DEFAULT CURRENT_TIMESTAMP,
             completed_date TEXT,
             notes TEXT,
 
-            FOREIGN KEY (game_id) REFERENCES games(game_id)
+            FOREIGN KEY (igdb_id) REFERENCES games(igdb_id)
         )
     """)
 
