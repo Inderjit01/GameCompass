@@ -10,14 +10,21 @@ function useGameSearchBar () {
     const [noResults, setNoResults] = useState(false);
 
     useEffect( () => {
-        if (query === ""){
+        if (query.trim() === ""){
             setResults([]);
+            setNoResults(false);
             return;
         }
 
+        const controller = new AbortController();
+
         const timeout = setTimeout(() => {
             const search = async () => {
-                const response = await fetch(`http://127.0.0.1:8000/search?game_title=${encodeURIComponent(query)}&limit=3`);
+                const response = await fetch(`http://127.0.0.1:8000/search?game_title=${encodeURIComponent(query)}&limit=3`,
+                {
+                    signal: controller.signal
+                }
+            );
                 
                 if (response.status == 404) {
                     setResults([]);
@@ -35,9 +42,12 @@ function useGameSearchBar () {
                 setNoResults(false);
             };
             search();
-        }, 500);
+        }, 400);
 
-        return () => clearTimeout(timeout);
+        return () => {
+            clearTimeout(timeout)
+            controller.abort();
+        };
 
     }, [query]);
 

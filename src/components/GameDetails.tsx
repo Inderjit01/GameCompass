@@ -55,10 +55,14 @@ function GameDetailsPage (){
     const recentReviews = APIResults?.steam?.recent_reviews?.reviews ?? null;
 
     /* -----------------------------
-       Get game information
+       Get game information and reset old values from previous searches
     ----------------------------- */
     useEffect(() => {
         if (!igdb_id) return;
+
+        setAPIResults(null);
+        setSelectedMedia(null);
+        setExpandedReview(null);
 
         const search = async () => {
             const response = await fetch(`http://127.0.0.1:8000/games/${igdb_id}`)

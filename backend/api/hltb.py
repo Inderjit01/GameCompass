@@ -2,6 +2,8 @@ import requests, sys, os
 from howlongtobeatpy import HowLongToBeat
 import asyncio
 
+# Need sys.path.append if running file independently
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utilities.logging_config import create_log, api_errors
 
 log = create_log("hltb")
@@ -12,6 +14,7 @@ async def get_hltb_info(game_name):
         results = await HowLongToBeat().async_search(game_name)
 
         if not results or len(results) == 0:
+            log.warning(f"get_hltb_info : status_code: 400, Returned None for HLTB. HLTB package most likely needs to be updated. : {game_name}")
             return None
 
         main_story = getattr(results[0], "main_story", None)

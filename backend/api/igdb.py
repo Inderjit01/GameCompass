@@ -179,7 +179,8 @@ def _search_multiple_games(game_title, limit):
             id,
             name,
             cover.image_id,
-            platforms.name;
+            platforms.name,
+            artworks.image_id;
         where name ~ *"{game_title}"*;
         limit 25;
     '''
@@ -274,11 +275,19 @@ def igdb_find_similar_titles(game_title, limit):
         if image_id:
             cover_image = f"https://images.igdb.com/igdb/image/upload/t_1080p/{image_id}.jpg"
 
+        artworks = game.get("artworks", None)
+        artwork = None
+        if artworks:
+            image_id = artworks[0].get("image_id", None)
+            if image_id:
+                artwork = f"https://images.igdb.com/igdb/image/upload/t_1080p/{image_id}.jpg"
+
         res.append({
             "igdb_id": id,
             "game_title": api_game_title,
             "cover_image": cover_image,
-            "platforms": platforms
+            "platforms": platforms,
+            "artwork": artwork
         })
 
     return res

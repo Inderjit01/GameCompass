@@ -24,6 +24,7 @@ export interface IGDBMultiple {
     game_title: string;
     cover_image: string | null;
     platforms: string | null;
+    artwork: string | null;
 };
 
 export interface IGDBMovies {

@@ -2,6 +2,11 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+
+    background: green;
+    /*
+    background: #0f1924;
+    */
 }
 
 .main {
@@ -14,12 +19,15 @@
 }
 
 .game-card ul {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
     list-style: none;
     padding: 0;
     margin-top: 10px;
     margin-bottom: 10px;
-
-    border-top: 1px solid #2a2d33;
 }
 .game-card li {
     display: flex;
@@ -28,11 +36,13 @@
 
     padding: 14px 18px;
 
-    border-bottom: 2px solid #2a2d33
+    /*
+    background: rgba(179, 218, 255, 0.08);
+    */
+    background: #b3daff14;
 }
 .game-card li:hover {
-    background: url("../assets/images/main-background.png"),
-        linear-gradient(#3a3a3a 100%);
+    background: rgba(115, 150, 184, 0.25);
 }
 .game-card img {
     width: 90px;

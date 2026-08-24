@@ -9,9 +9,8 @@
     display: flex;
     flex-direction: column;
 
-    background: url("../assets/images/main-background.png"),
-        linear-gradient( #222222 100%);
-
+    background: #23262E;
+    
     box-shadow: 8px 0 15px rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
 

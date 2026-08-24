@@ -32,10 +32,11 @@
     --color-greyneutral-6: #23262e;
     --color-greyneutral-7: #2d323d;
     --color-greyneutral-8: #3d4450;
-    --color-greyneutral-9: #48505E;
+    --color-greyneutral-9: #4a515f;
     --color-greyneutral-10: #67707b;
-    --color-greyneutral-11: #67707b;
-    --color-greyneutral-12: #b8bcbf;
+    --color-greyneutral-11: #3F4554;    
+    --color-greyneutral-12: #363B48;    
+    --color-greyneutral-13: #272B33;    
 
     --color-dull-1: var(--color-greyneutral-1);
     --color-dull-2: var(--color-greyneutral-2);
@@ -58,6 +59,9 @@ body,
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+
+    
     background: var(--color-blue-3);
+    
     color: white;
 }
