@@ -173,16 +173,18 @@ def _search_multiple_games(game_title, limit):
     }
 
     # Info I want from the search
-    # Use limit 25 so i get a good pool of results to compare with process
+    # Use limit 50 so i get a good pool of results to compare with process
     query = f'''
         fields
             id,
             name,
             cover.image_id,
             platforms.name,
-            artworks.image_id;
+            videos.video_id,
+            videos.name,
+            screenshots.image_id;
         where name ~ *"{game_title}"*;
-        limit 25;
+        limit 50;
     '''
 
     try:
@@ -275,19 +277,18 @@ def igdb_find_similar_titles(game_title, limit):
         if image_id:
             cover_image = f"https://images.igdb.com/igdb/image/upload/t_1080p/{image_id}.jpg"
 
-        artworks = game.get("artworks", None)
-        artwork = None
-        if artworks:
-            image_id = artworks[0].get("image_id", None)
-            if image_id:
-                artwork = f"https://images.igdb.com/igdb/image/upload/t_1080p/{image_id}.jpg"
-
+        all_videos = game.get("videos", None)
+        movies = _grab_videos(all_videos)
+        
+        screenshots = _grab_screenshots(game.get("screenshots", None))
+        
         res.append({
             "igdb_id": id,
             "game_title": api_game_title,
             "cover_image": cover_image,
             "platforms": platforms,
-            "artwork": artwork
+            "movies": movies,
+            "screenshots": screenshots
         })
 
     return res

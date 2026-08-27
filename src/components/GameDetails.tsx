@@ -170,7 +170,7 @@ function GameDetailsPage (){
         }, [igdb_id])
 
     return (
-        <div className="page">
+        <div className="game_details_page">
             <TopRow 
                 title= "Game"
                 showSearch={true}

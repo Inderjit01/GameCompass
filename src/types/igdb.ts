@@ -10,7 +10,7 @@ export interface IGDBSingle {
     publishers: string | null;
     rating: string | null;
     movies: IGDBMovies[] | null;
-    screenshots: IGDBScreenshots[] |null;
+    screenshots: IGDBScreenshots[] | null;
     artwork: string | null;
 };
 
@@ -24,7 +24,8 @@ export interface IGDBMultiple {
     game_title: string;
     cover_image: string | null;
     platforms: string | null;
-    artwork: string | null;
+    movies: IGDBMovies[] | null;
+    screenshots: IGDBScreenshots[] | null;
 };
 
 export interface IGDBMovies {
