@@ -1,0 +1,105 @@
+/* ---------------------------------
+    Start of filter and search bar
+---------------------------------- */
+.database_filter_and_search_layout {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin: 20px 30px 0px 30px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+    white-space: nowrap;
+}
+.database_search_bar {
+    flex: 1;
+    min-width: 0;
+    margin-inline-end: 20px;
+}
+.database_search_bar input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 7px 10px;
+    
+    border: 1px solid #ffffff1a;
+    border-radius: 3px;
+    box-shadow: 1px 1px 0px rgba(103, 193, 245, 0.15);
+
+    color: #fff;
+    background: #34404d;
+}
+.database_search_bar input:focus {
+    outline: none;
+    border: 1px solid white;
+}
+/* ---------------------
+ End of db search bar
+--------------------- */
+.database_filter_options {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+
+    flex-shrink: 0;
+}
+.database_filter_options select, 
+::picker(select) {
+    appearance: base-select;
+}
+.database_filter_options select{
+    cursor: pointer;
+
+    height: 32px;
+
+    padding: 0px 14px;
+    line-height: 21px;
+
+    text-align: center;
+
+    font-size: 13px;
+    font-family: Motiva Sans, Motiva Sans fallback, sans-serif;
+
+    align-items: center;
+
+    border: 0px;
+    border-radius: 0px;
+    outline: none;
+
+    text-decoration: none;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    color: #FFF;
+    background: #3d4450;
+}
+.database_filter_options select:hover {
+    background: #48505e;
+}
+.database_filter_options select:focus {
+    background: #48505e;
+}
+.database_filter_options select option {
+    cursor: pointer;
+
+    text-align: start;
+
+    font-size: 12px;
+
+    border: none; 
+    outline: none;
+
+    color: #dcdedf;
+    background: #3d4450;
+}
+.database_filter_options select option:hover {
+    color: #3d4450;
+    background: #dcdedf;
+}
+/* ---------------------
+    End of filter bar
+--------------------- */

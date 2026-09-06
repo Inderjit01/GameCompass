@@ -3,12 +3,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
 from database.init_db import initialize_database
-from database.database_controller import format_data, add_to_library, remove_from_library, get_library_location
+from database.database_controller import format_data, add_to_library, remove_from_library, get_library_location, get_games_from_location, update_favorite_status
 from api.rawg import rawg_find_similar_titles, rawg_individual_game_info
 from api.igdb import igdb_find_similar_titles, igdb_individual_game_info
 from api.steam import get_steam_info
 from api.hltb import get_hltb_info
-from models.library import LibraryRequestAdd, LibraryRequestRemove
+from models.library import LibraryRequestAdd, LibraryRequestRemove, LibraryRequestUpdateFavorite
 from utilities.logging_config import create_log
 
 import asyncio
@@ -37,7 +37,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Will get the most similar games. Then user can add to backlog or wishlist
+# Will get the most similar games. Then user can add to backlog, wishlist, or completed
 @app.get("/search")
 def search_game(game_title: str, limit: int):
     games = igdb_find_similar_titles(game_title, limit)
@@ -80,21 +80,23 @@ async def get_game(igdb_id: int):
     igdb_platforms = igdb_results.get("platforms", None)
 
     steam_results, steam_price = None, None
-    if "PC" in igdb_platforms:
-        steam_results, steam_price = await get_steam_info(igdb_results["game_title"])
-        # place epic api here later
-        
-    if "Playstation" in igdb_platforms:
-        #Placeholder for playstation
-        pass
 
-    if "Xbox" in igdb_platforms:
-        #placeholder for Xbox
-        pass
+    if igdb_platforms is not None:
+        if "PC" in igdb_platforms:
+            steam_results, steam_price = await get_steam_info(igdb_results["game_title"])
+            # place epic api here later
+            
+        if "Playstation" in igdb_platforms:
+            #Placeholder for playstation
+            pass
 
-    if "nintendo" in igdb_platforms:
-        #placeholder for Nintendo"
-        pass
+        if "Xbox" in igdb_platforms:
+            #placeholder for Xbox
+            pass
+
+        if "nintendo" in igdb_platforms:
+            #placeholder for Nintendo"
+            pass
 
     #steam_game_name = (steam_results or {}).get("basic_info", {}).get("name", None)
     ## Use steam game name if available, otherwise use igdb game name for HLTB search
@@ -123,6 +125,7 @@ async def get_game(igdb_id: int):
     #    "xbox": {"final_formatted": "$59.99"},
     #    "nintendo": {"final_formatted": "$59.99"}
 
+# Adds the game to the DB
 @app.post("/library/add/{igdb_id}")
 async def add_to_db(data: LibraryRequestAdd, igdb_id):
     if not data.status or not data.game_data:
@@ -154,6 +157,7 @@ async def add_to_db(data: LibraryRequestAdd, igdb_id):
         "success": True
     }
 
+# Removes the game from the DB
 @app.post("/library/remove/{igdb_id}")
 async def remove_from_db(data: LibraryRequestRemove, igdb_id):
     if not data.status or not igdb_id:
@@ -181,7 +185,7 @@ async def remove_from_db(data: LibraryRequestRemove, igdb_id):
     try:
         remove_from_library(igdb_id)
     except Exception:
-        log.warning(f"/library/remove/{igdb_id} : status_code: 500, Failed to remove game from database")
+        log.warning(f"/library/remove/{igdb_id} : status_code: 404, Failed to remove game from database")
         raise HTTPException(
             status_code=500,
             detail="Failed to remove game from database"
@@ -192,6 +196,7 @@ async def remove_from_db(data: LibraryRequestRemove, igdb_id):
         "success": True
     }
 
+# Checks if the game is already in the DB. If so return the location (backlog, wishlist, or completed)
 @app.get("/library/location/{igdb_id}")
 async def grab_game_location(igdb_id):
     if not igdb_id:
@@ -205,3 +210,36 @@ async def grab_game_location(igdb_id):
 
     log.info(f"/library/location/{igdb_id} : Successfully grabbed game library location : {library_location}")
     return library_location
+
+# Grabs all the games that are in the user's backlog
+@app.get("/backlog")
+async def grab_backlog():
+    games = get_games_from_location("backlog")
+    if not games:
+        log.warning("/backlog : status_code: 404, Failed to grab games that are in the backlog")
+
+    log.info("/backlog: Successfully grabbed games stored to backlog")
+    return games
+
+# Updates favorite status for a game
+@app.post("/library/update_favorite/{igdb_id}")
+async def update_favorite(igdb_id, favorite_data: LibraryRequestUpdateFavorite):
+    if not igdb_id or favorite_data is None:
+        log.warning(f"/library/update_favorite : status_code: 400, Missing igdb_id or favorite status")
+        raise HTTPException(
+            status_code=400,
+            detail="Missing igdb_id or favorite status"
+        )
+
+    try:
+        update_favorite_status(igdb_id, favorite_data.favorite)
+    except Exception:
+        log.warning(f"/library/update_favorite : status_code: 500, Failed to update favorite status in database")
+        raise HTTPException(
+            status_code=500,
+            detail="Failed to update favorite status in database"
+        )
+
+    return {
+        "success": True
+    }

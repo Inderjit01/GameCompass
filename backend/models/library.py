@@ -7,3 +7,6 @@ class LibraryRequestAdd(BaseModel):
 
 class LibraryRequestRemove(BaseModel):
     status: str
+
+class LibraryRequestUpdateFavorite(BaseModel):
+    favorite: bool

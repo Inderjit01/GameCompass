@@ -76,6 +76,28 @@ def _grab_row_from_db(cur, table, igdb_id):
     row = cur.fetchone()
 
     return row
+
+# Grabs and formats all the games in a library location of (backlog, wishlist, or completed)
+def _grab_by_location(cur, location):
+    if not location:
+        return None
+
+    cur.execute(f'''
+        SELECT * FROM games 
+        LEFT JOIN user_games
+        ON games.igdb_id = user_games.igdb_id
+        WHERE user_games.library_status = ?
+        ORDER BY user_games.added_date
+    ''', (location, ))
+
+    results = cur.fetchall()
+
+    games = []
+
+    for game in results:
+        games.append(dict(game))
+
+    return games
     
 # Adding a new game to the database
 def _insert_db(cur, formatted_data):    
@@ -250,12 +272,62 @@ def get_library_location(igdb_id):
         log.exception("get_library_location : status_code: 404, Failed to grab library location in database controller")
         raise HTTPException(
             status_code=404,
-            details="Failed to grab library location in database controller"
+            detail="Failed to grab library location in database controller"
         )
     finally:
         cur.close()
         conn.close()
 
+# Grab the games from either (backlog, wishlist, or completed)
+def get_games_from_location(location):
+    if not location:
+        return
+
+    conn, cur = _create_connection()
+
+    try:
+        results = _grab_by_location(cur, location)
+
+        log.info(f"get_games_from_location: Successfully got games at the location: {location}")
+        return results
+    except Exception:
+        log.exception("grab_games_from_location: status_code: 404, Failed to grab games stored to backlog in database")
+        raise HTTPException(
+            status_code=404,
+            detail="Failed to grab games stored to backlog in database"
+        )
+    finally:
+        cur.close()
+        conn.close()
+
+# Updates favorite status when user clicks on it in backlog or wishlist
+def update_favorite_status(igdb_id, favorite):
+    if not igdb_id or favorite is None:
+        return
+
+    conn, cur = _create_connection()
+
+    try:
+        formatted_data = {
+            "igdb_id": igdb_id,
+            "favorite": int(favorite)
+        }
+
+        _update_db(cur, "user_games", USER_GAMES_COLUMNS, formatted_data)
+
+        conn.commit()
+
+    except Exception:
+        conn.rollback()
+        log.exception(f"update_favorite_status: status_code: 404, Failed to update favorite status for: {igdb_id}")
+        raise HTTPException(
+            status_code= 404,
+            detail=f"Failed to update favorite status for: {igdb_id}"
+        )
+    finally:
+        cur.close()
+        conn.close()
+    
 # Extracting and formatting the data that will be stored in the database
 def format_data(status, game_data):
     if not game_data:
@@ -315,6 +387,7 @@ def format_data(status, game_data):
     formatted_data["completionist"] = hltb.get("completionist")
     formatted_data["all_styles"] = hltb.get("all_styles")
 
+    # user_games table data
     formatted_data["library_status"] = status
 
     return formatted_data
