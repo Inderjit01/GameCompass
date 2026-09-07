@@ -60,6 +60,7 @@ body,
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 
+    overscroll-behavior: none;
     
     background: var(--color-blue-3);
     

@@ -114,7 +114,7 @@ function DisplaySimilarGames (){
     return (
         <div className="display_similar_games_page">
             <TopRow 
-                title="Find Games"
+                title="Search Results"
                 showSearch={true}
                 query={query}
                 setQuery={setQuery}

@@ -172,7 +172,7 @@ function GameDetailsPage (){
     return (
         <div className="game_details_page">
             <TopRow 
-                title= "Game"
+                title= "Store Page"
                 showSearch={true}
                 query = {query}
                 setQuery = {setQuery}

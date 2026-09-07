@@ -96,7 +96,7 @@
     top: 0px;
 
     width: 25%;
-    height: calc(100vh - 94px);
+    height: calc(100vh - 130px);
 
     flex-shrink: 0;
 
@@ -107,8 +107,8 @@
     flex-direction: column;
     align-items: center;
 
-    /* Take game_preview px so 94: 94 + (margin * 2) + (padding * 2) */
-    height: calc(100vh - 126px);
+    /* Take game_preview px so 130: 130 + (margin * 2) + (padding * 2) */
+    height: calc(100vh - 162px);
     margin: 8px;
     padding: 8px;
     gap: 6px;

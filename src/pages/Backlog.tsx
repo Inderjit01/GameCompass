@@ -81,7 +81,7 @@ function Backlog () {
         <div className="backlog_page">
 
             <TopRow
-                title="Backlog"
+                title="Your Backlog"
                 showSearch={true}
                 query={query}
                 setQuery={setQuery}
