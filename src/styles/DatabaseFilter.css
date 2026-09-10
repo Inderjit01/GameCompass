@@ -13,6 +13,10 @@
     overflow: hidden;
     white-space: nowrap;
 }
+
+/* ----------------------
+    Start of search bar 
+---------------------- */
 .database_search_bar {
     flex: 1;
     min-width: 0;
@@ -35,9 +39,10 @@
     outline: none;
     border: 1px solid white;
 }
-/* ---------------------
- End of db search bar
---------------------- */
+
+/* ------------------------------------
+    Start of predefined filter options
+------------------------------------ */
 .database_filter_options {
     display: flex;
     flex-direction: row;
@@ -100,6 +105,3 @@
     color: #3d4450;
     background: #dcdedf;
 }
-/* ---------------------
-    End of filter bar
---------------------- */

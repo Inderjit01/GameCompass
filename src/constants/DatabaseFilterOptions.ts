@@ -7,7 +7,7 @@ export const baseFilterOptions: FilterOption[] = [
     { value: "main_story", label: "Main Story Hours" },
     { value: "main_extra", label: "Main + Extra Hours" },
     { value: "completionist", label: "Completionist Hours" },
-    { value: "all_styles", label: "All Styles" },
+    { value: "all_styles", label: "All Styles Hours" },
     { value: "added_date", label: "Added Date" },
 ];
 

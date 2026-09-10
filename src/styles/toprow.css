@@ -1,4 +1,4 @@
-.top-row {
+.top_search_bar_layout {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,60 +10,78 @@
     background: radial-gradient(107.95% 57.49% at 50% 100%, rgba(24, 37, 53, 0.2) 0%, rgba(24, 37, 53, 0.5215686275) 5%, rgba(24, 37, 53, 0.8509803922) 20%, #182535 60%, #192330 100%);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, .2);
 }
-.top-row h1 {
-    padding: 0px;
-    margin: 0px;
-    font-size: 20px;
-}
-.search-wrapper{
-    position: relative;
-    
-}
-.search-wrapper input {
-    font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
-    color: #dcdedf;
+/* -------------------------------
+    Title of the page 
+------------------------------- */
+.top_search_bar_layout span {
+    font-size: 20px;
+    font-weight: bold;
+
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* -------------------------------
+    Start of Search Bar styling
+------------------------------- */
+.search_wrapper{
+    position: relative;
+}
+
+/* -----------------------
+ User input in search bar
+----------------------- */
+.search_wrapper input {
+    min-width: 364px;
+    max-width: 415px;
+    height: 34px;
+
+    font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-size: 13px;
     font-style: normal;
     font-weight: 500;
 
     padding: 0px 10px;
-    
-    min-width: 364px;
-    max-width: 415px;
-    height: 34px;
 
     border-radius: 2px 0px 0px 2px;
     border: 1px solid hsla(0, 0%, 100%, .1411764706);
 
+    color: #dcdedf;
     background: hsla(0, 0%, 100%, .1254901961);
 }
-.search-wrapper input::placeholder {
-    color: #dcdedf;
+.search_wrapper input::placeholder {
     font-style: italic;
+    
+    color: #dcdedf;
 }
-.search-wrapper input:hover {
+.search_wrapper input:hover {
     border: 1px solid rgba(26, 160, 255, 0.39);
 }
-.search-wrapper input:hover::placeholder {
+.search_wrapper input:hover::placeholder {
     color: #fff;
 }
-.search-wrapper input:focus {
+.search_wrapper input:focus {
     border: 1px solid rgba(26, 160, 255, 0.39);
     outline: none;
 
     background: #242931;
 }
-.search-wrapper input:focus::placeholder {
+.search_wrapper input:focus::placeholder {
     color: #fff;
 }
+
+/* ------------------------------------------------
+    Drop down menu of similar games after data is 
+    retrieved from user input
+------------------------------------------------ */
 .search_results {
     position: absolute;
 
+    width: 350px;
+
     top: 45px;
     right: 0;
-
-    width: 450px;
 
     margin: 0px;
     padding: 20px 8px 20px 8px;
@@ -80,37 +98,41 @@
 }
 .search_results > span:nth-child(1) {
     display: block;
-    margin: 0px;
-    padding: 0px;
 
     font-size: 13px;
     font-weight: bold;
-    line-height: 28px;
+    
+    padding-bottom: 8px;
 
     color: #dcdedf;
 }
 .search_results ul {
     display: flex;
     flex-direction: column;
-
     gap: 5px;
+    
     padding: 0px;
     margin: 0px;
 }
 .search_results li {
     display: flex;
     align-items: center;
-
-    color: #fff;
-    font-size: 15px;
-    font-weight: bold;
-
     gap: 10px;
+
     padding: 0px;
     margin: 0px;
 
+    color: #fff;
     background: linear-gradient(90deg, rgba(14, 20, 27, 0.2) 0%, rgba(163, 186, 211, 0.2) 100%);
 }
 .search_results li:hover {
     background: linear-gradient(90deg, rgba(14, 20, 27, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%);
+}
+.search_results li span {
+    font-size: 15px;
+    font-weight: 600;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

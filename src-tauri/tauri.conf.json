@@ -14,7 +14,8 @@
       {
         "label": "main",
         "title": "gamecompass",
-        "width": 800,
+        "width": 840,
+		"minWidth": 50,
         "height": 600,
         "center": true,
         "visible": false

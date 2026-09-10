@@ -75,6 +75,10 @@
 
     cursor: pointer;
 }
+
+/* --------------------
+    Middle left of the card
+--------------------*/
 .backlog_game_card_cover_art img{
     aspect-ratio: 460 / 215;
     width: 280px;
@@ -89,12 +93,12 @@
 }
 
 /* --------------------
-    Middle of the card
+    Middle right of the card
 --------------------*/
 .backlog_game_card_middle {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 25px;
 
     min-width: 0;
     flex: 1;
@@ -196,37 +200,3 @@
     white-space: nowrap;
     overflow: hidden;
 }
-
-/*
-@media(max-width: 1200px) {
-    .backlog_game_card {
-        flex-direction: column;
-
-        width: 305px;
-        height: auto;
-
-        padding-left: 12px;
-        
-    }
-    .backlog_game_card_left {
-        flex-direction: row;
-        border-right: none;
-
-        padding-bottom: 6px;
-
-        border-bottom: 1px solid #0003;
-    }
-    .backlog_game_card_left span {
-        margin-top: 0;
-        margin-left: auto;
-    }
-    .backlog_game_card_left img {
-        padding: 0px;
-    }
-    .backlog_game_card_cover_art img{
-        padding-top: 12px;
-    }
-
-        
-}
-    */

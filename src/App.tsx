@@ -19,12 +19,14 @@ function App() {
       <Routes>
 
         <Route element={<Layout />}>
+          {/* Main pages */}
           <Route path="/" element={<Home />} />
           <Route path="/discover" element={<Discover />} />
           <Route path="/backlog" element={<Backlog />} />
           <Route path="/completed" element={<Completed />} />
-          <Route path="/Wishlist" element={<Wishlist />} />
+          <Route path="/wishlist" element={<Wishlist />} />
 
+          {/* Specific pages */}
           <Route path="/displaysimilargames" element={<DisplaySimilarGames />} />
           <Route path="/games/:igdb_id" element={<GameDetailsPage />} />
         </Route>

@@ -1,35 +1,66 @@
-.game_details_page > video {    
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
+.game_details_page > video {  
     display: block;
+
+    width: 100%;
+
+    height: calc(100vh - 94px);
+
+    object-fit: cover;
 }
-.body {
+
+/* -----------------------------------------------------------------
+    Sets the format for buttons to be the same throughout the page
+------------------------------------------------------------------ */
+.game_details_page button {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+
+    align-items: center;
+
+    padding: 0px 15px;
+    line-height: 30px;
+
+    font-size: 15px;
+    font-family: "Motiva Sans", Arial, Helvetica, sans-serif;
+
+    border-radius: 2px;
+    border: none;
+
+    color: var(--color-blue-6);
+    background: rgba(103, 193, 245, 0.2);
+
+    cursor: pointer;
+}
+button:hover {
+    color: white;
+    background-color: var(--color-blue-7);
+}
+
+.store_body {
     overflow-y: auto;
 }
 /* ------------------
     Start of top widgets
 -------------------*/
-.body_top {
-    padding: 20px 60px 0px 60px;
-
+.store_body_top {
     position: relative;
+
+    padding: 20px 60px 0px 60px;
 
     overflow: hidden;
 
     background: #1b2838;
 }
 
-.body_content {
-    position: relative;
-    z-index: 2;
-}
-
+/* ---------------------------------------------------------------------
+    game_Color and game_Texture are the backgrounds for store_body_top
+--------------------------------------------------------------------- */
 .gameColor {
     position: absolute;
 
     width: 100%;
-    height: 100%;
+    height: auto;
 
     top: 0;
     left: 0;
@@ -65,28 +96,37 @@
     pointer-events: none;
 }
 
-.basic_info {
+.store_body_top_content {
+    position: relative;
+
+    z-index: 2;
+}
+
+/* ----------------------
+    Start of basic_info
+------------------------*/
+.store_basic_info {
     display: flex;
     flex-direction: row;
-
     gap: 15px;
-
-    background: rgba(0, 0, 0, 0.20);
-    backdrop-filter: blur(4px);
 
     width: 100%;
     height: auto;
 
     overflow-x: hidden;
     overflow-y: hidden;
+
+    background: rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(4px);
 }
 
-.basic_left {
+/* ---------------------------
+    Start of store_basic_left
+--------------------------- */
+.store_basic_left {
     width: 70%;
 }
-.basic_left ul {
-    list-style: none;
-
+.store_basic_left ul {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -98,12 +138,14 @@
     padding: 5px 0px 0px 0px;
     margin: 0px;
 
+    list-style: none;
+
     overflow-x: auto;
     overflow-y: hidden;
 
     scrollbar-color: #4b5563 var(--color-blue-1);
 }
-.basic_left li {
+.store_basic_left li {
     padding: 0px;
     margin: 0px;
 
@@ -112,20 +154,21 @@
     width: 110px;
     height: 65px;
 }
-.basic_left li img {
+.store_basic_left li img {
+    display: block;
+
     width: 100%;
     height: 100%;
 
     object-fit: cover;
-    display: block;
 }
-.basic_left li img.selected {
+.store_basic_left li img.selected {
     outline: 3px solid white; 
     outline-offset: -3px;
 }
-.main_media img,
-.main_media video,
-.main_media iframe {
+.store_main_media img,
+.store_main_media video,
+.store_main_media iframe {
     width: 100%;
     aspect-ratio: 16 / 9;
 
@@ -133,133 +176,118 @@
     display: block;
 }
 
-.basic_right {
+/* -----------------------------
+    Start of store_basic_right
+------------------------------ */
+.store_basic_right {
     width: 30%; 
     min-width: 0;
     
     overflow-x: hidden;
     overflow-y: hidden;
 }
-
-.basic_right img{
+.store_basic_right img {
     width: 100%;
     aspect-ratio: 2.14 / 1;;
 }
-.game_short_description{
-    color: #c6d4df;
-    overflow: hidden;
+.store_game_short_description {
     font-size: 14px;
     line-height: 19px;
     padding-right: 16px;
-    display: -webkit-box;
-    line-clamp: 6;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+
+    color: #c6d4df;
 }
-.game_details_table {
+.store_game_details_table {
     display: grid;
     grid-template-columns: 1fr 1fr;
+
     width: 100%;
 }
-.game_detail_name {
+.store_game_detail_name {
     font-size: 11px;
+
     padding: 0px 10px 0px 0px;
+
     color: #798A95;
 }
-.game_detail_result {
+.store_game_detail_result {
     font-size: 13px;
+
     color: #66c0f4;
 }
-/* ------------------
-    End of body_top widgets
--------------------*/
+/* -------------------------------
+    End of store_body_top widgets
+---------------------------------*/
 
-.body_middle {
+/* ------------------------------------
+    start of store_body_middle widgets
+--------------------------------------*/
+.store_body_middle {
     padding: 0px 60px 0px 60px;
 }
-.db_row {
-    padding: 16px;
 
-    width: 100%;
-
-    background-color: var(--color-blue-5);
-    backdrop-filter: blur(7px);
-
-    box-sizing: border-box;
+/* -----------------------
+    Start of store_db_row
+-------------------------*/
+.store_db_row {
     display: flex;
     flex-direction: row;
     gap: 6px;
+
+    width: 100%;
+
+    padding: 16px;
+
+    box-sizing: border-box;
+
+    background-color: var(--color-blue-5);
+    backdrop-filter: blur(7px);
 }
-button {
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-
-    align-items: center;
-
-    padding: 0px 15px;
-    line-height: 30px;
-
-    font-size: 15px;
-    font-family: "Motiva Sans", Arial, Helvetica, sans-serif;
-
-    border-radius: 2px;
-    border: none;
-
-    cursor: pointer;
-
-    color: var(--color-blue-6);
-    background: rgba(103, 193, 245, 0.2);
-}
-button:hover {
-    color: white;
-    background-color: var(--color-blue-7);
-}
-.checkbox {
+.store_checkbox {
     width: 16px;
     height: 16px;
 }
-/* -----------------
-    End of DB row
-------------------*/
 
-.price_hltb_overlay {
+/* -----------------------------------
+    Start of store_price_hltb_overlay
+------------------------------------ */
+.store_price_hltb_overlay {
     display: flex;
     flex-direction: row;
     gap: 30px;
 }
-.prices {
+.store_prices {
     width: 70%
 }
-.price_row {
+.store_price_row {
     position: relative;
-    width: 100%;
 
-    background: linear-gradient(-60deg, rgba(226, 244, 255, 0.3) 5%, rgba(84, 107, 115, 0.3) 97%);
-    border-radius: 4px;
+    width: 100%;
 
     font-weight: normal;
     font-size: 13px;
 
     padding: 16px 0px 26px 0px;
     margin-top: 20px;
+
+    background: linear-gradient(-60deg, rgba(226, 244, 255, 0.3) 5%, rgba(84, 107, 115, 0.3) 97%);
+    border-radius: 4px;
 }
-.price_row > p {
+.store_price_row > p {
     font-family: "Motiva Sans", sans-serif;
     font-size: 21px;
     font-weight: normal;
-    color: white;
-
     line-height: 23px;
 
     margin: 0px;
     padding: 0px 16px 0px 16px;
-}
-.no_price {
-    position: absolute;
 
-    background: black;
-    color: rgb(167, 167, 167);
+    color: white;
+}
+.store_no_price {
+    position: absolute;
 
     font-size: 12px;
     font-weight: bold;
@@ -267,15 +295,19 @@ button:hover {
     line-height: 10px;
     right: 15px;
     bottom: -15px;
-
     padding: 0px 12px 0px 12px;
 
     border-radius: 2px;
 
     z-index: 2;
+
+    background: black;
+    color: rgb(167, 167, 167);
 }
-.price_discount {
+.store_price_discount {
     position: absolute;
+    right: 15px;
+    bottom: -15px;
 
     display: flex;
     flex-direction: row;
@@ -284,15 +316,15 @@ button:hover {
     border: 2px solid black;
     border-radius: 2px;
 
-    right: 15px;
-    bottom: -15px;
-
     padding: 0;
     border-radius: 2px;
 
     z-index: 2;
 }
-.price_discount > p {
+.store_price_discount > p {
+    display:flex;
+    align-items: center;
+
     margin: 0;
     padding: 0px 4px 0px 6px;
 
@@ -300,13 +332,10 @@ button:hover {
     font-family: "Motiva Sans", Sans-serif;
     font-weight: bold;
 
-    display:flex;
-    align-items: center;
-
     color: #BEEE11;
     background: #4c6b22;
 }
-.full_to_discount {
+.store_full_to_discount {
     display: flex;
     flex-direction: column;
 
@@ -315,11 +344,11 @@ button:hover {
 
     background: #344654;
 }
-.full_to_discount p {
+.store_full_to_discount p {
     padding: 0px;
     margin: 0px;
 }
-.full_to_discount p:nth-child(1) {
+.store_full_to_discount p:nth-child(1) {
     position: relative;
     display: inline-block;
 
@@ -329,7 +358,7 @@ button:hover {
 
     color: #738895;
 }
-.full_to_discount p:nth-child(1)::after {
+.store_full_to_discount p:nth-child(1)::after {
     content: "";
     position: absolute;
 
@@ -343,13 +372,15 @@ button:hover {
 
     transform: rotate(-10deg);
 }
-.full_to_discount p:nth-child(2) {
+.store_full_to_discount p:nth-child(2) {
     font-size: 14px;
     
     color: #BEEE11;
 }
-.full_price {
+.store_full_price {
     position: absolute;
+    right: 15px;
+    bottom: -15px;
 
     background: black;
     color: rgb(167, 167, 167);
@@ -358,8 +389,6 @@ button:hover {
     font-weight: bold;
 
     line-height: 10px;
-    right: 15px;
-    bottom: -15px;
 
     padding: 0px 12px 0px 12px;
 
@@ -367,10 +396,11 @@ button:hover {
 
     z-index: 2;
 }
-/* -----------------
-    End of price row
-------------------*/
-.hltb {
+
+/* ----------------------
+    Start of store_hltb
+----------------------- */
+.store_hltb {
     background: rgba(0, 0, 0, 0.2);
 
     width: 30%;
@@ -381,119 +411,123 @@ button:hover {
 
     box-sizing: border-box;
 }
-.hltb > p {
+.store_hltb > p {
     margin: 0 0 10px 0;
-
-    color: white;
 
     font-size: 14px;
     font-weight: bold;
+
+    color: white;
 }
-.hltb_table {
+.store_hltb_table {
     flex: 1;
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-
     gap: 5px;
 }
-.hltb_square {
+.store_hltb_square {
     min-width: 0;
 
     padding: 8px 4px;
 
     text-align: center;
-    color: white;
 
-    background: rgba(103, 193, 245, 0.2);
     border-radius: 4px;
 
     box-sizing: border-box;
+
+    color: white;
+    background: rgba(103, 193, 245, 0.2);
 }
-.hltb_square p {
+.store_hltb_square p {
     margin: 0px;
 }
-.hltb_category {
-    color: #798a95;
+.store_hltb_category {
     font-size: 11px;
+
+    color: #798a95;
 }
-.hltb_hours {
-    color: #66c0f4;
+.store_hltb_hours {
     font-size: 16px;
     font-weight: bold;
+
+    color: #66c0f4;
 }
-/* -----------------
-    End of hltb box
-------------------*/
+/* ------------------------------------
+    End of store_body_middle widgets
+------------------------------------- */
 
-/* ------------------
-    End of body_middle widgets
--------------------*/
-
-.body_end {
+/* ----------------------------
+    Start of store_body_end
+----------------------------- */
+.store_body_end {
     padding: 20px 60px 20px 60px;
 }
-.body_end hr {
+.store_body_end hr {
     width: 100%;
 
     border: 0;
     border-top: 2px solid rgba(0, 0, 0, 0.4);
 }
 
-.reviews_layout {
+/* ---------------------------------------------------------------------------
+    Divides most popular reviews to the left and recent reviews to the right    
+---------------------------------------------------------------------------- */
+.store_reviews_layout {
     display: flex;
     flex-direction: row;
     gap: 20px;
 }
-.reviews_layout > p {
-    padding: 20px 0px 0px 0px;
-    margin: 0px;
-}
-.reviews {
+
+/* ---------------------------------
+    Start of most popular reviews
+---------------------------------- */
+.store_reviews {
     width: 70%;
 }
-.reviews > p {
-    font-size: 10px;
-
-    margin: 20px 0px 0px 0px;
+.store_reviews > p {
+    font-size: 14px;
 }
-.reviews_table {
+.store_reviews_table {
     display: flex;
     flex-direction: column;
 
     gap: 20px;
 }
-.review {
-    width: 100%;
-
+.store_review {
     display: flex;
     flex-direction: row;
+
+    width: 100%;
 
     padding: 8px 8px 8px 8px;
 
-    background: rgba(0, 0, 0, 0.2);
-
     box-sizing: border-box; 
+
+    background: rgba(0, 0, 0, 0.2);
 }
-.review_author_profile {
-    width: 30%;
+.store_review_author_profile {
     display: flex;
     flex-direction: row;
 
+    width: 30%;
+
     overflow: hidden;
 }
-.review_author_profile img {
-    border: 2px solid #383c43;
+.store_review_author_profile img {
     height: 35px;
     width: 35px;
+
+    border: 2px solid #383c43;
 }
-.review_author_profile_info {
+.store_review_author_profile_info {
     display:flex;
     flex-direction: column;
 
     padding: 0px 0px 0px 10px;
 }
-.author_name {
+.store_author_name {
     font-size: 13px;
     line-height: 18px;
 
@@ -507,23 +541,23 @@ button:hover {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
-.review_author_count_variable {
-    margin-top: 5px;
+.store_review_author_count_variable {
+    margin: 0px;
 }
-.review_author_count_variable p {
+.store_review_author_count_variable span {
     padding: 0px;
-    margin: 5px 0px 0px 0px;
+    margin: 0px;
 
-    font-size: 9px;
+    font-size: 10px;
     color: #c6dbf4;
 }
-.review_author_game_data {
+.store_review_author_game_data {
     display: flex;
     flex-direction: column;
 
     width: 100%
 }
-.review_author_game_data_top {
+.store_review_author_game_data_top {
     display: flex;
     flex-direction: row;
 
@@ -534,32 +568,33 @@ button:hover {
 
     overflow: hidden;
 }
-.review_author_game_data_right {
+.store_review_author_game_data_right {
     align-self: center;
 }
-.thumbs_up {
+.store_thumbs_up {
     width: 40px;
     height: 40px;
 
     background: #009cf76c;
 }
-.thumbs_down {
+.store_thumbs_down {
     width: 40px;
     height: 40px;
+
     background: #9e1a03;
 }
-.recommended_or_not {
+.store_recommended_or_not {
     padding: 0px 0px 0px 5px;
     margin: 0px;
-
-    color: #d6d7d8;
 
     font-size: 16px;
     font-weight: 400;
 
     overflow: hidden;
+
+    color: #d6d7d8;
 }
-.review_author_game_hours {
+.store_review_author_game_hours {
     padding: 0px 0px 0px 5px;
     margin: 0px;
 
@@ -570,20 +605,20 @@ button:hover {
 
     overflow: hidden;
 }
-.review_author_game_data_bottom {
+.store_review_author_game_data_bottom {
     display: flex;
     flex-direction: column;
 
     font-size: 13px;
     line-height: 17px;
 }
-.date_of_review {
+.store_date_of_review {
     color: #8091a2;
     opacity: .6;
     font-size: 10px;
     text-transform: uppercase;
 }
-.review_text {
+.store_review_text {
     white-space: pre-wrap;
 
     width: 100%;
@@ -598,30 +633,32 @@ button:hover {
 
     color: #acb2b8;
 }
-.review_text.expanded {
+.store_review_text.expanded {
     max-height: none;
 }
-.read_more_button {
+.store_read_more_button {
     align-self: flex-end;
 }
 
-
-.recent_reviews {
+/* ---------------------------
+    Start of recent reviews
+---------------------------- */
+.store_recent_reviews {
     width: 30%;
 }
-.recent_reviews > p {
-    font-size: 10px;
+.store_recent_reviews > p {
+    font-size: 14px;
 }
-.recent_reviews_table {
+.store_recent_reviews_table {
     display: flex;
     flex-direction: column;
 
     gap: 20px;
 }
-.recent_review {
+.store_recent_review {
     background: linear-gradient(90deg, rgba(62, 69, 81, 0.3), var(--color-blue-3));
 }
-.recent_reviews_top {
+.store_recent_reviews_top {
     width: 100%;
 
     max-height: 20px;
@@ -637,18 +674,18 @@ button:hover {
 
     background-color: rgba(0, 0, 0, .2);
 }
-.thumbs_up_small {
+.store_thumbs_up_small {
     width: 20px;
     height: 20px;
 
     background: #009cf76c;
 }
-.thumbs_down_small {
+.store_thumbs_down_small {
     width: 20px;
     height: 20px;
     background: #9e1a03;
 }
-.recent_author_name {
+.store_recent_author_name {
     font-size: 13px;
 
     color: #c1dbf4;
@@ -660,7 +697,7 @@ button:hover {
     overflow: hidden;
     white-space: nowrap;
 }
-.recent_author_game_hours {
+.store_recent_author_game_hours {
     padding: 0px 0px 0px 20px;
     margin: 0px;
 
@@ -671,60 +708,66 @@ button:hover {
 
     overflow: hidden;
 }
-/* ------------------
-    End of body_end widgets
--------------------*/
+.store_recent_reviews_bottom {
+    padding-left: 5px;
+}
+.store_recent_reviews_bottom button {
+    margin-bottom: 5px;
+}
+/* -------------------------------
+    End of store_body_end widgets
+--------------------------------- */
 
 /* ------------------
     Move right box to the top and left box to bottom if the screen is small
 -------------------*/
 @media (max-width: 1200px) {
-    .body_top {
+    .store_body_top {
         padding: 20px 20px 0 20px;
     }
-    .basic_info {
+    .store_basic_info {
         flex-direction: column;
     }
-    .basic_right {
+    .store_basic_right {
         order: -1;
-        width: 100%
-    }
-    .basic_left {
         width: 100%;
     }
-    .body_middle {
+    .store_basic_left {
+        width: 100%;
+    }
+    .store_body_middle {
         padding: 0px 20px 0 20px;
     }
-    .price_hltb_overlay {
+    .store_price_hltb_overlay {
         flex-direction: column;
         gap: 0px;
     }
-    .prices {
+    .store_prices {
         width: 100%;
         order: 2;
     }
-    .hltb {
+    .store_hltb {
         order: 1;
         width: 100%;
     }
-    .hltb_table {
+    .store_hltb_table {
         grid-template-rows: repeat(1, 1fr);
         grid-template-columns: repeat(4, 1fr);
     }
-    .body_end {
+    .store_body_end {
         padding: 20px 20px 0 20px;
     }
-    .reviews_layout{
+    .store_reviews_layout{
         flex-direction: column;
     }
-    .reviews {
+    .store_reviews {
         width: 100%;
     }
-    .review {
+    .store_review {
         flex-direction: column;
         gap: 5px;
     }
-    .recent_reviews {
+    .store_recent_reviews {
         width: 100%;
     }
 }

@@ -6,15 +6,22 @@
     display: flex;
     flex-direction: column;
 }
+
+/* -----------------------------------------
+    Loading screen while fetching API data
+------------------------------------------ */
 .display_similar_games_page > video {    
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 94px);
 
     object-fit: cover;
     display: block;
 }
 
-.main {
+/* -----------------------------------------------------------
+    Splits page. left side similar_game_card. right side similar_game_preview
+----------------------------------------------------------- */
+.similar_body_layout {
     display: flex;
     flex-direction: row;
 
@@ -31,123 +38,148 @@
     padding: 20px 30px 0px 30px;
 }
 
-.game_card {
+/* --------------------------
+    Start of game card side
+-------------------------- */
+.similar_game_card {
+    width: 80%;
+
     padding: 0px;
     margin: 0px; 
-
-    width: 75%;
 }
-.game_card ul {
+.similar_game_card ul {
     display: flex;
     flex-direction: column;
-
     gap: 12px;
+
     padding: 0px 0px 20px 0px;
     margin: 0px;
 
     list-style: none;
 }
-.game_card li {
-    width: 100%;
-
+.similar_game_card li {
     display: flex;
     align-items: center;
     gap: 16px;
+
+    width: 100%;
 
     box-sizing: border-box;
 
     background: #b3daff14;
 }
-.game_card li:hover {
+.similar_game_card li:hover {
     background: rgba(115, 150, 184, 0.25);
 }
-.game_card img {
+.similar_game_card img {
     width: 90px;
     height: 120px;
+
     object-fit: cover;
+
     box-shadow: 8px 0 15px rgba(0, 0, 0, 0.8);
 }
 
-.title_platforms {
+.similar_title_and_platforms_layout {
     display: flex;
     flex-direction: column;
+
+    flex: 1;
+    min-width: 0;
+
+    overflow: hidden;
 }
-.title_platforms p {
+.similar_title {
     margin: 0;
     padding: 0;
     
     font-size: 1.1rem;
     font-weight: 500;
+
+    line-height: 1.1;
+
     color: #e6e6e6;
-    line-height: 1.1;
 }
-.title_platforms span {
+.similar_platforms {
     font-size: 0.7rem;
-    color: #909090;
+
     line-height: 1.1;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+
+    color: #909090;
 }
 
-/* -------------------
-    End of game_card
----------------------*/
-
-.game_preview {
+/* ----------------------------
+    Start of game preview side
+----------------------------- */
+.similar_game_preview {
     position: sticky;
     top: 0px;
 
-    width: 25%;
+    width: 20%;
     height: calc(100vh - 130px);
 
     flex-shrink: 0;
 
     background: #7396b840;
 }
-.game_preview_layout {
+.similar_game_preview_layout {
     display: flex;
     flex-direction: column;
+    gap: 6px;
+
     align-items: center;
 
     /* Take game_preview px so 130: 130 + (margin * 2) + (padding * 2) */
     height: calc(100vh - 162px);
-    margin: 8px;
-    padding: 8px;
-    gap: 6px;
 
     font-size: 18px;
-    color: #ffffff;
 
+    margin: 8px;
+    padding: 8px;
+
+    object-fit: contain;
+    
+    color: #ffffff;
     background: #00000033;
+
 }
-.preview_movie_screenshots {
+.similar_preview_movie_screenshots {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    width: 100%;
+    height: 100%;
+    min-height: 0px;
+}
+.similar_preview_movie_screenshots iframe,
+.similar_preview_movie_screenshots img {
     width: 100%;
     height: 100%;
 
-    display: flex;
-    flex-direction: column;
-
-    gap: 8px;
-
-    overflow: hidden;
-}
-.preview_movie_screenshots iframe,
-.preview_movie_screenshots img {
-    flex: 1 1 0;
-    width: 100%;
+    min-width: 0;
     min-height: 0;
-    max-height: 160px;
+    max-height: 150px;
 
     object-fit: cover;
-
-    outline: None;
 
     border: 0;
 }
 
+/* --------------------------------------------------------
+    When the screen gets to small don't display the preview
+-------------------------------------------------------- */
+
 @media (max-width: 1200px) {
-    .game_card {
-        width: 100%;
+    .similar_game_card {
+        width: 73%;
     }
-    .game_preview {
-        display: none;
+    .similar_game_preview {
+        width: 27%;
     }
 }

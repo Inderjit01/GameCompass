@@ -1,18 +1,24 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 
-import "../styles/displaysimilargames.css"
 import useGameSearchBar from "../hooks/useGameSearchBar";
 import TopRow from "./TopRow";
+
 import noCoverArt from "../assets/images/no-cover-art.jpg"
+
+import pageLoadingScreen from "../assets/videos/page-loading-screen.mp4"
 
 import type { IGDBMultiple } from "../types/igdb";
 import type { PreviewMedia } from "../types/PreviewMedia";
-import pageLoadingScreen from "../assets/videos/page-loading-screen.mp4"
+
+import "../styles/displaysimilargames.css"
 
 function DisplaySimilarGames (){
+
+    // useGameSearchBar finds and stores similar games
     const {query, setQuery, results, noResults} = useGameSearchBar();
 
+    // The previousSearch is user input from toprow search bar, sent with the url to DisplaySimilarGames.tsx
     const [searchParams] = useSearchParams();
     const previousSearch = searchParams.get("query");
 
@@ -22,6 +28,9 @@ function DisplaySimilarGames (){
 
     const [previewGame, setPreviewGame] = useState<PreviewMedia | null>(null);
 
+    {/* ----------------------------------
+      Gets the similar games from IGDB API  
+    ----------------------------------- */}
     useEffect (() => {
         setSimilarGames(null);
         setPreviewGame(null);
@@ -38,6 +47,9 @@ function DisplaySimilarGames (){
         search();
     }, [previousSearch]);
 
+    {/* -------------------------------------------------------------------------------------------------
+        Sets the first game to already show its preview trailer and/or screenshots when page first loads
+    ------------------------------------------------------------------------------------------------- */}
     useEffect (() => {
         if (previewGame || !similarGames)    
             return;
@@ -86,8 +98,10 @@ function DisplaySimilarGames (){
         }
     }, [previewGame, similarGames]);
 
+    {/* ---------------------------------------------------------------
+        Functions to change the preview section movies and screenshots
+    ----------------------------------------------------------------- */}
     const handleGameHover = (game: IGDBMultiple) => {
-        console.log("this is the game info: ", game)
         const movie = game.movies?.[0] ?? null;
         const screenshots = game.screenshots ?? [];
 
@@ -113,6 +127,8 @@ function DisplaySimilarGames (){
 
     return (
         <div className="display_similar_games_page">
+
+            {/* Search bar to find similar games based on user input */}
             <TopRow 
                 title="Search Results"
                 showSearch={true}
@@ -122,6 +138,7 @@ function DisplaySimilarGames (){
                 noResults= {noResults}
             />
 
+            {/* While the API is returning the games that are similar to user input load the loading screen */}
             {!similarGames ? (
                 <video 
                     src={pageLoadingScreen}
@@ -131,8 +148,11 @@ function DisplaySimilarGames (){
                     playsInline
                 />
             ) : (
-                <div className="main">
-                    <div className="game_card">
+                <div className="similar_body_layout">
+                    {/* similar_body_layout splits the page. Left side game card and right side preview */}
+
+                    {/* Displays each of the similar games on the left of the screen */}
+                    <div className="similar_game_card">
                             {similarGames.length > 0 && (
                                 <ul>
                                     {similarGames.map ( (game) =>
@@ -145,21 +165,23 @@ function DisplaySimilarGames (){
                                                 src={game.cover_image ?? noCoverArt} 
                                                 alt={game.game_title}
                                             />
-                                            <div className="title_platforms">
-                                                <p>{game.game_title}</p>
-                                                <span>{game.platforms}</span>
+                                            <div className="similar_title_and_platforms_layout">
+                                                <span className="similar_title">{game.game_title}</span>
+                                                <span className="similar_platforms">{game.platforms}</span>
                                             </div>
                                         </li>
                                     )}
                                 </ul>
                             )}
-                    </div> {/* End of game_card*/}
+                    </div> {/* End of similar_game_card */}
 
-                    <div className="game_preview">
-                        <div className="game_preview_layout">
+                    {/* Displays the currently hovered game's trailer/screenshots on the right of the page */}
+                    <div className="similar_game_preview">
+
+                        <div className="similar_game_preview_layout">
                             <span>{previewGame?.game_title ?? "Unknown"}</span>
 
-                            <div className="preview_movie_screenshots"> 
+                            <div className="similar_preview_movie_screenshots"> 
                                 {previewGame && (
                                     <>
                                         {previewGame?.movie_id && (
@@ -186,9 +208,11 @@ function DisplaySimilarGames (){
                                         )}
                                     </>
                                 )}
-                            </div>
-                        </div> {/* End of game_preview_layout*/}
-                    </div> {/* End of game_preview*/}
+                            </div>{/* End of similar_preview_movie_screenshots */}
+
+                        </div> {/* End of similar_game_preview_layout */}
+
+                    </div> {/* End of similar_game_preview */}
                 
                 </div>
             )}

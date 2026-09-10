@@ -1,20 +1,25 @@
 import { useNavigate } from "react-router-dom";
 
-import "../styles/toprow.css";
 import type { TopRowProps } from "../types/TopRowProps.ts";
+
 import noCoverArt from "../assets/images/no-cover-art.jpg";
+
+import "../styles/toprow.css";
 
 function TopRow ( {title, showSearch = false, query, setQuery, results = [], noResults = false }: TopRowProps){
     
+    // Allows users to switch pages (DisplaySimilarGames and GameDetails)
     const navigate = useNavigate(); 
 
     return(
-        <div className="top-row">
-            <h1>{title}</h1>
+        <div className="top_search_bar_layout">
+            {/* The title for the page */}
+            <span>{title}</span>
 
-            <div className="search-wrapper">
+            <div className="search_wrapper">
                 {showSearch === true && (
                     <>
+                        {/* This is the search bar */}
                         <input 
                             type="search"
                             placeholder="Search for a game"
@@ -32,6 +37,7 @@ function TopRow ( {title, showSearch = false, query, setQuery, results = [], noR
                             }} 
                         />
 
+                        {/* This is the drop down widget that appears when user tries to find a game using the search bar */}
                         {(results.length > 0 || noResults) && (
                             <div className="search_results">
                                 {results.length > 0 && (
@@ -68,11 +74,12 @@ function TopRow ( {title, showSearch = false, query, setQuery, results = [], noR
                                         <li>No items match your query</li>
                                     </ul>
                                 )}
+                                
                             </div>
                         )}
                     </>
                 )}
-            </div>
+            </div> {/* End of search_wrapper */}
 
         </div>
     );
