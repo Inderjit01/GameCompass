@@ -13,7 +13,8 @@ export interface databaseTypes {
     main_extra: number | null;
     completionist: number | null;
     all_styles: number | null;
+    
     library_status: "backlog" | "playing" | "completed";
     favorite: boolean;
     added_date: string;
-};
+}

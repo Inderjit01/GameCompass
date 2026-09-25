@@ -1,8 +1,32 @@
 import { useState, useMemo } from "react";
 
 import type { databaseTypes } from "../types/Database";
+import type { WishlistGameInfo } from "../types/Wishlist";
 
-function useDatabaseFilter(databaseGames : databaseTypes[] | null) {
+// This is for wishlist categories since these do no exists in databaseTypes
+// These ones are for prices
+function hasPrice(game: databaseTypes | WishlistGameInfo): game is WishlistGameInfo {
+    return "final_formatted" in game;
+}
+function hasDiscount(game: databaseTypes | WishlistGameInfo): game is WishlistGameInfo {
+    return "discount_percent" in game;
+}
+
+// These ones are for subscriptions
+function hasGamePass(game: databaseTypes | WishlistGameInfo): game is WishlistGameInfo {
+    return "game_pass" in game;
+}
+function hasPlaystationEssential(game: databaseTypes | WishlistGameInfo): game is WishlistGameInfo {
+    return "playstation_essential" in game;
+}
+function hasPlaystationExtra(game: databaseTypes | WishlistGameInfo): game is WishlistGameInfo {
+    return "playstation_extra" in game;
+}
+function hasPlaystationPremium(game: databaseTypes | WishlistGameInfo): game is WishlistGameInfo {
+    return "playstation_premium" in game;
+}
+
+function useDatabaseFilter(databaseGames: databaseTypes[] | WishlistGameInfo[] | null) {
 
     // All filter options. Default is aplphabetical
     const [filterCategories, setFilterCategories] = useState("alphabetical");
@@ -29,6 +53,7 @@ function useDatabaseFilter(databaseGames : databaseTypes[] | null) {
         }
         
         // Categories
+        // basic
         if (filterCategories === "alphabetical") {
             games.sort((a, b) => 
                 (a.game_title ?? "").localeCompare(b.game_title ?? "")
@@ -62,9 +87,69 @@ function useDatabaseFilter(databaseGames : databaseTypes[] | null) {
                 (a.all_styles ?? -1) - (b.all_styles ?? -1)
             );
         }
-        else if (filterCategories === "Added_date"){
+        else if (filterCategories === "added_date"){
             games.sort((a, b) => 
                 new Date(a.added_date).getTime() - new Date(b.added_date).getTime()
+            );
+        }
+        // This section is for wishlist categories
+        else if (filterCategories == "price"){
+            games.sort((a, b) => {
+                if (!hasPrice(a) || !hasPrice(b)) {
+                    return 0;
+                }
+
+                const priceA = parseFloat(a.final_formatted?.replace(/[^0-9.-]+/g, "") || "0");
+                const priceB = parseFloat(b.final_formatted?.replace(/[^0-9.-]+/g, "") || "0");
+
+                return priceA - priceB;
+            });
+        }
+        else if (filterCategories == "on_sale") {
+            games = games
+                .filter(game => {
+                    if (!hasDiscount(game) || game.discount_percent === null) {
+                        return false;
+                    }
+
+                    const discount = Math.abs(
+                        typeof game.discount_percent === "string"
+                            ? parseFloat(game.discount_percent.replace("%", ""))
+                            : game.discount_percent
+                    );
+
+                    return discount > 0;
+                })
+                .sort((a, b) => {
+                    if (!hasDiscount(a) || !hasDiscount(b)) {
+                        return 0;
+                    }
+
+                    const discountA = Math.abs(
+                        typeof a.discount_percent === "string"
+                            ? parseFloat(a.discount_percent.replace("%", ""))
+                            : a.discount_percent ?? 0
+                    );
+
+                    const discountB = Math.abs(
+                        typeof b.discount_percent === "string"
+                            ? parseFloat(b.discount_percent.replace("%", ""))
+                            : b.discount_percent ?? 0
+                    );
+
+                    return discountA - discountB;
+                });
+        }
+        else if (filterCategories === "xbox_game_pass") {
+            games = games.filter(game =>
+                hasGamePass(game) && game.game_pass === true
+            );
+        }
+        else if (filterCategories === "playstation_subscription") {
+            games = games.filter(game =>
+                hasPlaystationEssential(game) && game.playstation_essential === true ||
+                hasPlaystationExtra(game) && game.playstation_extra === true ||
+                hasPlaystationPremium(game) && game.playstation_premium === true 
             );
         }
         

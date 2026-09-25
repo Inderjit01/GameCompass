@@ -286,6 +286,13 @@ button:hover {
 
     color: white;
 }
+.store_subscription {
+    margin: 0px;
+    padding: 0px 16px 0px 16px;
+
+    color: #8a8a8a;
+
+}
 .store_no_price {
     position: absolute;
 

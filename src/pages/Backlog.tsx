@@ -176,10 +176,10 @@ function Backlog () {
 
                                 {/* Format for just HLTB data */}
                                 <div className="backlog_game_card_hltb">
-                                    <span>MAIN STORY: <span className="backlog_game_card_hltb_result">{game.main_story != null ? Math.round(game.main_story): "UNKNOWN"} Hrs</span></span>
-                                    <span>MAIN + EXTRA: <span className="backlog_game_card_hltb_result">{game.main_extra != null ? Math.round(game.main_extra): "UNKNOWN"} Hrs</span></span>
-                                    <span>COMPLETIONIST: <span className="backlog_game_card_hltb_result">{game.completionist != null ? Math.round(game.completionist) : "UNKNOWN"} Hrs</span></span>
-                                    <span>ALL STYLES: <span className="backlog_game_card_hltb_result">{game.all_styles != null ? Math.round(game.all_styles) : "UNKNOWN"} Hrs</span></span>                                   
+                                    <span>MAIN STORY: <span className="backlog_game_card_hltb_result">{game.main_story != null ? Math.round(game.main_story): "--"} Hrs</span></span>
+                                    <span>MAIN + EXTRA: <span className="backlog_game_card_hltb_result">{game.main_extra != null ? Math.round(game.main_extra): "--"} Hrs</span></span>
+                                    <span>COMPLETIONIST: <span className="backlog_game_card_hltb_result">{game.completionist != null ? Math.round(game.completionist) : "--"} Hrs</span></span>
+                                    <span>ALL STYLES: <span className="backlog_game_card_hltb_result">{game.all_styles != null ? Math.round(game.all_styles) : "--"} Hrs</span></span>                                   
                                 </div> {/* End of backlog_game_card_hltb */}
 
                             </div> {/* End of backlog_game_card_middle */}

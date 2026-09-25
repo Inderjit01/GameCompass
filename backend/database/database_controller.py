@@ -252,6 +252,41 @@ def add_to_library(formatted_data):
         cur.close()
         conn.close()
 
+# Get all DB info about a single game
+def get_one_game(igdb_id):
+    if not igdb_id:
+        return None
+
+    conn, cur = _create_connection()
+
+    try:
+        # make sure the game exists
+        if not _check_game_exists(cur, igdb_id):
+            log.warning(f"get_one_game : {igdb_id} does not exists in DB")
+            return None
+
+        cur.execute(f'''
+            SELECT * FROM games 
+            LEFT JOIN user_games
+            ON games.igdb_id = user_games.igdb_id
+            WHERE games.igdb_id = ?
+            ORDER BY user_games.added_date
+        ''', (igdb_id, ))
+    
+        row = cur.fetchone()
+
+        if row is None:
+            log.warning(f"get_one_game : No game found for {igdb_id}")
+            return None
+
+        return dict(row)
+    except Exception:
+        log.exception(f"get_one_game : Failed to get {igdb_id} from DB")
+        raise
+    finally:
+        cur.close()
+        conn.close()
+
 # grabs where the game is stored (backlog, wishlist, completed)
 def get_library_location(igdb_id):
     if not igdb_id:

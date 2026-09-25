@@ -70,12 +70,27 @@ pub fn run() {
             // Fake backend setup
             tauri::async_runtime::spawn(async move {
 
-                println!("Starting backend setup...");
+                println!("Waiting for backend...");
 
-                // Replace this with database loading later
-                sleep(Duration::from_secs(5)).await;
+                let client = reqwest::Client::new();
 
-                println!("Backend setup complete!");
+                loop {
+                    match client
+                        .get("http://127.0.0.1:8000/health")
+                        .send()
+                        .await
+                    {
+                        Ok(response) if response.status().is_success() => {
+                            println!("Backend setup complete!");
+                            break;
+                        }
+
+                        _ => {
+                            println!("Backend not ready...");
+                            sleep(Duration::from_millis(250)).await;
+                        }
+                    }
+                }
 
                 set_complete(
                     app_handle.clone(),

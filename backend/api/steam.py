@@ -137,9 +137,9 @@ def _get_steam_reviews(steam_id, review_category):
     return None
 
 async def get_steam_info(game_title):
-    steam_id = _find_steam_id(game_title)
+    steam_id = await asyncio.to_thread(_find_steam_id, game_title)
     if not steam_id:
-        return None
+        return None, None
 
     price = None
     steam_data, best_reviews, recent_reviews = await asyncio.gather(
@@ -149,7 +149,7 @@ async def get_steam_info(game_title):
     )
 
     if steam_data is None:
-        return None
+        return None, None
 
     game_info = {
         "basic_info": steam_data["basic_info"],
@@ -164,7 +164,24 @@ async def get_steam_info(game_title):
 
     return game_info, game_price
 
-#data = asyncio.run(get_steam_info("Tides of Annihilation"))
+async def get_steam_price(game_title):
+    steam_id = await asyncio.to_thread(_find_steam_id, game_title)
+    if not steam_id:
+        return None
 
+    steam_data = await asyncio.to_thread(_get_steam_basic_info, steam_id)
+    if steam_data is None:
+        return None
+
+    game_price = steam_data["steam_price"]
+    if steam_data.get("basic_info", {}).get("is_free", False):
+        game_price = {
+            "is_free": True
+        }
+
+    return game_price
+
+#data = asyncio.run(get_steam_price("Like a Dragon: Pirate Yakuza in Hawaii"))
+#print(data)
 #with open("C:/Users/inder/Documents/Python Projects/GameCompassProject/GameCompass/backend/api/TidesOfAnnihilation.txt", "w") as f:
 #    json.dump(data, f, indent=4)

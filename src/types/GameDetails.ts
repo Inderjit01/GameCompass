@@ -1,4 +1,9 @@
 import type { Steam, SteamPrice } from "./steam";
+import type { epicPrice } from "./epic";
+import type { xboxPrice } from "./xbox";
+import type { playstationPrice } from "./playstation";
+import type { nintendoPrice } from "./nintendo";
+
 import type { IGDBSingle } from "./igdb";
 import type { HLTB } from "./hltb";
 
@@ -11,21 +16,8 @@ export type GameDetails = {
 
 export interface AllPrices {
     steam: SteamPrice | null;
-    epic: EpicPrice | null;
-    playstation: PlaystationPrice | null;
-    xbox: XboxPrice | null;
-    nintendo: NintendoPrice | null;
+    epic: epicPrice | null;
+    playstation: playstationPrice | null;
+    xbox: xboxPrice | null;
+    nintendo: nintendoPrice | null;
 }; 
-
-export interface EpicPrice {
-    final_formatted: string | null;
-}
-export interface PlaystationPrice {
-    final_formatted: string | null;
-}
-export interface XboxPrice {
-    final_formatted: string | null;
-}
-export interface NintendoPrice {
-    final_formatted: string | null;
-}

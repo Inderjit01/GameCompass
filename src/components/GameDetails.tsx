@@ -62,6 +62,10 @@ function GameDetailsPage (){
     const prices = APIResults?.prices
         ? Object.entries(APIResults.prices).filter(([_, price]) => price !== null)
         : [];
+
+    useEffect(() => {
+        console.log("This is the prices", prices);
+    }, [prices])
     
     // right side of body middle
     const howLongToBeat = APIResults?.hltb ?? null;
@@ -374,7 +378,7 @@ function GameDetailsPage (){
                                 {prices.length > 0 ? (
                                     prices.map (([store, price]) => (
                                         <div className="store_price_row" key={store}>
-                                            <p>{game_title} on {store}</p>
+                                            <p>{game_title} on {store.toUpperCase()}</p>
 
                                             {/* Every store api will have a different format*/}
                                             {/* Steam prices format */}
@@ -403,6 +407,129 @@ function GameDetailsPage (){
                                                     )}
                                                 </>
                                             )}
+
+                                            {/* Epic prices format */}
+                                            {store === "epic" && (
+                                                <>
+                                                    {price.always_free === true ? (
+                                                        <div className="store_no_price">
+                                                            <p>Free To Play</p>
+                                                        </div>
+                                                    ) : price.discount_percent && price.discount_percent > 0 && price.initial_formatted && price.final_formatted ? (
+                                                        <div className="store_price_discount">
+                                                            <p>-{price.discount_percent}%</p>
+                                                            <div className="store_full_to_discount">
+                                                                <p>{price.initial_formatted}</p>
+                                                                <p>{price.final_formatted}</p>
+                                                            </div>
+                                                        </div>
+                                                    ): price.final_formatted ? (
+                                                        <div className="store_full_price">
+                                                            <p>{price.final_formatted}</p>
+                                                        </div>
+                                                    ): (
+                                                        <div className="store_no_price">
+                                                            <p>No price found</p>
+                                                        </div>
+                                                    )}
+                                                </>
+                                            )}
+
+                                            {/* Xbox prices format. This inculdes game pass subscription*/}
+                                            {store === "xbox" && (
+                                                <>
+                                                    {price.game_pass && (
+                                                        <span className="store_subscription">Available on Game Pass</span>
+                                                    )}
+
+                                                    {price.always_free === true ? (
+                                                        <div className="store_no_price">
+                                                            <p>Free To Play</p>
+                                                        </div>
+                                                    ) : price.discount_percent && price.discount_percent > 0 && price.initial_formatted && price.final_formatted ? (
+                                                        <div className="store_price_discount">
+                                                            <p>-{price.discount_percent}%</p>
+                                                            <div className="store_full_to_discount">
+                                                                <p>{price.initial_formatted}</p>
+                                                                <p>{price.final_formatted}</p>
+                                                            </div>
+                                                        </div>
+                                                    ): price.final_formatted ? (
+                                                        <div className="store_full_price">
+                                                            <p>{price.final_formatted}</p>
+                                                        </div>
+                                                    ): (
+                                                        <div className="store_no_price">
+                                                            <p>No price found</p>
+                                                        </div>
+                                                    )}
+                                                </>
+                                            )}
+
+                                            {/* Playstation prices format. This includes playstation subscriptions essential, extra, and premium */}
+                                            {store === "playstation" && (
+                                                <>
+                                                    {price.playstation_essential && (
+                                                        <span className="store_subscription">Available on Playstation Essential</span>
+                                                    )}
+                                                    {price.playstation_extra && (
+                                                        <span className="store_subscription">Available on Playstation Extra</span>
+                                                    )}
+                                                    {price.playstation_premium && (
+                                                        <span className="store_subscription">Available on Playstation Premium</span>
+                                                    )}
+                                                    
+                                                    {price.always_free === true ? (
+                                                        <div className="store_no_price">
+                                                            <p>Free To Play</p>
+                                                        </div>
+                                                    ) : price.discount_percent && price.discount_percentage !== null && price.initial_formatted && price.final_formatted ? (
+                                                        <div className="store_price_discount">
+                                                            <p>{price.discount_percent}</p>
+                                                            <div className="store_full_to_discount">
+                                                                <p>{price.initial_formatted}</p>
+                                                                <p>{price.final_formatted}</p>
+                                                            </div>
+                                                        </div>
+                                                    ): price.final_formatted ? (
+                                                        <div className="store_full_price">
+                                                            <p>{price.final_formatted}</p>
+                                                        </div>
+                                                    ): (
+                                                        <div className="store_no_price">
+                                                            <p>No price found</p>
+                                                        </div>
+                                                    )}
+                                                </>
+                                            )}
+
+                                            {/* Nintendo prices format */}
+                                            {store === "nintendo" && (
+                                                <>  
+                                                    {price.always_free === true ? (
+                                                        <div className="store_no_price">
+                                                            <p>Free To Play</p>
+                                                        </div>
+                                                    ) : price.discount_percent && price.discount_percentage !== null && price.initial_formatted && price.final_formatted  &&  price.initial_formatted !== price.final_formatted ? (
+                                                        <div className="store_price_discount">
+                                                            <p>{price.discount_percent}</p>
+                                                            <div className="store_full_to_discount">
+                                                                <p>{price.initial_formatted}</p>
+                                                                <p>{price.final_formatted}</p>
+                                                            </div>
+                                                        </div>
+                                                    ): price.final_formatted ? (
+                                                        <div className="store_full_price">
+                                                            <p>{price.final_formatted}</p>
+                                                        </div>
+                                                    ): (
+                                                        <div className="store_no_price">
+                                                            <p>No price found</p>
+                                                        </div>
+                                                    )}
+                                                </>
+                                            )}
+
                                         {/* End of store_price_row */}
                                         </div> 
                                     ))

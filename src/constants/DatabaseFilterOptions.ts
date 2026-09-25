@@ -15,6 +15,8 @@ export const wishlistFilterOptions: FilterOption[] = [
     ...baseFilterOptions,
     { value: "price", label: "Price" },
     { value: "on_sale", label: "On Sale" },
+    { value: "xbox_game_pass", label: "Game Pass"},
+    { value: "playstation_subscription", label: "Playstation Subscriptions"}
 ];
 
 export const completedFilterOptions: FilterOption[] = [
