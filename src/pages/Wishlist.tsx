@@ -304,8 +304,11 @@ function Wishlist () {
                                                     <span className="wishlist_cheapest_store">{game.cheapest_store.toUpperCase() ?? "Unknown"}</span>
                                                 )}
                                                 <div className="wishlist_price_discount">
-                                                    
-                                                    <p>{game.discount_percent}</p>
+                                                    {/* Steam returns discount percentage as a number so I have to format it */}
+                                                    {typeof game.discount_percent === "string" ? (
+                                                        <p>{game.discount_percent}</p>
+                                                    ): (<p>-{game.discount_percent}%</p>
+                                                    )}
                                                     <div className="wishlist_full_to_discount">
                                                         <p>{game.initial_formatted}</p>
                                                         <p>{game.final_formatted}</p>

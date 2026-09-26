@@ -56,9 +56,6 @@ async def lifespan(app: FastAPI):
         build_caches(app)
     )
 
-    #app.state.wishlist_cache = await create_game_cache(app.state.browser, "wishlist")
-    #app.state.backlog_cache = await create_game_cache(app.state.browser, "backlog")
-
     yield
 
     await browser.close()

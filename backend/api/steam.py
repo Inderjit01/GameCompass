@@ -46,19 +46,37 @@ def _find_steam_id(game_title):
         title = game.get("name", None)
         if title:
             titles_to_id_map[title] = game["id"]
-    
+
+    if not titles_to_id_map:
+        log.warning(f"_find_steam_id : No id's were found for {game_title}")
+        return
+
+    # match formatting for better comparison of titles
+    normalized_titles_to_id_map = {}
+    for title, id in titles_to_id_map.items():
+        formatted_title = title.lower().replace(":", "").replace("™", "")
+
+        normalized_titles_to_id_map[formatted_title] = id
+
+    # Get the game with the best match
     matches = process.extract(
-        game_title,
-        titles_to_id_map.keys(),
+        game_title.lower().replace(":", "").replace("™", ""),
+        normalized_titles_to_id_map.keys(),
         scorer = fuzz.WRatio,
         limit = 1
     )
 
-    game_name = matches[0][0] if matches else None
-    steam_id = titles_to_id_map.get(game_name, None) if game_name else None
+    # If the title has less than 90% similarity return None. Probably the wrong game
+    if matches and matches[0][1] >= 90:
+        game_name = matches[0][0] 
+    else: 
+        return None
+
+    steam_id = normalized_titles_to_id_map.get(game_name, None)
 
     return steam_id
 
+# Gets the general information of the game
 def _get_steam_basic_info(steam_id):
     params = {
         "appids": steam_id,
@@ -72,12 +90,20 @@ def _get_steam_basic_info(steam_id):
 
         data = response.json()
 
-        game_data = data.get(str(steam_id), {}).get("data", None)
-        if not game_data:
+        app_data = next(iter(data.values()), {})
+        if not app_data.get("success"):
+            log.warning(f"_get_steam_basic_info : No game info for {steam_id}")
             return None
 
+        game_data = app_data.get("data")
+        if not game_data:
+            log.warning(f"_get_steam_basic_info : No game data for {steam_id}")
+            return None
+        
+        # Split the prices so I can group prices with other stores
         game_price = game_data.get("price_overview", None)
 
+        # Remove info I don't need from API response
         remove_list = (
             "background",
             "background_raw",
@@ -115,6 +141,7 @@ def _get_steam_basic_info(steam_id):
 
     return None
 
+# Get the Steam reviews for a game if it exists
 def _get_steam_reviews(steam_id, review_category):
     params = {
         "json": 1,
@@ -136,9 +163,11 @@ def _get_steam_reviews(steam_id, review_category):
 
     return None
 
+# Gets the basic info about a game, the best reviews for a game, and the most recent reviews for a game. Then combine all of them
 async def get_steam_info(game_title):
     steam_id = await asyncio.to_thread(_find_steam_id, game_title)
     if not steam_id:
+        log.warning(f"get_steam_info : steam_id is None for {game_title}. Most likely game does not exists on Steam")
         return None, None
 
     price = None
@@ -149,6 +178,7 @@ async def get_steam_info(game_title):
     )
 
     if steam_data is None:
+        log.warning(f"get_steam_info : steam_data is None for {game_title}. Most likely Steam found the wrong game and I filtered it out with comparison.")
         return None, None
 
     game_info = {
@@ -162,15 +192,20 @@ async def get_steam_info(game_title):
             "is_free": True
         }
 
+    log.info(f"get_steam_info : Successfully grabbed Steam basic info, reviews, and recent reviews for {game_title}")
+
     return game_info, game_price
 
+# Only get the Steam price
 async def get_steam_price(game_title):
     steam_id = await asyncio.to_thread(_find_steam_id, game_title)
     if not steam_id:
+        log.warning(f"get_steam_price : steam_id is None for {game_title}. Most likely game does not exists on Steam")
         return None
 
     steam_data = await asyncio.to_thread(_get_steam_basic_info, steam_id)
     if steam_data is None:
+        log.warning(f"get_steam_price : steam_data is None for {game_title}. Most likely Steam found the wrong game and I filtered it out with comparison.")
         return None
 
     game_price = steam_data["steam_price"]
@@ -179,9 +214,20 @@ async def get_steam_price(game_title):
             "is_free": True
         }
 
+    log.info(f"get_steam_price : Successfully grabbed Steam prices for {game_title}")
+
     return game_price
 
-#data = asyncio.run(get_steam_price("Like a Dragon: Pirate Yakuza in Hawaii"))
-#print(data)
-#with open("C:/Users/inder/Documents/Python Projects/GameCompassProject/GameCompass/backend/api/TidesOfAnnihilation.txt", "w") as f:
-#    json.dump(data, f, indent=4)
+# This is for testing the script independently
+async def main():
+    data = await get_steam_info("Horizon Zero Dawn™ Remastered")
+    print(data)
+    
+    #data = await get_steam_price("DEATH STRANDING DIRECTOR'S CUT")
+    #print(data)
+
+    #with open("C:/Users/inder/Documents/Python Projects/GameCompassProject/GameCompass/backend/api/TidesOfAnnihilation.txt", "w") as f:
+    #    json.dump(data, f, indent=4)
+
+if __name__ == "__main__":
+    asyncio.run(main())
