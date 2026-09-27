@@ -33,6 +33,8 @@ function Backlog () {
         filterSearch, setFilterSearch,
     } = useDatabaseFilter(backlogResults);
 
+    const gamesCount = filteredResults?.length ?? 0;
+
     {/*--------------------------------  
         Grab backlog games from DB
     ---------------------------------*/}
@@ -105,6 +107,9 @@ function Backlog () {
                     setFilterOrder={setFilterOrder}
                     filterOptions={baseFilterOptions}
                 />
+
+                {/* Displays a count for how many games are showing */}
+                <span className="backlog_results_count">{gamesCount} GAMES</span>
 
                 {/* The format for the game cards */}
                 <ul className="backlog_game_cards_layout">

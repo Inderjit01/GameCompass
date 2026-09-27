@@ -3,7 +3,8 @@ import { databaseTypes } from "./Database.ts";
 // wishlistTypes is the cache for all the games in the location wishlist and returns a flag to know when add the data has been loaded
 export type WishlistType = {
     "games": WishlistGameInfo[];
-    "cache_done": boolean;
+    "cache_fast_done": boolean;
+    "cache_slow_done": boolean;
 }
 
 // WishlistGameInfo has all the DB variables along with the cheapest store price

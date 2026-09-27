@@ -1,6 +1,8 @@
 import sys, os, asyncio, time
 from playwright.async_api import async_playwright
 import threading
+from fastapi import FastAPI
+from contextlib import asynccontextmanager
 
 # Need sys.path.append if running file independently
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -17,9 +19,128 @@ from scrapers.nintendo import get_nintendo_prices
 
 # Limit how many games can load at a time because Playstation and Nintendo will IP ban with to many requests
 MAX_CONCURRENT_GAMES = 5
-semaphore = asyncio.Semaphore(MAX_CONCURRENT_GAMES)
+slow_semaphore = asyncio.Semaphore(MAX_CONCURRENT_GAMES)
 
 log = create_log("caching")
+
+# below methods are specific for wishlist cache (_create_wishlist_fast_cache and _update_wishlist_slow_cache). 
+# So the user doesn't have to wait for playstation and nintendo
+async def _create_wishlist_fast_cache(games):
+    async def _get_fast_prices(game):
+        if not game:
+            return None
+
+        igdb_id = game.get("igdb_id")
+        game_title = game.get("game_title")
+        platforms = game.get("platforms")
+
+        if not igdb_id or not game_title or not platforms:
+            return None
+
+        # Default values for price
+        game_prices = {
+            "steam": None,
+            "epic": None,
+            "playstation": None,
+            "xbox": None,
+            "nintendo" : None
+        }
+
+        tasks = []
+        stores = []
+
+        # Fast APIs: Steam, Epic, and Xbox
+        if "PC" in platforms:
+            stores.append("steam")
+            tasks.append(get_steam_price(game_title))
+
+            stores.append("epic")
+            tasks.append(get_epic_prices(game_title))
+
+        if "Xbox" in platforms:
+            stores.append("xbox")
+            tasks.append(get_xbox_prices(game_title))
+
+        if tasks:
+            results = await asyncio.gather(*tasks)
+
+            for store, price in zip(stores, results):
+                game_prices[store] = price
+
+        return {
+            igdb_id: {
+                **game,
+                "prices": game_prices
+            }
+        }
+
+    tasks = []
+    for game in games:
+        tasks.append(asyncio.create_task(_get_fast_prices(game)))
+
+    results = await asyncio.gather(*tasks)
+
+    cache = {}
+    for result in results:
+        if result:
+            for igdb_id, game_info in result.items():
+                cache[igdb_id] = game_info
+
+    return cache
+
+# Grabs Playstation and Nintendo price. Then updates the wishlist cache 
+async def _update_wishlist_slow_cache(browser, games, wishlist_cache):
+    async def _get_slow_prices(game):
+        if not game:
+            return None
+
+        igdb_id = game.get("igdb_id")
+        game_title = game.get("game_title")
+        platforms = game.get("platforms")
+
+        if not igdb_id or not game_title or not platforms or platforms == "":
+            return None
+
+        if igdb_id not in wishlist_cache:
+            return None
+
+        # Limits how many tasks can run
+        async with slow_semaphore:
+            tasks = []
+            stores = []
+
+            if "Playstation" in platforms:
+                stores.append("playstation")
+                tasks.append(get_playstation_prices(browser, game_title))
+            if "Nintendo" in platforms:
+                stores.append("nintendo")
+                tasks.append(get_nintendo_prices(browser, game_title))
+
+            if not tasks:
+                return None
+
+            results = await asyncio.gather(*tasks)
+
+            return igdb_id, dict(zip(stores, results))
+
+    tasks = []
+    for game in games:
+        tasks.append(asyncio.create_task(_get_slow_prices(game)))
+
+    results = await asyncio.gather(*tasks)
+
+    # Updates the cache with new values
+    for result in results:
+        if not result:
+            continue
+
+        igdb_id, slow_prices = result
+
+        if igdb_id not in wishlist_cache:
+            continue
+
+        for store, price in slow_prices.items():
+            wishlist_cache[igdb_id]["prices"][store] = price
 
 # uses concurrency to grab each games info
 async def _create_game_cache(browser, location):
@@ -41,81 +162,81 @@ async def _create_game_cache(browser, location):
     # concurrency to grab the price of the game from each store simultaneously
     async def _get_prices(browser, game):
         # semaphore is the limit for concurrency
-        async with semaphore:
-            if not game:
-                return None
+        #async with semaphore:
+        if not game:
+            return None
 
-            igdb_id = game.get("igdb_id", None)
-            game_title = game.get("game_title", None)
-            platforms = game.get("platforms", None)
+        igdb_id = game.get("igdb_id", None)
+        game_title = game.get("game_title", None)
+        platforms = game.get("platforms", None)
 
-            if platforms == "":
-                return None
+        if not igdb_id or not game_title or not platforms or platforms == "":
+            return None
 
-            # default values
-            game_prices = {
-                "steam": None,
-                "epic": None,
-                "playstation": None,
-                "xbox": None,
-                "nintendo": None
+        # default values
+        game_prices = {
+            "steam": None,
+            "epic": None,
+            "playstation": None,
+            "xbox": None,
+            "nintendo": None
+        }
+
+        store_tasks = []
+        # Check the platforms the game is available on to save time
+        if "PC" in platforms:
+            store_tasks.append((
+                "steam",
+                get_steam_price(game_title)
+            ))
+
+            store_tasks.append((
+                "epic",
+                get_epic_prices(game_title)
+            ))
+        
+        if "Playstation" in platforms:
+            store_tasks.append((
+                "playstation",
+                get_playstation_prices(browser, game_title)
+            ))
+        
+        if "Xbox" in platforms:
+            store_tasks.append((
+                "xbox",
+                get_xbox_prices(game_title)
+            ))
+        
+        if "Nintendo" in platforms:
+            store_tasks.append((
+                "nintendo",
+                get_nintendo_prices(browser, game_title)
+            ))
+        
+        # Starts the concurrency for each store
+        if store_tasks:
+            tasks = []
+
+            for store, task in store_tasks:
+                tasks.append(task)
+
+            results = await asyncio.gather(*tasks)
+
+            # update game_prices with the current prices
+            for index in range(len(store_tasks)):
+                store = store_tasks[index][0]
+                price = results[index]
+
+                game_prices[store] = price
+
+        # Combine all info for the game
+        return {
+            igdb_id : {
+                **game,
+                "prices": game_prices
             }
-
-            store_tasks = []
-            # Check the platforms the game is available on to save time
-            if "PC" in platforms:
-                store_tasks.append((
-                    "steam",
-                    get_steam_price(game_title)
-                ))
-
-                store_tasks.append((
-                    "epic",
-                    get_epic_prices(game_title)
-                ))
-            
-            if "Playstation" in platforms:
-                store_tasks.append((
-                    "playstation",
-                    get_playstation_prices(browser, game_title)
-                ))
-            
-            if "Xbox" in platforms:
-                store_tasks.append((
-                    "xbox",
-                    get_xbox_prices(game_title)
-                ))
-            
-            if "Nintendo" in platforms:
-                store_tasks.append((
-                    "nintendo",
-                    get_nintendo_prices(browser, game_title)
-                ))
-
-            # Starts the concurrency for each store
-            if store_tasks:
-                tasks = []
-
-                for store, task in store_tasks:
-                    tasks.append(task)
-
-                results = await asyncio.gather(*tasks)
-
-                # update game_prices with the current prices
-                for index in range(len(store_tasks)):
-                    store = store_tasks[index][0]
-                    price = results[index]
-
-                    game_prices[store] = price
-
-            # Combine all info for the game
-            return {
-                igdb_id : {
-                    **game,
-                    "prices": game_prices
-                }
-            }
-
+        }
+        
     # Uses concurrency for each game to grab the price from all stores. Then combines those prices with the games results
     try:
         tasks = []
@@ -139,6 +260,60 @@ async def _create_game_cache(browser, location):
 
     log.info(f"create_game_cache : Successfully grabbed {location} games and prices")
     return results
+
+# Starts the caching process for wishlist and backlog
+async def build_caches(app):
+    try:
+        # These status flags tell the wishlist page to keep requesting until the cache is done when the user is on the wishlist page
+        # Fast is for Steam, Epic, Xbox
+        # Slow is for Playstation and Nintendo because I can only do 5 requests at a time otherwise I will get IP banned for a few minutes
+        app.state.wishlist_cache_fast_done = False
+        app.state.wishlist_cache_slow_done = False
+
+        # Gets all the games located in wislist
+        try:
+            wishlist_games = get_games_from_location("wishlist")
+            if not wishlist_games:
+                log.warning("build_caches : Failed to grab games that are in the wishlist")
+    
+            log.info(f"build_caches: Successfully grabbed games stored in wishlist")
+        except Exception:
+            log.warning(f"build_caches : Failed to grab games that are in wishlist")
+            return None
+        
+        # Creates wishlist fast cache first
+        print("Starting wishlist FAST cache...")
+        app.state.wishlist_cache = await _create_wishlist_fast_cache(wishlist_games)
+
+        app.state.wishlist_cache_fast_done = True
+
+        print("Wishlist FAST cache finished")
+
+        print("Starting wishlist SLOW cache...")
+
+        # Loads Playstation and Nintendo prices and then updates the cache with those values
+        await _update_wishlist_slow_cache(app.state.browser, wishlist_games, app.state.wishlist_cache)
+
+        app.state.wishlist_cache_slow_done = True
+
+        print("Wishlist SLOW cache finished")
+
+        # Start backlog cache
+        print("Starting backlog cache...")
+        app.state.backlog_cache = await _create_game_cache(
+            app.state.browser,
+            "backlog"
+        )
+
+        print("Backlog cache finished!")
+        print("Background cache complete!")
+
+    except asyncio.CancelledError:
+        print("Background cache cancelled")
+        raise
+
+    except Exception:
+        log.exception("Background cache building failed")
 
 # Addes the new game to the cache for faster loading
 def add_to_game_cache(cache, game_info, game_prices):
@@ -191,40 +366,6 @@ def remove_from_game_cache(cache, igdb_id):
     log.info(f"remove_from_game_cache : Successfully removed {igdb_id} from cache")
     return cache
 
-# Starts the caching process for wishlist and backlog
-async def build_caches(app):
-    try:
-        # This status flag tells the wishlist page to keep requesting until the cache is done when the user is on the wishlist page
-        app.state.wishlist_cache_done = False
-
-        # Loads wishlist cache first
-        print("Starting wishlist cache...")
-        app.state.wishlist_cache = await _create_game_cache(
-            app.state.browser,
-            "wishlist"
-        )
-
-        # Let wishlist page know that cache is done
-        app.state.wishlist_cache_done = True
-        print("Wishlist cache finished!")
-
-        # Start backlog cache
-        print("Starting backlog cache...")
-        app.state.backlog_cache = await _create_game_cache(
-            app.state.browser,
-            "backlog"
-        )
-
-        print("Backlog cache finished!")
-        print("Background cache complete!")
-
-    except asyncio.CancelledError:
-        print("Background cache cancelled")
-        raise
-
-    except Exception:
-        log.exception("Background cache building failed")
-
 # This is for testing the caching script by itself
 async def main():
     async with async_playwright() as p:
@@ -236,11 +377,22 @@ async def main():
             ]
         )
 
-        results = await _create_game_cache(browser, "wishlist")
+        app = FastAPI()
 
-        print(results)
+        app.state.browser = browser
+        app.state.wishlist_cache = {}
+        app.state.backlog_cache = {}
+
+        await build_caches(app)
+
+        #print("Wishlist cache:")
+        #print(app.state.wishlist_cache)
+
+        #print("Backlog cache:")
+        #print(app.state.backlog_cache)
 
         await browser.close()
+
 
 if __name__ == "__main__":
     asyncio.run(main())

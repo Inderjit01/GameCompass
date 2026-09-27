@@ -18,6 +18,68 @@
     box-sizing: border-box;
 }
 
+.wishlist_store_widget_title {
+    margin: 20px 30px 0px 30px;
+
+    font-size: 12px;
+}
+
+/* ---------------------------
+    Start of Wishlist Stores 
+------------------------------ */
+.wishlist_stores_layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin: 0px 30px 0px 30px;
+    padding: 6px 12px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    background: #1b2c42;
+
+}
+.wishlist_store_load {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    font-size: 15px;
+
+    color: #FFF;
+}
+.wishlist_store {
+    font-size: 15px;
+
+    align-self: center;
+}
+.wishlist_store_done_loading {
+    font-size: 15px;
+
+    color: #66c0f4;
+}
+.wishlist_store_still_loading {
+    font-size: 13px;
+    
+    align-self: center;
+
+    color: #9dacbc;
+}
+
+/* ------------------------------
+    Counter for displayed games
+--------------------------------- */
+.wishlist_results_count {
+    font-size: 11px;
+
+    margin: 20px 30px 0px 30px;
+
+    color: #9dacbc;
+}
+
 /* ---------------------
     Start of game_cards
 ----------------------- */

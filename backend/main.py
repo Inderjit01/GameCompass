@@ -414,13 +414,15 @@ async def grab_wishlist():
     if not cached_games:
         return {
             "games": [],
-            "cache_done": app.state.wishlist_cache_done
+            "cache_fast_done": app.state.wishlist_cache_fast_done,
+            "cache_slow_done": app.state.wishlist_cache_slow_done
         }
 
     # Formatting for wishlist data
     for igdb_id, values in cached_games.items():
         # price variables
         store = None
+        cheapest_store = None
         always_free = False
         currency = "USD"
         initial_formatted = None
@@ -489,5 +491,6 @@ async def grab_wishlist():
     
     return {
         "games": games,
-        "cache_done": app.state.wishlist_cache_done
+        "cache_fast_done": app.state.wishlist_cache_fast_done,
+        "cache_slow_done": app.state.wishlist_cache_slow_done
     }

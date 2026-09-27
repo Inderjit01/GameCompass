@@ -61,11 +61,6 @@ function Wishlist () {
     const [wishlistResults, setWishlistResults] = useState<WishlistType | null>(null);
     const wishlistGames = wishlistResults?.games;
     
-
-    useEffect(() => {
-        console.log(wishlistGames)
-    }, [wishlistGames])
-
     // reusable script for filtering games from DB
     const {
         filteredResults,
@@ -74,6 +69,12 @@ function Wishlist () {
         filterSearch, setFilterSearch,
     } = useDatabaseFilter(wishlistGames ?? null);
 
+    // Use the flags for wishlistResults to know if a store has finished loading
+    const fastDone = wishlistResults?.cache_fast_done ?? false;
+    const slowDone = wishlistResults?.cache_slow_done ?? false;
+
+    // displays a count for how many games are being shown
+    const gamesCount = filteredResults?.length ?? 0;
 
     {/* -----------------------------------------------------------------------------
         Gets the wishlisted games from the DB along with the prices for those games
@@ -90,8 +91,9 @@ function Wishlist () {
 
                 const data = await response.json();
                 setWishlistResults(data);
-
-                if (data.cache_done) {
+                
+                // Stops the loop when all stores have been grabbed
+                if (data.cache_slow_done) {
                     clearInterval(interval);
                 }
 
@@ -102,7 +104,7 @@ function Wishlist () {
 
         search ();
 
-        interval = setInterval(search, 1000);
+        interval = setInterval(search, 3000);
 
         return () => {
             clearInterval(interval);
@@ -160,7 +162,7 @@ function Wishlist () {
                 noResults={noResults}
             />
 
-            {!wishlistResults?.cache_done ? (
+            {!wishlistResults?.cache_fast_done ? (
                 <video 
                     src={pageLoadingScreen}
                     autoPlay
@@ -170,6 +172,36 @@ function Wishlist () {
                 />
             ) : (
                 <div className="wishlist_body">
+                    
+                    {/* Displays which stores are loading and which stores are done loading */}
+                    <span className="wishlist_store_widget_title">Store Availability:</span>
+                    <div className="wishlist_stores_layout">
+
+                        <div className="wishlist_store_load">
+                            <span className="wishlist_store">Steam:</span>
+                            <span className={fastDone ? "wishlist_store_done_loading" : "wishlist_store_still_loading"}>{fastDone ? "✓ Ready" : "◌ Loading..."}</span>
+                        </div>
+                        <div className="wishlist_store_load">
+                            <span className="wishlist_store">Epic:</span>
+                            <span className={fastDone ? "wishlist_store_done_loading" : "wishlist_store_still_loading"}>{fastDone ? "✓ Ready" : "◌ Loading..."}</span>
+                        </div>
+                        <div className="wishlist_store_load">
+                            <span className="wishlist_store">Xbox:</span>
+                            <span className={fastDone ? "wishlist_store_done_loading" : "wishlist_store_still_loading"}>{fastDone ? "✓ Ready" : "◌ Loading..."}</span>
+                        </div>
+                        <div className="wishlist_store_load">
+                            <span className="wishlist_store">Playstation:</span>
+                            <span className={slowDone ? "wishlist_store_done_loading" : "wishlist_store_still_loading"}>{slowDone ? "✓ Ready" : "◌ Loading..."}</span>
+                        </div>
+                        <div className="wishlist_store_load">
+                            <span className="wishlist_store">Nintendo:</span>
+                            <span className={slowDone ? "wishlist_store_done_loading" : "wishlist_store_still_loading"}>
+                                {slowDone ? "✓ Ready" : "◌ Loading..."}
+                            </span>
+                        </div>
+                        
+                    </div> {/* End of wishlist_stores_layout */}
+
                     {/* Allows the user to filter their list of games */}
                     <DatabaseFilter
                         filterSearch={filterSearch}
@@ -180,6 +212,9 @@ function Wishlist () {
                         setFilterOrder={setFilterOrder}
                         filterOptions={wishlistFilterOptions}
                     />
+
+                    <span className="wishlist_results_count">{gamesCount} GAMES</span>
+
                     {/* The format for the game cards */}
                     <ul className="wishlist_game_cards_layout">
                         {/* filterResults is the user games after applying the filters from DatabaseFilter */}
