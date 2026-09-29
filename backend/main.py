@@ -6,7 +6,7 @@ from copy import deepcopy
 import asyncio
 
 from database.init_db import initialize_database
-from database.database_controller import format_data, add_to_library, remove_from_library, get_library_location, get_games_from_location, update_favorite_status, get_one_game
+from database.database_controller import format_data, add_to_library, remove_from_library, get_library_location, get_games_from_location, update_favorite_status, get_one_game, update_finished_story_status, update_user_score_db
 
 from caching import build_caches, add_to_game_cache, remove_from_game_cache
 
@@ -20,7 +20,7 @@ from api.xbox import get_xbox_prices
 from scrapers.playstation import get_playstation_prices
 from scrapers.nintendo import get_nintendo_prices
 
-from models.library import LibraryRequestAdd, LibraryRequestRemove, LibraryRequestUpdateFavorite
+from models.library import LibraryRequestAdd, LibraryRequestRemove, LibraryRequestUpdateFavorite, LibraryRequestUpdateFinishedStory, LibraryRequestUpdateUserScore
 
 from utilities.logging_config import create_log
 
@@ -377,6 +377,50 @@ async def update_favorite(igdb_id, favorite_data: LibraryRequestUpdateFavorite):
         "success": True
     }
 
+@app.post("/library/update_finished_story/{igdb_id}")
+async def update_finished_story(igdb_id, finished_story_data: LibraryRequestUpdateFinishedStory):
+    if not igdb_id or finished_story_data is None:
+        log.warning(f"/library/update_finished_story/{igdb_id} : status_code: 400, Missing igdb_id or finished_story status")
+        raise HTTPException(
+            status_code=400,
+            detail="Missing igdb_id or finished_story status"
+        )
+
+    try:
+        update_finished_story_status(igdb_id, finished_story_data.finished_story)
+    except Exception:
+        log.warning(f"/library/update_finished_story : status_code: 500, Failed to update favorite status in database")
+        raise HTTPException(
+            status_code=500,
+            detail="Failed to update favorite status in database"
+        )
+
+    return {
+        "success": True
+    }
+
+@app.post("/library/update_user_score/{igdb_id}")
+async def update_user_score(igdb_id, user_score_data: LibraryRequestUpdateUserScore):
+    if not igdb_id or user_score_data is None:
+        log.warning(f"/library/update_user_score/{igdb_id} : status_code: 400, Missing igdb_id or user_score")
+        raise HTTPException(
+            status_code=400,
+            detail="Missing igdb_id or user_score"
+        )
+
+    try:
+        update_user_score_db(igdb_id, user_score_data.user_score)
+    except Exception:
+        log.warning(f"/library/update_user_score : status_code: 500, Failed to update user_score in database")
+        raise HTTPException(
+            status_code=500,
+            detail="Failed to update user_score in database"
+        )
+
+    return {
+        "success": True
+    }
+
 # Checks if the game is already in the DB. If so return the location (backlog, wishlist, or completed)
 @app.get("/library/location/{igdb_id}")
 async def grab_game_location(igdb_id):
@@ -494,3 +538,12 @@ async def grab_wishlist():
         "cache_fast_done": app.state.wishlist_cache_fast_done,
         "cache_slow_done": app.state.wishlist_cache_slow_done
     }
+
+@app.get("/completed")
+async def grab_completed():
+    games = get_games_from_location("completed")
+    if not games:
+        log.warning("/completed : status_code: 404, Failed to grab games that are in the completed")
+
+    log.info("/completed: Successfully grabbed games stored to completed")
+    return games

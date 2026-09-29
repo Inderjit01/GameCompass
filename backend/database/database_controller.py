@@ -2,6 +2,7 @@ import sqlite3
 from pathlib import Path
 import json
 from fastapi import HTTPException
+from datetime import date
 
 from utilities.pathing import grab_db_path
 from utilities.logging_config import create_log
@@ -30,10 +31,9 @@ USER_GAMES_COLUMNS = [
     "library_status",
     "favorite",
     "user_score",
-    "hours_played",
+    "finished_story",
     "added_date",
-    "completed_date",
-    "notes"
+    "completed_date"
 ]
 
 log = create_log("db_controller")
@@ -139,12 +139,14 @@ def _insert_db(cur, formatted_data):
 
     cur.execute('''
         INSERT INTO user_games (
-            igdb_id, library_status
+            igdb_id, library_status, finished_story, completed_date
         ) 
-        VALUES (?, ?)
+        VALUES (?, ?, ?, ?)
     ''', (
             formatted_data["igdb_id"], 
-            formatted_data["library_status"]
+            formatted_data["library_status"],
+            formatted_data["finished_story"],
+            formatted_data["completed_date"],
         )
     )
 
@@ -362,6 +364,62 @@ def update_favorite_status(igdb_id, favorite):
     finally:
         cur.close()
         conn.close()
+
+# Updates finished story status when user clicks on it in completed page
+def update_finished_story_status(igdb_id, finished_story):
+    if not igdb_id or finished_story is None:
+        return
+
+    conn, cur = _create_connection()
+
+    try:
+        formatted_data = {
+            "igdb_id": igdb_id,
+            "finished_story": int(finished_story)
+        }
+
+        _update_db(cur, "user_games", USER_GAMES_COLUMNS, formatted_data)
+
+        conn.commit()
+
+    except Exception:
+        conn.rollback()
+        log.exception(f"update_finished_story_status: status_code: 404, Failed to update finished_story status for: {igdb_id}")
+        raise HTTPException(
+            status_code= 404,
+            detail=f"Failed to update finished_story status for: {igdb_id}"
+        )
+    finally:
+        cur.close()
+        conn.close()
+
+# Updates finished story status when user clicks on it in completed page
+def update_user_score_db(igdb_id, user_score):
+    if not igdb_id or user_score is None:
+        return
+
+    conn, cur = _create_connection()
+
+    try:
+        formatted_data = {
+            "igdb_id": igdb_id,
+            "user_score": int(user_score)
+        }
+
+        _update_db(cur, "user_games", USER_GAMES_COLUMNS, formatted_data)
+
+        conn.commit()
+
+    except Exception:
+        conn.rollback()
+        log.exception(f"update_user_score_db: status_code: 404, Failed to update user_score for: {igdb_id}")
+        raise HTTPException(
+            status_code= 404,
+            detail=f"Failed to update user_score for: {igdb_id}"
+        )
+    finally:
+        cur.close()
+        conn.close()
     
 # Extracting and formatting the data that will be stored in the database
 def format_data(status, game_data):
@@ -424,6 +482,15 @@ def format_data(status, game_data):
 
     # user_games table data
     formatted_data["library_status"] = status
+
+    if status == "completed":
+        current_date = date.today().strftime("%Y-%m-%d")
+        formatted_data["completed_date"] = current_date
+
+        formatted_data["finished_story"] = 1
+    else:
+        formatted_data["completed_date"] = None
+        formatted_data["finished_story"] = 0
 
     return formatted_data
         

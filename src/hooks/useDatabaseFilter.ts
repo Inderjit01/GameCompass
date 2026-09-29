@@ -92,6 +92,26 @@ function useDatabaseFilter(databaseGames: databaseTypes[] | WishlistGameInfo[] |
                 new Date(a.added_date).getTime() - new Date(b.added_date).getTime()
             );
         }
+        // This section is for completed categories
+        else if (filterCategories == "user_score") {
+            games.sort((a, b) => {
+                return (a.user_score ?? 0) - (b.user_score ?? 0);
+            });
+        }
+        else if (filterCategories === "finished_story") {
+            games = games.filter(game => game.finished_story === 1);
+        }
+        else if (filterCategories === "story_unfinished") {
+            games = games.filter(game => game.finished_story === 0);
+        }
+        else if (filterCategories === "completed_date") {
+            games.sort((a, b) => {
+                if (a.completed_date === null) return 1;
+                if (b.completed_date === null) return -1;
+
+                return new Date(a.completed_date).getTime() - new Date(b.completed_date).getTime();
+            });
+        }
         // This section is for wishlist categories
         else if (filterCategories == "price"){
             games.sort((a, b) => {

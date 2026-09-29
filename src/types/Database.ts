@@ -16,5 +16,8 @@ export interface databaseTypes {
     
     library_status: "backlog" | "playing" | "completed";
     favorite: boolean;
+    user_score: number | null;
+    finished_story: number;
     added_date: string;
+    completed_date: string | null;
 }

@@ -34,11 +34,10 @@ def initialize_database():
             igdb_id INTEGER UNIQUE NOT NULL,
             library_status TEXT NOT NULL,
             favorite INTEGER DEFAULT 0,
-            user_score TEXT,
-            hours_played REAL,
+            user_score INTEGER,
+            finished_story INTEGER DEFAULT 0,
             added_date TEXT DEFAULT CURRENT_TIMESTAMP,
             completed_date TEXT,
-            notes TEXT,
 
             FOREIGN KEY (igdb_id) REFERENCES games(igdb_id)
         )

@@ -10,3 +10,9 @@ class LibraryRequestRemove(BaseModel):
 
 class LibraryRequestUpdateFavorite(BaseModel):
     favorite: bool
+
+class LibraryRequestUpdateFinishedStory(BaseModel):
+    finished_story: bool
+
+class LibraryRequestUpdateUserScore(BaseModel):
+    user_score: int

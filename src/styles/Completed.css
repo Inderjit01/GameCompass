@@ -1,0 +1,310 @@
+.completed_page {
+    min-height: 100vh; 
+    background: #0f1924;
+}
+
+.completed_body {
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: border-box;
+}
+
+/* ------------------------------
+    Counter for displayed games
+--------------------------------- */
+.completed_results_count {
+    font-size: 11px;
+
+    margin: 20px 30px 0px 30px;
+
+    color: #9dacbc;
+}
+
+/* ---------------------
+    Start of game_cards
+----------------------- */
+.completed_game_cards_layout {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0px 30px;
+}
+.completed_game_card {
+    display: flex;
+    flex-direction: column;
+
+    height: 180px;
+
+    margin-bottom: 14px;
+    
+    font-family: Motiva Sans, Motiva Sans fallback, sans-serif;
+    font-weight: 200;
+
+    color: #9dacbc;
+    background: linear-gradient(340deg, #19293d 10%, #1b354b 50%, #21334a 80%, #1b2c42 95%);
+    border: 1px solid #ffffff05;
+    box-shadow: 0 0 12px #0003;
+
+    box-sizing: border-box;
+}
+
+.completed_game_card_top {
+    display: flex;
+    flex-direction: row;
+
+    height: 160px;
+    
+    padding: 12px 12px 0px 0px;
+
+    gap: 2px 12px;
+        
+    font-family: Motiva Sans, Motiva Sans fallback, sans-serif;
+    font-weight: 200;
+
+    box-sizing: border-box;
+}
+
+/* --------------------
+    Left side of card 
+-----------------------*/
+.completed_game_card_left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-right: 1px solid #0003;
+}
+.completed_game_card_left span {
+    width: 22px;
+
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+
+    text-align: center;
+
+    margin-top: auto;
+
+    font-size: 11px;
+
+    color: #b9bfc6;
+    background-color: #0000;
+}
+.completed_game_card_left img {
+    width: 20px;
+    height: 20px;
+
+    padding: 0px 12px;
+
+    cursor: pointer;
+}
+
+/* --------------------
+    Middle left of the card
+--------------------*/
+.completed_game_card_cover_art img{
+    aspect-ratio: 460 / 215;
+    width: 280px;
+    max-height: 160px;
+
+    display: block;
+
+    align-self: center;
+    position: relative;
+
+    cursor: pointer;
+}
+
+/* --------------------
+    Middle right of the card
+--------------------*/
+.completed_game_card_middle {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    min-width: 0;
+    flex: 1;
+}
+.completed_game_card_title_and_platforms {
+    display: flex;
+    flex-direction: column;
+}
+.completed_game_card_title {
+    min-width: 0;
+
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.3;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    color: #fff;
+
+    cursor: pointer;
+}
+.completed_game_card_platforms {
+    min-width: 0px;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    color: #9dacbc;
+}
+.completed_game_card_release_date_and_score_layout {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+
+    font-size: 11px;
+
+    color: #9dacbc;
+}
+.completed_game_card_release_date {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.completed_game_card_release_date_result {
+    white-space: nowrap;
+    overflow: hidden;
+
+    color: #FFF;
+}
+.completed_game_card_review_score {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.completed_game_card_review_score_result_red {
+    white-space: nowrap;
+    overflow: hidden;
+
+    color: #c85e2d;
+}
+.completed_game_card_review_score_result_yellow {
+    white-space: nowrap;
+    overflow: hidden;
+
+    color: #b9a074;
+}
+.completed_game_card_review_score_result_blue {
+    white-space: nowrap;
+    overflow: hidden;
+
+    color: #66c0f4;
+}
+.completed_game_card_hltb {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 150px max-content;
+    gap: 4px;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+    overflow: hidden;
+}
+.completed_game_card_hltb_result {
+    color: #66c0f4;
+}
+
+/* --------------
+    Right of game card
+---------------*/
+.completed_game_card_right {
+    font-size: 11px;
+
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* ---------------------
+    Bottom of game_card
+------------------------ */
+.completed_game_card_bottom {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+
+    width: 100%;
+    height: 30px;
+
+    font-weight: 200;
+    font-size: 13px;
+
+    color: #9dacbc;
+    background:#162335;
+    border: 1px solid #ffffff05;
+    box-shadow: 0 0 12px #0003;
+
+    box-sizing: border-box;
+}
+.completed_user_score_container {
+    position: relative;
+
+    align-self: center;
+}
+.completed_user_score {
+
+    cursor: pointer;
+}
+.completed_user_score_color {
+    font-weight: bold;
+
+    color: #FFF;
+}
+.completed_user_score_widget {
+    position: absolute;
+
+    top: calc(100% + 0px);
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+    margin: 0;
+    padding: 9px;
+
+    list-style: none;
+
+    z-index: 10;
+
+    background: #162335;
+    border: 1px solid #ffffff05;
+    box-shadow: 0 0 12px #0003;
+}
+.completed_user_score_widget li{
+    font-weight: bold;
+
+    color: #FFF;
+
+    cursor: pointer;
+}
+.completed_finished_story {
+    align-self: center;
+
+    cursor: pointer;
+}
+.completed_finished_story_color {
+    font-weight: bold;
+
+    color: #FFF;
+}
+.completed_completed_date {
+    align-self: center;
+}
+.completed_completed_date_color {
+    font-weight: bold;
+
+    color: #66c0f4;
+}

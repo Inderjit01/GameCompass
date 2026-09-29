@@ -162,80 +162,80 @@ async def _create_game_cache(browser, location):
     # concurrency to grab the price of the game from each store simultaneously
     async def _get_prices(browser, game):
         # semaphore is the limit for concurrency
-        #async with semaphore:
-        if not game:
-            return None
+        async with slow_semaphore:
+            if not game:
+                return None
 
-        igdb_id = game.get("igdb_id", None)
-        game_title = game.get("game_title", None)
-        platforms = game.get("platforms", None)
+            igdb_id = game.get("igdb_id", None)
+            game_title = game.get("game_title", None)
+            platforms = game.get("platforms", None)
 
-        if not igdb_id or not game_title or not platforms or platforms == "":
-            return None
+            if not igdb_id or not game_title or not platforms or platforms == "":
+                return None
 
-        # default values
-        game_prices = {
-            "steam": None,
-            "epic": None,
-            "playstation": None,
-            "xbox": None,
-            "nintendo": None
-        }
-
-        store_tasks = []
-        # Check the platforms the game is available on to save time
-        if "PC" in platforms:
-            store_tasks.append((
-                "steam",
-                get_steam_price(game_title)
-            ))
-
-            store_tasks.append((
-                "epic",
-                get_epic_prices(game_title)
-            ))
-        
-        if "Playstation" in platforms:
-            store_tasks.append((
-                "playstation",
-                get_playstation_prices(browser, game_title)
-            ))
-        
-        if "Xbox" in platforms:
-            store_tasks.append((
-                "xbox",
-                get_xbox_prices(game_title)
-            ))
-        
-        if "Nintendo" in platforms:
-            store_tasks.append((
-                "nintendo",
-                get_nintendo_prices(browser, game_title)
-            ))
-        
-        # Starts the concurrency for each store
-        if store_tasks:
-            tasks = []
-
-            for store, task in store_tasks:
-                tasks.append(task)
-
-            results = await asyncio.gather(*tasks)
-
-            # update game_prices with the current prices
-            for index in range(len(store_tasks)):
-                store = store_tasks[index][0]
-                price = results[index]
-
-                game_prices[store] = price
-
-        # Combine all info for the game
-        return {
-            igdb_id : {
-                **game,
-                "prices": game_prices
+            # default values
+            game_prices = {
+                "steam": None,
+                "epic": None,
+                "playstation": None,
+                "xbox": None,
+                "nintendo": None
             }
-        }
+
+            store_tasks = []
+            # Check the platforms the game is available on to save time
+            if "PC" in platforms:
+                store_tasks.append((
+                    "steam",
+                    get_steam_price(game_title)
+                ))
+
+                store_tasks.append((
+                    "epic",
+                    get_epic_prices(game_title)
+                ))
+            
+            if "Playstation" in platforms:
+                store_tasks.append((
+                    "playstation",
+                    get_playstation_prices(browser, game_title)
+                ))
+            
+            if "Xbox" in platforms:
+                store_tasks.append((
+                    "xbox",
+                    get_xbox_prices(game_title)
+                ))
+            
+            if "Nintendo" in platforms:
+                store_tasks.append((
+                    "nintendo",
+                    get_nintendo_prices(browser, game_title)
+                ))
+            
+            # Starts the concurrency for each store
+            if store_tasks:
+                tasks = []
+
+                for store, task in store_tasks:
+                    tasks.append(task)
+
+                results = await asyncio.gather(*tasks)
+
+                # update game_prices with the current prices
+                for index in range(len(store_tasks)):
+                    store = store_tasks[index][0]
+                    price = results[index]
+
+                    game_prices[store] = price
+
+            # Combine all info for the game
+            return {
+                igdb_id : {
+                    **game,
+                    "prices": game_prices
+                }
+            }
         
     # Uses concurrency for each game to grab the price from all stores. Then combines those prices with the games results
     try:

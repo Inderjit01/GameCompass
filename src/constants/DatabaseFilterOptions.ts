@@ -21,4 +21,8 @@ export const wishlistFilterOptions: FilterOption[] = [
 
 export const completedFilterOptions: FilterOption[] = [
     ...baseFilterOptions,
+    { value: "user_score", label: "Your Score"},
+    { value: "finished_story", label: "Finished Story"},
+    { value: "story_unfinished", label: "Story Unfinished"},
+    { value: "completed_date", label: "Completed Date"}
 ];

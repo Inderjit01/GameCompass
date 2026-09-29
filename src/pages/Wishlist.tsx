@@ -179,24 +179,32 @@ function Wishlist () {
 
                         <div className="wishlist_store_load">
                             <span className="wishlist_store">Steam:</span>
-                            <span className={fastDone ? "wishlist_store_done_loading" : "wishlist_store_still_loading"}>{fastDone ? "✓ Ready" : "◌ Loading..."}</span>
+                            <span className={fastDone ? "wishlist_store_done_loading" : "wishlist_store_still_loading"}>
+                                {fastDone ? "✓ Ready" : "Loading..."}
+                            </span>
                         </div>
                         <div className="wishlist_store_load">
                             <span className="wishlist_store">Epic:</span>
-                            <span className={fastDone ? "wishlist_store_done_loading" : "wishlist_store_still_loading"}>{fastDone ? "✓ Ready" : "◌ Loading..."}</span>
+                            <span className={fastDone ? "wishlist_store_done_loading" : "wishlist_store_still_loading"}>
+                                {fastDone ? "✓ Ready" : "Loading..."}
+                            </span>
                         </div>
                         <div className="wishlist_store_load">
                             <span className="wishlist_store">Xbox:</span>
-                            <span className={fastDone ? "wishlist_store_done_loading" : "wishlist_store_still_loading"}>{fastDone ? "✓ Ready" : "◌ Loading..."}</span>
+                            <span className={fastDone ? "wishlist_store_done_loading" : "wishlist_store_still_loading"}>
+                                {fastDone ? "✓ Ready" : "Loading..."}
+                            </span>
                         </div>
                         <div className="wishlist_store_load">
                             <span className="wishlist_store">Playstation:</span>
-                            <span className={slowDone ? "wishlist_store_done_loading" : "wishlist_store_still_loading"}>{slowDone ? "✓ Ready" : "◌ Loading..."}</span>
+                            <span className={slowDone ? "wishlist_store_done_loading" : "wishlist_store_still_loading"}>
+                                {slowDone ? "✓ Ready" : "Loading..."}
+                            </span>
                         </div>
                         <div className="wishlist_store_load">
                             <span className="wishlist_store">Nintendo:</span>
                             <span className={slowDone ? "wishlist_store_done_loading" : "wishlist_store_still_loading"}>
-                                {slowDone ? "✓ Ready" : "◌ Loading..."}
+                                {slowDone ? "✓ Ready" : "Loading..."}
                             </span>
                         </div>
                         

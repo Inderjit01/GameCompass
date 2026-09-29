@@ -106,10 +106,11 @@ async def get_nintendo_prices(browser, game_title):
         game_title_location = game_location.locator("h3")
         if await game_title_location.count() > 0:
             nintendo_game = await game_title_location.inner_text(timeout=5000)
+            nintendo_game = nintendo_game.casefold().replace("™", "").replace(":", "").replace("Nintendo Switch 2", "").replace("Nintendo Switch", "")
 
-            score = fuzz.WRatio(game_title.casefold(), nintendo_game.casefold())
+            score = fuzz.WRatio(game_title.casefold().replace("™", "").replace(":", ""), nintendo_game)
             if score < 90:
-                log.warning(f"get_nintendo_prices : The games did not have a good matching score: {score}, game_title: {game_title}, playstation_title: {nintendo_game}")
+                log.warning(f"get_nintendo_prices : The games did not have a good matching score: {score}, game_title: {game_title}, nintendo_title: {nintendo_game}")
                 return None
 
         # Update price_info with all the info of the first game from the playstation store
@@ -127,6 +128,7 @@ async def get_nintendo_prices(browser, game_title):
     finally:
         await page.close()
 
+    log.info(f"get_nintendo_prices : Successfully grapped price for {game_title}")
     return price_info
 
 # This is for testing the playstation store script by itself
@@ -140,7 +142,7 @@ async def main():
             ]
         )
 
-        results = await get_nintendo_prices(browser, "Mario Kart 8 Deluxe")
+        results = await get_nintendo_prices(browser, "Borderlands 4")
 
         print(results)
 
