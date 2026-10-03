@@ -1,16 +1,16 @@
 import os, requests, json, sys, asyncio
 from dotenv import load_dotenv
 from rapidfuzz import process, fuzz
+from pathlib import Path
 
 # Need sys.path.append if running file independently
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# This is to allow the script to use utilities
+if not getattr(sys, 'frozen', False):
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utilities.logging_config import create_log, api_errors
 
 log = create_log("steam")
 
-load_dotenv()
-
-STEAM_KEY = os.getenv("STEAM_API_KEY")
 STEAM_ID_URL = "https://store.steampowered.com/api/storesearch/"
 STEAM_GAME_INFO_URL = "https://store.steampowered.com/api/appdetails/"
 STEAM_GAME_REVIEWS_URL = "https://store.steampowered.com/appreviews/"
@@ -70,6 +70,7 @@ def _find_steam_id(game_title):
     if matches and matches[0][1] >= 90:
         game_name = matches[0][0] 
     else: 
+        log.warning(f"_find_steam_id : {game_title} failed similarity test")
         return None
 
     steam_id = normalized_titles_to_id_map.get(game_name, None)

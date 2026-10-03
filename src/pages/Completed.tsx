@@ -45,6 +45,10 @@ function Completed() {
         if (!completedResults) {
             const search = async () => {
                 const response = await fetch(`http://127.0.0.1:8000/completed`);
+                if (!response.ok) {
+                    throw new Error("Failed to grab completedResults");
+                }
+                
                 const data = await response.json();
 
                 setCompletedResults(data);

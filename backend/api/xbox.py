@@ -1,13 +1,21 @@
 import os, sys, requests, asyncio
 from dotenv import load_dotenv
+from pathlib import Path
 
 # Need sys.path.append if running file independently
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# This is to allow the script to use utilities
+if not getattr(sys, 'frozen', False):   
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utilities.logging_config import create_log, api_errors
+from utilities.pathing import grab_env_path
 
 log = create_log("xbox")
 
-load_dotenv() 
+# Get the .env location for api keys
+base_path = grab_env_path()
+env_path = base_path / "api" / ".env"
+
+load_dotenv(dotenv_path=env_path) 
 
 ISTHEREANYDEAL_KEY = os.getenv("ISTHEREANYDEAL_API_KEY")
 BASE_URL = "https://api.isthereanydeal.com/lookup/id/title/v1"
@@ -79,6 +87,7 @@ async def get_xbox_prices(game_title, country="US"):
     # Checks the price of the game
     prices_data = prices_request.json()
     if not prices_data or not isinstance(prices_data, list):
+        log.warning(f"get_xbox_prices : prices_data is empty for {game_title}")
         return None
     
     game_prices = prices_data[0].get("deals", [])
@@ -103,6 +112,7 @@ async def get_xbox_prices(game_title, country="US"):
         price_info["final_formatted"] =  "$" + str(price_amount)
         price_info["discount_percent"] = cut
     else:
+        log.warning(f"get_xbox_prices: {game_title} does not exist on XBOX or could not find game on XBOX")
         return None
     
     # Checks if the game is on game pass
@@ -114,7 +124,11 @@ async def get_xbox_prices(game_title, country="US"):
         if game_pass:
             price_info["game_pass"] = True
 
-    log.info(f"/get_xbox_prices : Successfully grabbed Xbox prices for {game_title}")
+    log.info(f"get_xbox_prices : Successfully grabbed Xbox prices for {game_title}")
     return price_info
 
-#print(asyncio.run(get_xbox_prices("Hell Let Loose")))
+def main():
+    print(asyncio.run(get_xbox_prices("Hell Let Loose")))
+
+if __name__ == "__main__":
+    main()

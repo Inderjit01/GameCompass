@@ -39,8 +39,13 @@ def api_errors(e, log, name, game_name):
     elif isinstance(e, requests.exceptions.HTTPError):
         status_code = e.response.status_code if e.response else "Unknown"
         log.warning(
-            f"{name} API returned HTTP error {status_code} searching for game: {game_name}"
+            f"{name} API returned HTTP error {status_code} "
+            f"searching for game: {game_name}. "
+            f"Exception: {e}"
         )
+
+        if e.response is not None:
+            log.warning(f"Response body: {e.response.text}")
 
     elif isinstance(e, requests.exceptions.RequestException):
         log.warning(

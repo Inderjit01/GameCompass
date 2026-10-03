@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from playwright.async_api import async_playwright
 from copy import deepcopy
-import asyncio
+import asyncio, os, time, threading, logging
 
 from database.init_db import initialize_database
 from database.database_controller import format_data, add_to_library, remove_from_library, get_library_location, get_games_from_location, update_favorite_status, get_one_game, update_finished_story_status, update_user_score_db
@@ -30,7 +30,6 @@ log = create_log("FastAPI")
 Asynccontextmanager: feature that allows lifespan yield two split what
     runs at startup and when the app exits
 """
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Start the browser page for scrapping playstation and nintendo
@@ -49,15 +48,18 @@ async def lifespan(app: FastAPI):
 
     initialize_database() # creates/checks the database 
 
+    # shortcut for wishlist and backlog games
     app.state.wishlist_cache = {}
     app.state.backlog_cache = {}
 
+    # builds cache for backlog and wishlist
     app.state.cache_task = asyncio.create_task(
         build_caches(app)
     )
 
     yield
 
+    # closes the webpage for scrapping playstation and nintendo
     await browser.close()
     await playwright.stop()
 
@@ -66,16 +68,40 @@ app = FastAPI(lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:1420",
+        "http://localhost:1420",        # Development URL
+        "http://tauri.localhost",       # Production URL (Windows & Linux)
+        "tauri://localhost",            # Production URL (macos)
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )    
 
+# Lets tauri know when backend is ready which is switch splash screen to main screen
 @app.get("/health")
 async def health():
     return {"status": "ready"}
+
+# Kills backend.exe
+@app.get("/shutdown")
+async def shutdown_backend():
+    print("Shutdown endpoint hit! Stopping server process...")
+
+    def force_kill():
+        # Give the server 500 milliseconds to send the final HTTP response back to Rust,
+        # then cleanly exit the root process.
+        time.sleep(0.5)
+
+        # close all logs
+        logging.shutdown()
+
+        print("Forcing exit...")
+        os._exit(0)
+
+    # Start the fallback thread so it doesn't block the HTTP response
+    threading.Thread(target=force_kill, daemon=True).start()
+    
+    return {"status": "Shutting down gracefully..."}
 
 # Will get the most similar games. Then user can add to backlog, wishlist, or completed
 @app.get("/search")
@@ -144,7 +170,7 @@ async def get_game(igdb_id: int):
             nintendo_price = prices.get("nintendo")
 
             steam_results, _ = await get_steam_info(igdb_game_title)
-            hltb_results = await get_hltb_info(igdb_game_title)
+            hltb_results = get_hltb_info(igdb_game_title)
 
         else:
             igdb_platforms = igdb_results.get("platforms", None)
@@ -174,7 +200,7 @@ async def get_game(igdb_id: int):
                     browser = app.state.browser
                     tasks["nintendo"] = get_nintendo_prices(browser, igdb_game_title)      
             # HLTB API took 2 seconds
-            tasks["hltb"] = get_hltb_info(igdb_game_title)
+            tasks["hltb"] = asyncio.to_thread(get_hltb_info, igdb_game_title)
             
             # store all tasks results in here with task type as key and values as results
             results = {}
@@ -542,6 +568,7 @@ async def grab_wishlist():
 @app.get("/completed")
 async def grab_completed():
     games = get_games_from_location("completed")
+    log.info(f"/completed: This is completed games: {games}")
     if not games:
         log.warning("/completed : status_code: 404, Failed to grab games that are in the completed")
 

@@ -13,13 +13,14 @@
     "windows": [
       {
         "label": "main",
-        "title": "gamecompass",
+        "title": "GameCompass",
         "width": 880,
-		"minWidth": 440,
+		    "minWidth": 440,
         "height": 600,
-		"minHeight": 300,
+		    "minHeight": 300,
         "center": true,
-        "visible": false
+        "visible": false,
+        "devtools": true
       },
       {
         "label": "splashscreen",
@@ -45,6 +46,9 @@
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
+    ],
+    "externalBin": [
+      "../backend/backend"
     ]
   }
 }

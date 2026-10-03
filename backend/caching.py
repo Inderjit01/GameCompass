@@ -1,6 +1,5 @@
 import sys, os, asyncio, time
 from playwright.async_api import async_playwright
-import threading
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 

@@ -5,3 +5,4 @@ howlongtobeatpy
 playwright
 
 cargo add reqwest --features json
+npm run tauri add shell

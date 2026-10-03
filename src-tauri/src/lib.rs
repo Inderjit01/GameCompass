@@ -1,7 +1,14 @@
 use std::sync::Mutex;
-use std::process::Command;
 use tauri::{Manager, State};
 use tokio::time::{sleep, Duration};
+
+// for development mode
+#[cfg(debug_assertions)]
+use std::process::Command;
+
+// for backend.exe
+#[cfg(not(debug_assertions))]
+use tauri_plugin_shell::ShellExt;
 
 struct SetupState {
     frontend_complete: bool,
@@ -44,12 +51,6 @@ fn set_complete(
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
-    // runs FastAPI server
-    Command::new("python")
-        .arg("../backend/server.py")
-        .spawn()
-        .expect("Failed to start Python backend");
-
     tauri::Builder::default()
         .manage(Mutex::new(SetupState {
             frontend_complete: false,
@@ -66,8 +67,37 @@ pub fn run() {
 
             main.hide()?;
 
+            // ==========================================
+            // Start backend
+            // ==========================================
+            
+            #[cfg(debug_assertions)]
+            {
+                println!("Starting PYTHON backend from /backend/server.py ...");
 
-            // Fake backend setup
+                Command::new("python")
+                    .arg("../backend/server.py")
+                    .spawn()
+                    .expect("Failed to start Python backend");
+            }
+            
+            #[cfg(not(debug_assertions))]
+            {
+                println!("Starting PACKAGE backend from backend/backend.exe ...");
+
+                let (_rx, child) = app
+                    .shell()
+                    .sidecar("backend")
+                    .expect("Failed to create backend sidecar")
+                    .spawn()
+                    .expect("Failed to start backend sidecar");
+
+                println!("Packaged backend process started: {:?}", child);
+            }
+
+            // ==========================================
+            // Wait for backend
+            // ==========================================
             tauri::async_runtime::spawn(async move {
 
                 println!("Waiting for backend...");
@@ -85,11 +115,19 @@ pub fn run() {
                             break;
                         }
 
-                        _ => {
-                            println!("Backend not ready...");
-                            sleep(Duration::from_millis(250)).await;
+                        Ok(response) => {
+                            println!(
+                                "Backend responded with status: {}",
+                                response.status()
+                            );
+                        }
+
+                        Err(error) => {
+                            println!("Backend not ready: {}", error);
                         }
                     }
+
+                    sleep(Duration::from_millis(250)).await;
                 }
 
                 set_complete(
@@ -101,10 +139,25 @@ pub fn run() {
 
             Ok(())
         })
+        .plugin(tauri_plugin_shell::init())
         .plugin(tauri_plugin_opener::init())
         .invoke_handler(tauri::generate_handler![
             set_complete
         ])
-        .run(tauri::generate_context!())
-        .expect("error while running tauri application");
+
+        .build(tauri::generate_context!())
+        .expect("error while building tauri application")
+        // Call .run() here, which passes the app handle and event directly
+        .run(|_app_handle, event| {
+            if let tauri::RunEvent::Exit = event {
+                println!("Application exiting. Shutting down backend sidecar...");
+                
+                // Fire a blocking GET request to shutdown backend.exe
+                let _ = reqwest::blocking::Client::new()
+                    .get("http://127.0.0.1:8000/shutdown")
+                    .timeout(std::time::Duration::from_secs(2))
+                    .send();
+            }
+        });
+
 }

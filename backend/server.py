@@ -1,5 +1,15 @@
+import os
+import sys
+
+if getattr(sys, "frozen", False):
+    os.environ["PLAYWRIGHT_BROWSERS_PATH"] = os.path.join(
+        sys._MEIPASS,
+        "ms-playwright"
+    )
+
 import uvicorn
 from main import app
+
 
 if __name__ == "__main__":
     uvicorn.run(

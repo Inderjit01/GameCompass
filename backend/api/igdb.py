@@ -2,14 +2,22 @@ import os, requests, sys, json
 from dotenv import load_dotenv
 from rapidfuzz import process, fuzz
 from datetime import datetime
+from pathlib import Path
 
 # Need sys.path.append if running file independently
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# This is to allow the script to use utilities
+if not getattr(sys, 'frozen', False):
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from utilities.logging_config import create_log, api_errors
+from utilities.pathing import grab_env_path
 
 log = create_log("igdb")
 
-load_dotenv()
+base_path = grab_env_path()
+env_path = base_path / "api" / ".env"
+
+load_dotenv(dotenv_path=env_path)
 
 IGDB_TOKEN_URL = "https://id.twitch.tv/oauth2/token"
 IGDB_URL = "https://api.igdb.com/v4/games"
@@ -164,6 +172,7 @@ def _get_oauth_token(game):
 def _search_multiple_games(game_title, limit):
     access_token = _get_oauth_token(game_title)
     if not access_token:
+        log.warning(f"_get_oauth_token : Failed to get oauth_token which is my twitch account authentification")
         return None
 
     # Authentication header with my account
@@ -204,6 +213,7 @@ def _search_multiple_games(game_title, limit):
 def _search_one_game(igdb_id):
     access_token = _get_oauth_token(igdb_id)
     if not access_token:
+        log.warning(f"_get_oauth_token : Failed to get oauth_token which is my twitch account authentification")
         return None
 
     # Authentication header with my account
@@ -247,6 +257,7 @@ def _search_one_game(igdb_id):
 def igdb_find_similar_titles(game_title, limit):
     games = _search_multiple_games(game_title, limit)
     if not games:
+        log.warning(f"igdb_find_similar_titles : No games had a similar title for {game_title}")
         return None
 
     titles = []
@@ -291,12 +302,15 @@ def igdb_find_similar_titles(game_title, limit):
             "screenshots": screenshots
         })
 
+    log.info(f"igdb_find_similar_titles : Successfully found similar title for {game_title}")    
+
     return res
 
 # Get all the JSON data to the frontend for displaying individual game pages
 def igdb_individual_game_info(igdb_id):
     game = _search_one_game(igdb_id)
     if not game:
+        log.warning(f"igdb_individual_game_info : No game was found for {igdb_id}")
         return None
 
     game = game[0]
@@ -338,6 +352,8 @@ def igdb_individual_game_info(igdb_id):
         if image_id:
             artwork = f"https://images.igdb.com/igdb/image/upload/t_1080p/{image_id}.jpg"
 
+    log.info(f"igdb_individual_game_info : Successfully grabbed game info for {igdb_id}")
+
     return {
         "igdb_id": igdb_id,
         "game_title": game_title,
@@ -354,13 +370,14 @@ def igdb_individual_game_info(igdb_id):
         "artwork": artwork
     }
 
-#data = igdb_individual_game_info(68353)
-#with open("C:/Users/inder/Documents/Python Projects/GameCompassProject/GameCompass/backend/api/igdb_unicorn_overlord.txt", "w") as f:
-#    json.dump(data, f, indent=4)
-#data = igdb_individual_game_info(117170)
-#with open ("C:/Users/inder/Documents/Python Projects/GameCompassProject/GameCompass/backend/api/igdb_stellar_blade.txt", "w") as f:
-#    json.dump(data, f, indent=4)
+# This is for testing
+def main():
+    data = igdb_individual_game_info(68353)
+    print(data)
+    #with open("C:/Users/inder/Documents/Python Projects/GameCompassProject/GameCompass/backend/api/igdb_unicorn_overlord.txt", "w") as f:
+    #    json.dump(data, f, indent=4)
 
-#data = igdb_individual_game_info(331212)
-#with open ("C:/Users/inder/Documents/Python Projects/GameCompassProject/GameCompass/backend/api/igdb_tides_of_annihilation.txt", "w") as f:
-#    json.dump(data, f, indent=4)
+    #print(igdb_find_similar_titles("Stellar Blade", 1))
+
+if __name__ == "__main__":
+    main()

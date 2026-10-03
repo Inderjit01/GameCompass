@@ -3,7 +3,9 @@ from playwright.async_api import async_playwright, TimeoutError as PlaywrightTim
 from rapidfuzz import fuzz
 
 # Need sys.path.append if running file independently
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# This is to allow the script to use utilities
+if not getattr(sys, 'frozen', False): 
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utilities.logging_config import create_log
 
 log = create_log("nintendo")

@@ -17,8 +17,12 @@ lerna-debug.log*
 
 node_modules
 dist
+build
 dist-ssr
 *.local
+
+# PyInstaller
+/backend/backend-x86_64-pc-windows-msvc.exe
 
 # Editor directories and files
 .vscode/*

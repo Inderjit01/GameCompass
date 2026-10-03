@@ -2,12 +2,19 @@ import requests, os, sys, asyncio
 from dotenv import load_dotenv
 
 # Need sys.path.append if running file independently
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# This is to allow the script to use utilities
+if not getattr(sys, 'frozen', False):
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utilities.logging_config import create_log, api_errors
+from utilities.pathing import grab_env_path
 
 log = create_log("epic")
 
-load_dotenv()
+# Get the .env location for api keys
+base_path = grab_env_path()
+env_path = base_path / "api" / ".env"
+
+load_dotenv(dotenv_path=env_path)
 
 ISTHEREANYDEAL_KEY = os.getenv("ISTHEREANYDEAL_API_KEY")
 BASE_URL = "https://api.isthereanydeal.com/lookup/id/title/v1"
@@ -34,7 +41,7 @@ async def get_epic_prices(game_title, country='US'):
 
     game_id = lookup_data.get(game_title)
     if not game_id:
-        log.warning("epic_prices: status_code: 404, game_id is empty")
+        log.warning(f"get_epic_prices : game_id is empty for {game_title}")
         return
 
     # Gets the price data with the key from the previous request
@@ -54,7 +61,7 @@ async def get_epic_prices(game_title, country='US'):
     prices_data = prices_request.json()
 
     if not prices_data or not isinstance(prices_data, list):
-        log.warning("epic_prices: status_code: 404, prices_data is empty")
+        log.warning(f"get_epic_prices: prices_data is empty for {game_title}")
         return
     
     game_prices = prices_data[0].get("deals", [])
@@ -62,7 +69,7 @@ async def get_epic_prices(game_title, country='US'):
     # Filter for Epic Games Store (shop ID 16)
     epic_deals = [d for d in game_prices if d.get("shop", {}).get("id") == 16]
     if not epic_deals:
-        log.warning("epic_prices: Game does not exist on Epic or could not find game on Epic")
+        log.warning(f"get_epic_prices: {game_title} does not exist on Epic or could not find game on Epic")
         return
     
     deal = epic_deals[0]
@@ -73,7 +80,7 @@ async def get_epic_prices(game_title, country='US'):
     regular_amount = regular.get("amount", 0.0)
     price_amount = price.get("amount", 0.0)
 
-    log.info(f"/get_epic_prices : Successfully grabbed Epic prices for {game_title}")
+    log.info(f"get_epic_prices : Successfully grabbed Epic prices for {game_title}")
 
     # This means the game is always free
     if regular_amount == 0:
@@ -89,4 +96,9 @@ async def get_epic_prices(game_title, country='US'):
         "discount_percent": cut
     }
 
-#print(asyncio.run(get_epic_prices("Hell Let Loose")))
+# For testing
+def main():
+    print(asyncio.run(get_epic_prices("Portal 2")))
+
+if __name__ == "__main__":
+    main()
