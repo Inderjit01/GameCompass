@@ -1,4 +1,4 @@
-import sys, os, asyncio, time
+import sys, os, asyncio, random, time
 from playwright.async_api import async_playwright
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
@@ -20,7 +20,30 @@ from scrapers.nintendo import get_nintendo_prices
 MAX_CONCURRENT_GAMES = 5
 slow_semaphore = asyncio.Semaphore(MAX_CONCURRENT_GAMES)
 
+PLAYSTATION_DELAY = 0.1
+last_playstation_request = 0
+playstation_rate_lock = asyncio.Lock()
+
 log = create_log("caching")
+
+# added a playstation delay for requests
+async def _wait_for_playstation_slot():
+    global last_playstation_request
+
+    async with playstation_rate_lock:
+        now = time.monotonic()
+        elapsed = now - last_playstation_request
+
+        if elapsed < PLAYSTATION_DELAY:
+            await asyncio.sleep(PLAYSTATION_DELAY - elapsed)
+
+        await asyncio.sleep(0.1)
+
+        last_playstation_request = time.monotonic()
+
+async def _get_playstation_prices_limited(browser, game_title):
+    await _wait_for_playstation_slot()
+    return await get_playstation_prices(browser, game_title)
 
 # below methods are specific for wishlist cache (_create_wishlist_fast_cache and _update_wishlist_slow_cache). 
 # So the user doesn't have to wait for playstation and nintendo
@@ -110,7 +133,7 @@ async def _update_wishlist_slow_cache(browser, games, wishlist_cache):
 
             if "Playstation" in platforms:
                 stores.append("playstation")
-                tasks.append(get_playstation_prices(browser, game_title))
+                tasks.append(_get_playstation_prices_limited(browser, game_title))
             if "Nintendo" in platforms:
                 stores.append("nintendo")
                 tasks.append(get_nintendo_prices(browser, game_title))
@@ -197,7 +220,7 @@ async def _create_game_cache(browser, location):
             if "Playstation" in platforms:
                 store_tasks.append((
                     "playstation",
-                    get_playstation_prices(browser, game_title)
+                    _get_playstation_prices_limited(browser, game_title)
                 ))
             
             if "Xbox" in platforms:
