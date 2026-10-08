@@ -20,7 +20,7 @@ from scrapers.nintendo import get_nintendo_prices
 MAX_CONCURRENT_GAMES = 5
 slow_semaphore = asyncio.Semaphore(MAX_CONCURRENT_GAMES)
 
-PLAYSTATION_DELAY = 0.1
+PLAYSTATION_DELAY = 2
 last_playstation_request = 0
 playstation_rate_lock = asyncio.Lock()
 
@@ -37,7 +37,7 @@ async def _wait_for_playstation_slot():
         if elapsed < PLAYSTATION_DELAY:
             await asyncio.sleep(PLAYSTATION_DELAY - elapsed)
 
-        await asyncio.sleep(0.1)
+        await asyncio.sleep(random.uniform(0.2, 1.0))
 
         last_playstation_request = time.monotonic()
 

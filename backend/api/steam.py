@@ -41,7 +41,10 @@ def _find_steam_id(game_title):
     titles_to_id_map = {}
 
     data = _steam_id_database(game_title)
-
+    if not data:
+        log.warning(f"_find_steam_id: No data was returned for steam_id's of {game_title}")
+        return
+    
     for game in data.get("items", []):
         title = game.get("name", None)
         if title:

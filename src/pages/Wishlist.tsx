@@ -67,7 +67,7 @@ function Wishlist () {
         filterCategories, setFilterCategories,
         filterOrder, setFilterOrder,
         filterSearch, setFilterSearch,
-    } = useDatabaseFilter(wishlistGames ?? null);
+    } = useDatabaseFilter(wishlistGames ?? null, "wishlist");
 
     // Use the flags for wishlistResults to know if a store has finished loading
     const fastDone = wishlistResults?.cache_fast_done ?? false;

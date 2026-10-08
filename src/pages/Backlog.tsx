@@ -31,7 +31,7 @@ function Backlog () {
         filterCategories, setFilterCategories,
         filterOrder, setFilterOrder,
         filterSearch, setFilterSearch,
-    } = useDatabaseFilter(backlogResults);
+    } = useDatabaseFilter(backlogResults, "backlog");
 
     const gamesCount = filteredResults?.length ?? 0;
 

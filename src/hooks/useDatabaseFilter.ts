@@ -26,12 +26,12 @@ function hasPlaystationPremium(game: databaseTypes | WishlistGameInfo): game is 
     return "playstation_premium" in game;
 }
 
-function useDatabaseFilter(databaseGames: databaseTypes[] | WishlistGameInfo[] | null) {
-
+function useDatabaseFilter(databaseGames: databaseTypes[] | WishlistGameInfo[] | null, pageType: "backlog" | "wishlist" | "completed") {
+    // I use completed_date for the Completed page instead of alphabetical
     // All filter options. Default is aplphabetical
-    const [filterCategories, setFilterCategories] = useState("alphabetical");
+    const [filterCategories, setFilterCategories] = useState(pageType === "completed" ? "completed_date" : "alphabetical");
     // Sort by ascending or decending
-    const [filterOrder, setFilterOrder] = useState("ascending");
+    const [filterOrder, setFilterOrder] = useState(pageType === "completed" ? "descending" : "ascending");
     // Search bar filter for game titles
     const [filterSearch, setFilterSearch] = useState("");
 

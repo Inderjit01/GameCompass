@@ -30,7 +30,7 @@ function Completed() {
         filterCategories, setFilterCategories,
         filterOrder, setFilterOrder,
         filterSearch, setFilterSearch,
-    } = useDatabaseFilter(completedResults);
+    } = useDatabaseFilter(completedResults, "completed");
 
     const gamesCount = filteredResults?.length ?? 0;
 
