@@ -1,11 +1,13 @@
-import sys, os, asyncio, random, time
+import sys, os, asyncio, random, time, json
 from playwright.async_api import async_playwright
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
+from datetime import timezone
 
 # Need sys.path.append if running file independently
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utilities.logging_config import create_log
+from utilities.pathing import grab_game_cache_path
 
 from database.database_controller import get_games_from_location
 
@@ -23,6 +25,9 @@ slow_semaphore = asyncio.Semaphore(MAX_CONCURRENT_GAMES)
 PLAYSTATION_DELAY = 2
 last_playstation_request = 0
 playstation_rate_lock = asyncio.Lock()
+
+# Signal to refresh the cache if it is older than 12 hours
+GAME_CACHE_TTL = 12 * 60 * 60
 
 log = create_log("caching")
 
@@ -96,6 +101,13 @@ async def _create_wishlist_fast_cache(games):
             }
         }
 
+    cached_games = _check_game_cache("wishlist")
+    if cached_games is not None:
+        log.info(f"_create_wishlist_fast_cache: Loaded wishlist from game_cache.json")
+        return cached_games
+
+    log.info(f"_create_wishlist_fast_cache : Refreshing game cache for wishlist")
+
     tasks = []
     for game in games:
         tasks.append(asyncio.create_task(_get_fast_prices(game)))
@@ -145,6 +157,14 @@ async def _update_wishlist_slow_cache(browser, games, wishlist_cache):
 
             return igdb_id, dict(zip(stores, results))
 
+    cached_games = _check_game_cache("wishlist")
+    if cached_games is not None:
+        log.info("_update_wishlist_slow_cache: Using game_cache games for wishlist games")
+
+        wishlist_cache.clear()
+        wishlist_cache.update(cached_games)
+        return
+    
     tasks = []
     for game in games:
         tasks.append(asyncio.create_task(_get_slow_prices(game)))
@@ -164,11 +184,21 @@ async def _update_wishlist_slow_cache(browser, games, wishlist_cache):
         for store, price in slow_prices.items():
             wishlist_cache[igdb_id]["prices"][store] = price
 
+    _save_game_cache("wishlist", wishlist_cache)
+    
+
 # uses concurrency to grab each games info
 async def _create_game_cache(browser, location):
     if location not in ("backlog", "wishlist", "completed"):
         log.warning(f"create_game_cache : location is invaild : {location}")
         return None
+
+    cached_games = _check_game_cache(location)
+    if cached_games is not None:
+        log.info(f"_create_game_cache: Loaded {location} from game_cache.json")
+        return cached_games
+
+    log.info(f"_create_game_cache : Refreshing game cache for {location}")
 
     # Grabs all the games saved to a location in DB
     try:
@@ -271,6 +301,9 @@ async def _create_game_cache(browser, location):
 
         results = {}
         for store_result in store_results:
+            if not store_result:
+                continue
+
             for igdb_id, game_info in store_result.items():
                 results[igdb_id] = game_info
 
@@ -281,7 +314,103 @@ async def _create_game_cache(browser, location):
         return None
 
     log.info(f"create_game_cache : Successfully grabbed {location} games and prices")
+
+    _save_game_cache(location, results)
+    
     return results
+
+# Checks the game_cache data and returns it if it exists
+def _read_game_cache_file():
+    cache_path = grab_game_cache_path()
+
+    try:
+        if not os.path.isfile(cache_path):
+            return {}
+
+        with open(cache_path, "r", encoding="utf-8") as file:
+            data = json.load(file)
+
+        return data if isinstance(data, dict) else {}
+
+    except (OSError, json.JSONDecodeError):
+        log.warning(f"_read_game_cache_file: Game cache file is missing or invalid, rebuilding cache.")
+        return {}
+
+# Returns cached games if this location was cached within 12 hours.
+# Otherwise, return None which will build a fresh cache
+def _check_game_cache(location):
+    if location not in ("backlog", "wishlist", "completed"):
+        return None
+
+    cache_file = _read_game_cache_file()
+
+    # If the file is empty signal to build a new cache
+    location_data = cache_file.get(location)
+    if not isinstance(location_data, dict):
+        return None
+
+    # if the file was made over 12 hours ago signal to build a new cache
+    cached_at = location_data.get("cached_at")
+    if not isinstance(cached_at, (int, float)):
+        return None 
+
+    age = time.time() - cached_at
+    
+    if age < 0 or age >= GAME_CACHE_TTL:
+        log.info(f"Game cache expired for {location}.")
+        return None
+
+    # If the games are missing signal to build a new cache
+    games = location_data.get("games")
+    if not isinstance(games, dict):
+        return None
+
+    try:
+        converted_games = {}
+        for igdb_id, game in games.items():
+            converted_games[int(igdb_id)] = game
+
+        games = converted_games
+    except (ValueError, TypeError):
+        log.warning(f"_check_game_cache: Invalid game IDs in cache for {location}")
+        return None
+
+    log.info(f"_check_game_cache: Using cached games for {location}")
+    return games
+
+def _save_game_cache(location, games):
+    if not isinstance(games, dict):
+        log.warning(f"Cannot save invalid cache for {location}")
+        return
+
+    cache_path = grab_game_cache_path()
+    cache_dir = cache_path.parent
+
+    if cache_dir:
+        cache_dir.mkdir(parents=True, exist_ok=True)
+
+    cache_file = _read_game_cache_file()
+
+    cache_file[location] = {
+        "cached_at": time.time(),
+        "games": games,
+    }
+
+    temp_path = cache_path.with_suffix(cache_path.suffix + ".tmp")
+    try:
+        with open(temp_path, "w", encoding="utf-8") as file:
+            json.dump(cache_file, file, indent=4)
+
+        os.replace(temp_path, cache_path)
+        log.info(f"_save_game_cache: Saved game cache for {location}")
+    except (OSError, TypeError, ValueError):
+        log.exception(f"_save_game_cache: Failed to save game cache for {location}")
+
+        try:
+            if os.path.exists(temp_path):
+                os.remove(temp_path)
+        except OSError:
+            pass
 
 # Starts the caching process for wishlist and backlog
 async def build_caches(app):

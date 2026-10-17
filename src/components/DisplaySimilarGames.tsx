@@ -38,7 +38,7 @@ function DisplaySimilarGames (){
         const search = async () => {
             if (!previousSearch) return;
 
-            const response = await fetch(`http://127.0.0.1:8000/search?game_title=${previousSearch}&limit=10`);
+            const response = await fetch(`http://127.0.0.1:8000/search?game_title=${previousSearch}&limit=20`);
             const data = await response.json();
 
             setSimilarGames(data);

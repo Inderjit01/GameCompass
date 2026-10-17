@@ -30,3 +30,9 @@ def grab_env_path():
         return Path(sys._MEIPASS)
 
     return Path(__file__).resolve().parent.parent
+
+# game_cache is at /appdata/local/gamecompass/game_cache.json
+def grab_game_cache_path():
+    app_dir = _app_path()
+
+    return app_dir / "game_cache.json"
