@@ -13,7 +13,8 @@ log = create_log("steam")
 
 STEAM_ID_URL = "https://store.steampowered.com/api/storesearch/"
 STEAM_GAME_INFO_URL = "https://store.steampowered.com/api/appdetails/"
-STEAM_GAME_REVIEWS_URL = "https://store.steampowered.com/appreviews/"
+#STEAM_GAME_REVIEWS_URL = "https://store.steampowered.com/appreviews/"
+STEAM_GAME_REVIEWS_URL = "https://api.steampowered.com/IUserReviewsService/GetAppReviews/v1/"
 
 # Find similar steam titles to the game title provided
 def _steam_id_database(game_title):
@@ -148,20 +149,26 @@ def _get_steam_basic_info(steam_id):
 # Get the Steam reviews for a game if it exists
 def _get_steam_reviews(steam_id, review_category):
     params = {
-        "json": 1,
-        "language": "english",
-        "purchase_type": "all",
-        "num_per_page": 10,
-        "filter": review_category
+        "input_json": json.dumps({
+            "appid": int(steam_id),
+            "filter": review_category,
+            "languages": ["english"],
+            "review_type": 0,
+            "purchase_type": 1,
+            "num_per_page": 10,
+            "cursor": "*"
+        })
     }
 
     try:
-        response = requests.get(f"{STEAM_GAME_REVIEWS_URL}/{steam_id}", params=params, timeout=10)
+        response = requests.get(f"{STEAM_GAME_REVIEWS_URL}", params=params, timeout=10)
         response.raise_for_status()
 
         data = response.json()
 
-        return data if data else None
+        review_data = data.get("response", {})
+
+        return review_data if review_data else None
     except Exception as e:
         api_errors(e, log, "Steam reviews", steam_id)
 
@@ -225,12 +232,12 @@ async def get_steam_price(game_title):
 # This is for testing the script independently
 async def main():
     data = await get_steam_info("Horizon Zero Dawn™ Remastered")
-    print(data)
+    #print(data)
     
     #data = await get_steam_price("DEATH STRANDING DIRECTOR'S CUT")
     #print(data)
 
-    #with open("C:/Users/inder/Documents/Python Projects/GameCompassProject/GameCompass/backend/api/TidesOfAnnihilation.txt", "w") as f:
+    #with open("C:/Users/inder/Documents/Python Projects/GameCompassProject/GameCompass/backend/api/Horizon.txt", "w") as f:
     #    json.dump(data, f, indent=4)
 
 if __name__ == "__main__":
